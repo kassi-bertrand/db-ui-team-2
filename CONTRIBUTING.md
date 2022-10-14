@@ -58,13 +58,13 @@ _Note: If the branch does not exit yet, please create one on GitHub, following t
 
 > What happens when you're done implementing a feature?
 
-1. Merge the sprint branch into your feature branch, with:
+1. **Merge the sprint branch into your feature branch**, with:
 
 ```sh
 git merge sprint_n
 ```
 
-Note: If you have no merge conflicts, move to `step 2`. If so, solve them before moving on.
+This will make sure you have the latest changes, if any. If you have no merge conflicts, move to `step 2`. If so, solve them before moving on.
 
 2. **Create a pull request** to signal the team that you are ready to merge your new feature into the sprint branch.
 
