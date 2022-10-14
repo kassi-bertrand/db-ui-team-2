@@ -36,13 +36,15 @@ npm run start
 
 ## Backend
 
+[Work In Progress]
+
 ## Implementing Issues
 
-As you know, the project is spread over the course of four(4) sprints. Each sprint has a target number of user stories to implement. For clarity purposes, each sprint have its own dedicated branch. For instance, the Sprint 1 branch is named `sprint_1`.
+As you know, the project is spread over the course of four(4) sprints. Each sprint has a target number of user stories to implement. For clarity purposes, _each sprint have its own **dedicated** branch_. For instance, the Sprint 1 branch is named `sprint_1`, and Sprint 2 will be named `sprint_2`, etc...
 
 So, to implement an issue (i.e. user story), on your local machine, please make sure:
 
-1. _*To be on the correct branch*_, using the following command:
+1. **To be on the correct branch**, using the following command:
 
 ```sh
 git switch branch_name
@@ -50,10 +52,22 @@ git switch branch_name
 
 _Note: If the branch does not exit yet, please create one on GitHub, following this format: `sprint_n` ... where `n` is the sprint number, then run the following command in your terminal `git pull`_
 
-2. _*Create new feature branch off of the sprint branch*_. On this branch you'll implement the user story(i.e. user story).
+2. **Create new feature branch off of the sprint branch you 're currently on**. On this branch you'll implement the user story (i.e. user story) you chose.
 
 # Submitting pull requests
 
 > What happens when you're done implementing a feature?
 
-1. Merge the sprint branch into your f
+1. Merge the sprint branch into your feature branch, with:
+
+```sh
+git merge sprint_n
+```
+
+Note: If you have no merge conflicts, move to `step 2`. If so, solve them before moving on.
+
+2. **Create a pull request** to signal the team that you are ready to merge your new feature into the sprint branch.
+
+3. **Merge your changes into the sprint branch**. Congratulations, you just implemented a new feature! 🌱
+
+**Note**: Never ❌ merge buggy, or unfinished features into the sprint branch.
