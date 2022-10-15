@@ -54,7 +54,7 @@
 .form-multiselect,
 .form-select,
 .form-checkbox {
-    @apply rounded;
+    @apply rounded !important;
 }
 
 .form-input,
