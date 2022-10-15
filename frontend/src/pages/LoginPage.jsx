@@ -19,8 +19,8 @@ function LoginPage() {
                         <div className="pt-32 pb-12 md:pt-40 md:pb-20">
 
                             {/**Page header */}
-                            <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-                                <h1 className="h1">Welcome back!</h1>
+                            <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20 font-inter">
+                                <h1 className="h1">Welcome back! We have been expecting you 🚀</h1>
                             </div>
                         </div>
                     </div>
