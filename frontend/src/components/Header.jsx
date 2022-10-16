@@ -7,7 +7,7 @@
  *                  Landing pages to display the platform logo,
  *                  and the "Sign In"/"Sign Out" buttons
  */
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 
 function Header() {
@@ -21,7 +21,7 @@ function Header() {
                     {/**Branding */}
                     <div className="flex-shrink-0 mr-4">
                         {/**Logo */}
-                        <Link>
+                        <a>
                             <svg className="w-8 h-8" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
                                     <radialGradient cx="21.152%" cy="86.063%" fx="21.152%" fy="86.063%" r="79.941%" id="header-logo">
@@ -32,7 +32,7 @@ function Header() {
                                     <rect width="32" height="32" rx="16" fill="url(#header-logo)" fillRule="nonzero" />
                                 </defs>
                             </svg>
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </div>

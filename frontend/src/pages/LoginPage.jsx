@@ -7,7 +7,7 @@
  */
 
 import Header from "../components/Header";
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function LoginPage() {
     return (
@@ -52,7 +52,7 @@ function LoginPage() {
                                     </div>
                                 </form>
                                 <div className="text-gray-600 text-center mt-6">
-                                    Don't you have an account? <Link className="text-blue-600 hover:underline transition duration-150 ease-in-out">Sign up</Link>
+                                    Don't you have an account? <a className="text-blue-600 hover:underline transition duration-150 ease-in-out">Sign up</a>
                                 </div>
                             </div>
                         </div>
