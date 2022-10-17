@@ -7,7 +7,7 @@
  */
 
 import Header from "../components/Header";
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function LoginPage() {
     return (
@@ -40,7 +40,7 @@ function LoginPage() {
                                         <div className="w-full px-3">
                                             <div className="flex justify-between">
                                                 <label className="block text-gray-800 text-sm font-semibold mb-1" htmlFor="password">Password</label>
-                                                <a className="text-sm text-blue-600 hover:underline font-bold">Having trouble signing in?</a>
+                                                <Link className="text-sm text-blue-600 hover:underline font-bold">Having trouble signing in?</Link>
                                             </div>
                                             <input id="password" type="password" className="w-full text-gray-800 form-input" placeholder="Enter your password" required />
                                         </div>
@@ -72,7 +72,7 @@ function LoginPage() {
                                 </form>
 
                                 <div className="text-gray-600 text-center mt-6">
-                                    Don't you have an account? <a className="text-blue-600 hover:underline transition duration-150 ease-in-out">Sign up</a>
+                                    Don't have an account? <Link className="text-blue-600 hover:underline transition duration-150 ease-in-out">Sign up</Link>
                                 </div>
                             </div>
                         </div>
