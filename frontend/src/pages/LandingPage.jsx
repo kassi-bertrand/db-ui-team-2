@@ -1,17 +1,29 @@
 /**
  * Author:          Kassi Bertrand
- * filename:        LoginPage.jsx
- * Date:            10-17-2022
+ * filename:        LandingPage.jsx
+ * Date:            10-18-2022
  * Description:     This component is the Landing page
  *                  of the website. This page is the first
  *                  new users encounter. It presents the
  *                  company and its services
  */
+import Header from "../components/Header";
 
-function LoginPage() {
+function LandingPage() {
     return (
-        <div></div>
+        <div className="flex flex-col min-h-screen overflow-hidden">
+            {/** Site header */}
+            <Header />
+
+            {/** Page content */}
+            <main className="flex-grow">
+
+                {/**Page sections */}
+
+            </main>
+
+        </div>
     );
 }
 
-export default LoginPage;
+export default LandingPage;
