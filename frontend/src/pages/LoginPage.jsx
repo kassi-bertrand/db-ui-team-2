@@ -10,6 +10,11 @@ import Header from "../components/Header";
 import { Link } from 'react-router-dom';
 
 function LoginPage() {
+    //Run when the user hits the "Sign in" button
+    function handleSignIn(){
+        //TODO: Implement this function
+    }
+
     return (
         <div className="flex flex-col min-h-screen overflow-hidden">
             {/**Site Header here */}
@@ -47,7 +52,7 @@ function LoginPage() {
                                     </div>
                                     <div className="flex flex-wrap -mx-3 mt-6">
                                         <div className="w-full px-3">
-                                            <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full font-semibold">Sign in</button>
+                                            <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full font-semibold" onClick={handleSignIn}>Sign in</button>
                                         </div>
                                     </div>
                                 </form>
