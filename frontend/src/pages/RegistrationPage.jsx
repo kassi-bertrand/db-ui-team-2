@@ -33,7 +33,7 @@ function RegistrationPage() {
                     {/**Form Field */}
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
-                            <label className="block text-gray-800 text-sm font-semibold mb-1" htmlFor="name">Name</label>
+                            <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="name">Name</label>
                             <input id="name" type="text" className="form-input w-full text-gray-800" placeholder="Enter your name" required/>
                         </div>
                     </div>
@@ -41,7 +41,7 @@ function RegistrationPage() {
                     {/**Form Field */}
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
-                            <label className="block text-gray-800 text-sm font-semibold mb-1" htmlFor="email">Email</label>
+                            <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="email">Email</label>
                             <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email" required/>
                         </div>
                     </div>
@@ -49,7 +49,7 @@ function RegistrationPage() {
                     {/**Form field */}
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
-                            <label className="block text-gray-800 text-sm font-semibold mb-1" htmlFor="password">Password</label>
+                            <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="password">Password</label>
                             <input id="password" type="password" className="form-input w-full text-gray-800" placeholder="Enter your password" required />
                         </div>
                     </div>
@@ -57,7 +57,7 @@ function RegistrationPage() {
                     {/**Button */}
                     <div className="flex flex-wrap -mx-3 mt-6">
                         <div className="w-full px-3">
-                            <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full">Register</button>
+                            <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full font-semibold font-inter">Register</button>
                         </div>
                     </div>
 
@@ -68,8 +68,25 @@ function RegistrationPage() {
                 </form>
 
                 {/**Dividing line */}
-                
-                {/**Other Register option "Fake" */}
+                <div className="flex items-center my-6">
+                    <div className="border-t border-gray-300 flex-grow mr-3" aria-hidden="true"></div>
+                    <div className="text-gray-600 italic">Or</div>
+                    <div className="border-t border-gray-300 flex-grow ml-3" aria-hidden="true"></div>
+                </div>
+
+                {/**Other Register option "Fake: Just for the look" */}
+                <form>
+                    <div className="flex flex-wrap -mx-3">
+                        <div className="w-full px-3">
+                            <button className="btn px-0 text-white bg-red-600 hover:bg-red-700 w-full relative flex items-center">
+                                <svg className="w-4 h-4 fill-current text-white opacity-75 flex-shrink-0 mx-4" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.9 7v2.4H12c-.2 1-1.2 3-4 3-2.4 0-4.3-2-4.3-4.4 0-2.4 2-4.4 4.3-4.4 1.4 0 2.3.6 2.8 1.1l1.9-1.8C11.5 1.7 9.9 1 8 1 4.1 1 1 4.1 1 8s3.1 7 7 7c4 0 6.7-2.8 6.7-6.8 0-.5 0-.8-.1-1.2H7.9z" />
+                                </svg>
+                                <span className="flex-auto pl-16 pr-8 -ml-16 font-inter">Continue with Google</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
 
               </div>
             </div>
