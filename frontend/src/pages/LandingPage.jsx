@@ -8,6 +8,7 @@
  *                  company and its services
  */
 import Header from "../components/Header";
+import HeroSection from "../components/HeroSection";
 
 function LandingPage() {
     return (
@@ -19,6 +20,7 @@ function LandingPage() {
             <main className="flex-grow">
 
                 {/**Page sections */}
+                <HeroSection />
 
             </main>
 
