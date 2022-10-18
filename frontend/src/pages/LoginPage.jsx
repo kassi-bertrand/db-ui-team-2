@@ -11,8 +11,15 @@ import { Link } from 'react-router-dom';
 
 function LoginPage() {
     //Run when the user hits the "Sign in" button
-    function handleSignIn(){
+    function handleSignIn(e){
+        e.preventDefault();
         //TODO: Implement this function
+    }
+
+    //Run when the user hits the "Continue with Google"
+    function handleContinueWithGoogle(e){
+        e.preventDefault();
+        console.log("Just for the look, bro. XD");
     }
 
     return (
@@ -66,7 +73,7 @@ function LoginPage() {
                                 <form>
                                     <div className="flex flex-wrap -mx-3">
                                         <div className="w-full px-3">
-                                            <button className="btn px-0 text-white bg-red-600 hover:bg-red-700 w-full relative flex items-center">
+                                            <button className="btn px-0 text-white bg-red-600 hover:bg-red-700 w-full relative flex items-center" onClick={handleContinueWithGoogle}>
                                                 <svg className="w-4 h-4 fill-current text-white opacity-75 flex-shrink-0 mx-4" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M7.9 7v2.4H12c-.2 1-1.2 3-4 3-2.4 0-4.3-2-4.3-4.4 0-2.4 2-4.4 4.3-4.4 1.4 0 2.3.6 2.8 1.1l1.9-1.8C11.5 1.7 9.9 1 8 1 4.1 1 1 4.1 1 8s3.1 7 7 7c4 0 6.7-2.8 6.7-6.8 0-.5 0-.8-.1-1.2H7.9z" />
                                                 </svg>
@@ -77,7 +84,7 @@ function LoginPage() {
                                 </form>
 
                                 <div className="text-gray-600 text-center mt-6">
-                                    Don't have an account? <Link className="text-blue-600 hover:underline transition duration-150 ease-in-out">Sign up</Link>
+                                    Don't have an account? <Link to="/register" className="text-blue-600 hover:underline transition duration-150 ease-in-out">Sign up</Link>
                                 </div>
                             </div>
                         </div>
