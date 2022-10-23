@@ -5,6 +5,7 @@
  * Description:     This component represents the landing page hero section.
  *                  It is the first section page.
  */
+ import { Link } from 'react-router-dom';
 
 function HeroSection() {
     return (
@@ -22,10 +23,10 @@ function HeroSection() {
                             <p className="text-xl text-gray-600 mb-8">Everything you need to create immersive, and successful experiences.</p>
                             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
                                 <div>
-                                    <a className="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 sm:w-auto sm:mb-0 font-inter" href="#0">Start Here 🚀</a>
+                                    <Link to="/login" className="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 sm:w-auto sm:mb-0 font-inter" href="#0">Start Here 🚀</Link>
                                 </div>
                                 <div>
-                                    <a className="btn text-white bg-gray-900 hover:bg-gray-800 w-full sm:w-auto sm:ml-4 font-inter" href="#0">Learn more</a>
+                                    <Link to="/#solutionSection" className="btn text-white bg-gray-900 hover:bg-gray-800 w-full sm:w-auto sm:ml-4 font-inter" href="#0">Learn more</Link>
                                 </div>
                             </div>
                         </div>
