@@ -16,12 +16,6 @@ function RegistrationPage() {
     //TODO: Implement this function
   }
 
-  //Run when the user hits the "Continue with Google" button
-  function handleContinueWithGoogle(e){
-    e.preventDefault();
-    console.log("Just for the look, bro. XD");
-  }
-
   return (
     <div>
       {/**Site Header */}
