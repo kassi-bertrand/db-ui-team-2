@@ -19,7 +19,7 @@ function LoginPage() {
     //Run when the user hits the "Continue with Google"
     function handleContinueWithGoogle(e){
         e.preventDefault();
-        console.log("Just for the look, bro. XD");
+        //TODO: Implement this function
     }
 
     return (
