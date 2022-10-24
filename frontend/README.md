@@ -6,16 +6,51 @@ how it is organized. This side of the project was was bootstrapped with [Create 
 
 # The team 🥷🥷🥷
 
-- [Kassi Bertrand](https://github.com/kassi-bertrand)(Team lead)
+- [Kassi Bertrand](https://github.com/kassi-bertrand) (Team lead)
 - [Rudy Lucas](https://github.com/rudycito23)
 - [Giovanni Boscan](https://github.com/giovabos11)
 
+# Dependencies, tools, or frameworks 🛠️
+
+- [ReactJS](https://reactjs.org/): Component-based JavaScript library for building user interfaces
+- [TailwindCSS](https://tailwindcss.com/): For CSS Utility classes that can be composed and used directly in our markup.
+
 # Directory Structure 📁
 
-Here is a directory structures of the most important files:
+Most of development happens in the `src` folder. Here is a basic directory structure:
 
 ```
+src/
+├── App.js
+├── App.test.js
+├── components
+│   ├── Header.jsx
+│   ├── HeroSection.jsx
+│   └── SolutionSection.jsx
+├── css
+│   └── utility-pattern.css
+├── index.css
+├── index.js
+├── logo.svg
+├── pages
+│   ├── LandingPage.jsx
+│   ├── LoginPage.jsx
+│   └── RegistrationPage.jsx
+├── reportWebVitals.js
+└── setupTests.js
 ```
+
+- `App.js`: Root component.
+
+- `index.js`: Project entry point, renders the `App` component.
+
+- `index.css`: global `CSS` file. Imports the site's font from Google fonts, and
+
+- `components`:
+
+- `pages`: The different pages of the website.
+
+- `css`: folder used to store additional `CSS` files used to provide additional, and consistent styling across the entire site. `utility-pattern.css` for instance, is used to style basic HTML tags (`h1...h4`) or create custom CSS classes to apply later. At the moment, all `CSS` defined here are imported into `index.css`.
 
 ## How to run the frontend?
 
@@ -38,7 +73,6 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
 
 ### Deployment 🚀
 
