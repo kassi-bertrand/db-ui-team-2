@@ -4,7 +4,7 @@ Welcome in the frontend side of the event planner project. This `README.md` is t
 teammates, and any potential visitors understand the work being done on the frontend, and
 how it is organized. This side of the project was was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# The team 🥷🥷🥷
+# The Frontend team 🥷🥷🥷
 
 - [Kassi Bertrand](https://github.com/kassi-bertrand) (Team lead)
 - [Rudy Lucas](https://github.com/rudycito23)
@@ -46,9 +46,9 @@ src/
 
 - `index.css`: global `CSS` file. Imports the site's font from Google fonts, and
 
-- `components`:
+- `components`: This folder is the home of stand-alone components, they may be used in one, or several pages of the site.
 
-- `pages`: The different pages of the website.
+- `pages`: The different pages of the website. Each page is defined as its own component. Pages may use components defined in the `components` folder. For instance, both the **Login** and **Register** use the `Header` component, to render the "Sign In" and "Sign Up" buttons at the top.
 
 - `css`: folder used to store additional `CSS` files used to provide additional, and consistent styling across the entire site. `utility-pattern.css` for instance, is used to style basic HTML tags (`h1...h4`) or create custom CSS classes to apply later. At the moment, all `CSS` defined here are imported into `index.css`.
 
