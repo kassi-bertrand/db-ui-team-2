@@ -50,7 +50,7 @@ src/
 
 - `pages`: The different pages of the website. Each page is defined as its own component. Pages may use components defined in the `components` folder. For instance, both the **Login** and **Register** use the `Header` component, to render the "Sign In" and "Sign Up" buttons at the top.
 
-- `css`: folder used to store additional `CSS` files used to provide additional, and consistent styling across the entire site. `utility-pattern.css` for instance, is used to style basic HTML tags (`h1...h4`) or create custom CSS classes to apply later. At the moment, all `CSS` defined here are imported into `index.css`.
+- `css`: This folder stores `CSS` files used to provide additional, and consistent styling across the entire site. `utility-pattern.css` for instance, is used to style basic HTML tags (`h1...h4`) or create custom CSS classes to apply later. At the moment, all `CSS` defined here are imported into `index.css`.
 
 ## How to run the frontend?
 
