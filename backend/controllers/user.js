@@ -1,4 +1,3 @@
-const jwt = require('jsonwebtoken');
 const User = require('../models/users');
 const Planner = require('../models/planners');
 
@@ -9,13 +8,13 @@ const authenticatePlanner = async(email, password) => {
     if (user === null) {
         return user;
     }
-    const students = await Student.findUserByEmail(email);
-    console.log('Students', students);
-    const accessToken = jwt.sign({...students[0], claims: ['student']}, accessTokenSecret);
+    const planners = await Planner.findUserByEmail(email);
+    console.log('Planner', planners);
+    const accessToken = jwt.sign({...students[0], claims: ['planner']}, accessTokenSecret);
 
     return accessToken;
 }
 
 module.exports = {
-    authenticateStudent
+    authenticatePlanner
 };
