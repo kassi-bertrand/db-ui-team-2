@@ -12,8 +12,7 @@ function App() {
         <Route exact path="/" element={<LandingPage />} />
         <Route exact path="/register" element={<RegistrationPage />} />
         <Route exact path="/login" element={<LoginPage />} />
-        {/**TODO: Add a route for 404 page */}
-        <Route exact path="/404errorpage" element={<ErrorPage />} />
+        <Route exact path="/*" element={<ErrorPage />} />
       </Routes>
     </>
   );
