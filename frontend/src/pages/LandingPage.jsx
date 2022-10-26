@@ -9,6 +9,7 @@
  */
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
+import SolutionSection from "../components/SolutionSection";
 
 function LandingPage() {
     return (
@@ -21,6 +22,7 @@ function LandingPage() {
 
                 {/**Page sections */}
                 <HeroSection />
+                <SolutionSection/>
 
             </main>
 
