@@ -16,12 +16,6 @@ function LoginPage() {
         //TODO: Implement this function
     }
 
-    //Run when the user hits the "Continue with Google"
-    function handleContinueWithGoogle(e){
-        e.preventDefault();
-        console.log("Just for the look, bro. XD");
-    }
-
     return (
         <div className="flex flex-col min-h-screen overflow-hidden">
             {/**Site Header here */}
@@ -69,7 +63,8 @@ function LoginPage() {
                                     <div className="text-gray-600 italic">Or</div>
                                     <div className="border-t border-gray-300 flex-grow ml-3" aria-hidden="true"></div>
                                 </div>
-
+                                
+                                {/** 
                                 <form>
                                     <div className="flex flex-wrap -mx-3">
                                         <div className="w-full px-3">
@@ -82,6 +77,7 @@ function LoginPage() {
                                         </div>
                                     </div>
                                 </form>
+                                */}
 
                                 <div className="text-gray-600 text-center mt-6">
                                     Don't have an account? <Link to="/register" className="text-blue-600 hover:underline transition duration-150 ease-in-out">Sign up</Link>

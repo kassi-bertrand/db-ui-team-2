@@ -1,23 +1,68 @@
-# Getting Started with Create React App
+# Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome in the frontend side of the event planner project. This `README.md` is to help my
+teammates, and any potential visitors understand the work being done on the frontend, and
+how it is organized. This side of the project was was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# The Frontend team 🥷🥷🥷
 
-In the project directory, you can run:
+- [Kassi Bertrand](https://github.com/kassi-bertrand) (Team lead)
+- [Rudy Lucas](https://github.com/rudycito23)
+- [Giovanni Boscan](https://github.com/giovabos11)
+
+# Dependencies, tools, or frameworks 🛠️
+
+- [ReactJS](https://reactjs.org/): Component-based JavaScript library for building user interfaces
+- [TailwindCSS](https://tailwindcss.com/): For CSS Utility classes that can be composed and used directly in our markup.
+
+# Directory Structure 📁
+
+Most of development happens in the `src` folder. Here is a basic directory structure:
+
+```
+src/
+├── App.js
+├── App.test.js
+├── components
+│   ├── Header.jsx
+│   ├── HeroSection.jsx
+│   └── SolutionSection.jsx
+├── css
+│   └── utility-pattern.css
+├── index.css
+├── index.js
+├── logo.svg
+├── pages
+│   ├── LandingPage.jsx
+│   ├── LoginPage.jsx
+│   └── RegistrationPage.jsx
+├── reportWebVitals.js
+└── setupTests.js
+```
+
+- `App.js`: Root component.
+
+- `index.js`: Project entry point, renders the `App` component.
+
+- `index.css`: global `CSS` file. Imports the site's font from Google fonts, and
+
+- `components`: This folder is the home of stand-alone components, they may be used in one, or several pages of the site.
+
+- `pages`: The different pages of the website. Each page is defined as its own component. Pages may use components defined in the `components` folder. For instance, both the **Login** and **Register** use the `Header` component, to render the "Sign In" and "Sign Up" buttons at the top.
+
+- `css`: This folder stores `CSS` files used to provide additional, and consistent styling across the entire site. `utility-pattern.css` for instance, is used to style basic HTML tags (`h1...h4`) or create custom CSS classes to apply later. At the moment, all `CSS` defined here are imported into `index.css`.
+
+## How to run the frontend?
+
+In this directory, you can either run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+This command will runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
@@ -29,42 +74,6 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
+### Deployment 🚀
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

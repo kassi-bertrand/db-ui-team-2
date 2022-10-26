@@ -7,18 +7,13 @@
  *                  create their account on the platform.
  */
 import Header from "../components/Header";
+import { Link } from 'react-router-dom';
 
 function RegistrationPage() {
   //Run when the user hits the "register" button
   function handleRegister(e){
     e.preventDefault();
     //TODO: Implement this function
-  }
-
-  //Run when the user hits the "Continue with Google" button
-  function handleContinueWithGoogle(e){
-    e.preventDefault();
-    console.log("Just for the look, bro. XD");
   }
 
   return (
@@ -87,6 +82,7 @@ function RegistrationPage() {
                 </div>
 
                 {/**Other Register option "Fake: Just for the look" */}
+                {/** 
                 <form>
                     <div className="flex flex-wrap -mx-3">
                         <div className="w-full px-3">
@@ -99,6 +95,11 @@ function RegistrationPage() {
                         </div>
                     </div>
                 </form>
+                */}
+
+                <div className="text-gray-600 text-center mt-6">
+                  Already have an account? <Link to="/login" className="text-blue-600 hover:underline transition duration-150 ease-in-out">Sign in</Link>
+                </div>
 
               </div>
             </div>
