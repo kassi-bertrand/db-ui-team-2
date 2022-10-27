@@ -22,11 +22,6 @@ export const ErrorPage = () => {
         <div className="back-button">
             <button type="button">TEST</button>
         </div>
-        <div>
-        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-
-<lottie-player src="https://lottie.host/9e40d690-9ab0-457e-895a-7c9e8e461e9f/FgcFTM98lH.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
-        </div>
       </div>
     </>
   );
