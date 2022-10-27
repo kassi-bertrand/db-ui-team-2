@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
 import PageNotFound, { ErrorPage } from "./pages/ErrorPage";
 
+
 function App() {
   return (
     <>
