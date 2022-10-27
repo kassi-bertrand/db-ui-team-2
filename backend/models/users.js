@@ -4,7 +4,8 @@ const jwt = require('jsonwebtoken');
 
 const USER_TABLE = 'users';
 
-const createNewUser = async (email, password) => {
+
+const createNewUser = async (username, first_name, last_name, phone_num, email, password) => {
     console.log('Raw password:', password);
     const salt = await bcrypt.genSalt(10);
     console.log('Password salt', salt);
@@ -24,11 +25,18 @@ const findUserByEmail = async (email) => {
     return result;
 }
 
+const findUserByUsername = async (username) => {
+    const query = knex(USER_TABLE).whereRaw('username LIKE "%' + username + '%"');
+    const result = await query;
+    return result;
+}
+
 const authenticateUser = async (email, password) => {
     const users = await findUserByEmail(email);
     console.log('Results of users query', users);
     if (users.length === 0) {
         console.error(`No users matched the email: ${email}`);
+        knex.closeknex();
         return null;
     }
     const user = users [0];
@@ -40,8 +48,16 @@ const authenticateUser = async (email, password) => {
     return null;
 }
 
+const deleteUser = async (username) => {
+    const query = knex(USER_TABLE).where({ username }).del();
+    const result = await query;
+    return result;
+}
+
 module.exports = {
     createNewUser,
     findUserByEmail,
-    authenticateUser
+    findUserByUsername,
+    authenticateUser,
+    deleteUser
 }
