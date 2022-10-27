@@ -8,10 +8,7 @@
  *                  details to include in the header of each
  *                  HTTP requests.
  */
-const axios = require("axios");
-
-//Axios global defaults. See Documentation: https://axios-http.com/docs/config_defaults
-axios.defaults.baseURL = "http://localhost:8000";
+ export const apiEndpoint = 'http://localhost:8000'
 
 //Axios config
 export const apiConfig = {
