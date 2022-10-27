@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 
 const USER_TABLE = 'users';
 
+
 const createNewUser = async (username, first_name, last_name, phone_num, email, password) => {
     console.log('Raw password:', password);
     const salt = await bcrypt.genSalt(10);
