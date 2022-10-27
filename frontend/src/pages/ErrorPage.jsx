@@ -8,6 +8,7 @@
  *                  a page is not found.
  */
 import "../css/ErrorPage.css";
+import vincent from "../images/vincent.gif";
 
 export const ErrorPage = () => {
   return (
@@ -19,8 +20,8 @@ export const ErrorPage = () => {
         <div className="h2-container">
           <h2>Page not found</h2>
         </div>
-        <div className="back-button">
-            <button type="button">TEST</button>
+        <div className="image">
+            <img src={vincent} alt="lost" />;
         </div>
       </div>
     </>

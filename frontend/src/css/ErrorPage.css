@@ -6,7 +6,8 @@
 
 .h1-container {
     display: flex;
-    margin-top: 10%;
+    padding: 1rem;
+    margin-top: 7%;
     width: 100%;
     height: auto;
     justify-content: center;
@@ -45,4 +46,13 @@
     @apply text-4xl font-extrabold leading-tight tracking-tighter;
     font-size: 3rem;
     color: #FFF;
+}
+
+.image {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 1rem;
+    margin-bottom: 0;
+    margin-top: auto;
 }
