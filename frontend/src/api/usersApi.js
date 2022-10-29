@@ -1,6 +1,6 @@
 /**
  * Author:          Kassi Bertrand
- * filename:        usersConfig.js
+ * filename:        usersApi.js
  * Date:            10-25-2022
  * Description:     This file encapsulates all user-related
  *                  api calls in simple JS functions
