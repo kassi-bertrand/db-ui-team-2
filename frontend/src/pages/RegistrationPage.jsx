@@ -50,7 +50,7 @@ function RegistrationPage() {
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                             <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="name">Name</label>
-                            <input id="name" type="text" className="form-input w-full text-gray-800" placeholder="Enter your name" required/>
+                            <input id="name" type="text" className="form-input w-full text-gray-800" placeholder="Enter your name" ref={nameInput} required/>
                         </div>
                     </div>
 
@@ -58,7 +58,7 @@ function RegistrationPage() {
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                             <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="email">Email</label>
-                            <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email" required/>
+                            <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email" ref={emailInput} required/>
                         </div>
                     </div>
 
@@ -66,7 +66,7 @@ function RegistrationPage() {
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                             <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="phone">Phone Number 📱 🇺🇸</label>
-                            <input id="phone" type="text" className="form-input w-full text-gray-800" placeholder="Enter your phone number" required/>
+                            <input id="phone" type="text" className="form-input w-full text-gray-800" placeholder="Enter your phone number" ref={phoneInput} required/>
                         </div>
                     </div>
 
@@ -74,7 +74,7 @@ function RegistrationPage() {
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                             <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="password">Password</label>
-                            <input id="password" type="password" className="form-input w-full text-gray-800" placeholder="Enter your password" required />
+                            <input id="password" type="password" className="form-input w-full text-gray-800" placeholder="Enter your password" ref={passwordInput} required />
                         </div>
                     </div>
 
@@ -82,7 +82,7 @@ function RegistrationPage() {
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                             <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="password-check">Re-enter password</label>
-                            <input id="password-check" type="password" className="form-input w-full text-gray-800" placeholder="Retype your password" required />
+                            <input id="password-check" type="password" className="form-input w-full text-gray-800" placeholder="Retype your password" ref={passwordCheckInput} required />
                         </div>
                     </div>
 
