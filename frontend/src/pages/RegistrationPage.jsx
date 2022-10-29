@@ -69,10 +69,18 @@ function RegistrationPage() {
                         </div>
                     </div>
 
+                    {/**Form field */}
+                    <div className="flex flex-wrap -mx-3 mb-4">
+                        <div className="w-full px-3">
+                            <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="password-check">Re-enter password</label>
+                            <input id="password-check" type="password" className="form-input w-full text-gray-800" placeholder="Retype your password" required />
+                        </div>
+                    </div>
+
                     {/**Button */}
                     <div className="flex flex-wrap -mx-3 mt-6">
                         <div className="w-full px-3">
-                            <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full font-semibold font-inter" onClick={handleRegister}>Register</button>
+                            <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full font-semibold font-inter" onClick={handleRegister}>Register 🚀</button>
                         </div>
                     </div>
 
