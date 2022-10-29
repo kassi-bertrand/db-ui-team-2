@@ -8,8 +8,17 @@
  */
 import Header from "../components/Header";
 import { Link } from 'react-router-dom';
+import { useRef } from "react";
 
 function RegistrationPage() {
+  //UseRefs to grab form inputs' content. For more info check: https://dev.to/sobhandash/react-forms-and-useref-hook-4p1l
+  const nameInput = useRef(null);
+  const emailInput = useRef(null);
+  const phoneInput = useRef(null);
+  const passwordInput = useRef(null);
+  const passwordCheckInput = useRef(null);
+
+
   //Run when the user hits the "register" button
   function handleRegister(e){
     e.preventDefault();
