@@ -26,16 +26,16 @@ function RegistrationPage() {
     e.preventDefault();
     
     //1- Package user inputs in a JSON object
-    const userInputs = {
+    const signUpInfo = {
       "name": nameInput.current.value,
       "email": emailInput.current.value,
       "phone": phoneInput.current.value,
       "password": passwordInput.current.value,
     }
-    const userInputJSON = JSON.stringify(userInputs);
-    //2- Send userInputs using api function
-
-    //3- On success, re-direct user to home page
+    const signUpInfoJSON = JSON.stringify(signUpInfo);
+    //2- Send signUpInfo using api function
+    //3- On success, add user ID to JSON, then set the user state
+    //4- Re-direct user to home page
   }
 
   return (
