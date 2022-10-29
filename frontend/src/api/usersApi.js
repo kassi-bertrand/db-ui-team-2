@@ -43,7 +43,7 @@ export async function getUserById(ID){
 /**
  * 
  * @param SignInInfoJSON    -> Sign in form input, stringified
- * @return                  -> JSON string with user ID
+ * @return                  -> JSON string with user account info
  * @description             -> Sends user input from SignIn page.
  *                             Intented to be sent to the "Sign In"
  *                             or "Login" route in the backend               
