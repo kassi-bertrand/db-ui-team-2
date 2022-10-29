@@ -19,10 +19,23 @@ function RegistrationPage() {
   const passwordCheckInput = useRef(null);
 
 
-  //Run when the user hits the "register" button
+  //Package and send user input to the backend.
+  //NOTE: It does not perform input verification.
   function handleRegister(e){
+    //0- We do not want the page to refresh
     e.preventDefault();
-    //TODO: Implement this function
+    
+    //1- Package user inputs in a JSON object
+    const userInputs = {
+      "name": nameInput.current.value,
+      "email": emailInput.current.value,
+      "phone": phoneInput.current.value,
+      "password": passwordInput.current.value,
+    }
+    console.log(userInputs);
+    //2- Send userInputs using api function
+
+    //3- On success, re-direct user to home page
   }
 
   return (
