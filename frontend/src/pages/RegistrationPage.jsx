@@ -32,7 +32,7 @@ function RegistrationPage() {
       "phone": phoneInput.current.value,
       "password": passwordInput.current.value,
     }
-    console.log(userInputs);
+    const userInputJSON = JSON.stringify(userInputs);
     //2- Send userInputs using api function
 
     //3- On success, re-direct user to home page
