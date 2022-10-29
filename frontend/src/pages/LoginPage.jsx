@@ -8,12 +8,27 @@
 
 import Header from "../components/Header";
 import { Link } from 'react-router-dom';
+import { useRef } from "react";
 
 function LoginPage() {
-    //Run when the user hits the "Sign in" button
+    //UseRefs to grab form inputs' content. For more info check: https://dev.to/sobhandash/react-forms-and-useref-hook-4p1l
+    const emailInput = useRef(null);
+    const passwordInput = useRef(null);
+
+    //Package and send user input to the backend
     function handleSignIn(e){
+        //0- We do not want the page to refresh
         e.preventDefault();
-        //TODO: Implement this function
+
+        //1- Package user inputs in a JSON object
+        const signInInfo = {
+            "email": emailInput.current.value,
+            "password": passwordInput.current.value,
+        }
+        const signInInfoJSON = JSON.stringify(signInInfo);
+        //2- Send signInInfo using api function
+        //3- On success, set the user state
+        //4- Re-direct user to home page
     }
 
     return (
@@ -39,7 +54,7 @@ function LoginPage() {
                                     <div className="flex flex-wrap -mx-3 mb-4 font-inter">
                                         <div className="w-full px-3">
                                             <label className="block text-gray-800 text-sm font-semibold mb-1" htmlFor="email">Email</label>
-                                            <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email address" required />
+                                            <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email address" ref={emailInput} required />
                                         </div>
                                     </div>
                                     <div className="flex flex-wrap -mx-3 mb-4">
@@ -48,7 +63,7 @@ function LoginPage() {
                                                 <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="password">Password</label>
                                                 <Link className="text-sm text-blue-600 hover:underline">Having trouble signing in?</Link>
                                             </div>
-                                            <input id="password" type="password" className="w-full text-gray-800 form-input" placeholder="Enter your password" required />
+                                            <input id="password" type="password" className="w-full text-gray-800 form-input" placeholder="Enter your password" ref={passwordInput} required />
                                         </div>
                                     </div>
                                     <div className="flex flex-wrap -mx-3 mt-6">
