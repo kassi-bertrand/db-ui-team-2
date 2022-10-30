@@ -141,7 +141,7 @@ function RegistrationPage() {
                     {/**Button */}
                     <div className="flex flex-wrap -mx-3 mt-6">
                         <div className="w-full px-3">
-                            <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full font-semibold font-inter" onClick={handleRegister} disabled={disable}>Register 🚀</button>
+                            <button className={`btn ${disable? 'bg-blue-400 cursor-not-allowed': 'bg-blue-600 hover:bg-blue-700'} text-white w-full font-semibold font-inter"`} onClick={handleRegister} disabled={disable}>Register 🚀</button>
                         </div>
                     </div>
 
