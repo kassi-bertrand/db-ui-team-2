@@ -15,6 +15,16 @@ function LoginPage() {
     const emailInput = useRef(null);
     const passwordInput = useRef(null);
 
+    //When the value of a form input changes, one of the following functions will run.
+    function handleEmailChange(e){
+        let currentInput = e.target.value;
+        let emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    
+        //TODO: Current input must be validated using email regex above.
+        //HINT: Use the "test" method of the emailRegex object
+        //if test passes, button is enabled, otherwise button remains disabled.
+    }
+
     //Package and send user input to the backend
     function handleSignIn(e){
         //0- We do not want the page to refresh
