@@ -8,9 +8,11 @@
  */
 import Header from "../components/Header";
 import { Link } from 'react-router-dom';
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 function RegistrationPage() {
+  const [disable, setDisable] = useState(true);
+
   //UseRefs to grab form inputs' content. For more info check: https://dev.to/sobhandash/react-forms-and-useref-hook-4p1l
   const nameInput = useRef(null);
   const emailInput = useRef(null);
@@ -139,7 +141,7 @@ function RegistrationPage() {
                     {/**Button */}
                     <div className="flex flex-wrap -mx-3 mt-6">
                         <div className="w-full px-3">
-                            <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full font-semibold font-inter" onClick={handleRegister}>Register 🚀</button>
+                            <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full font-semibold font-inter" onClick={handleRegister} disabled={disable}>Register 🚀</button>
                         </div>
                     </div>
 
