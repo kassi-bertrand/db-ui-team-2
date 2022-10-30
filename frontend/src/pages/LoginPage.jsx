@@ -64,7 +64,7 @@ function LoginPage() {
                                     <div className="flex flex-wrap -mx-3 mb-4 font-inter">
                                         <div className="w-full px-3">
                                             <label className="block text-gray-800 text-sm font-semibold mb-1" htmlFor="email">Email</label>
-                                            <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email address" ref={emailInput} required />
+                                            <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email address" ref={emailInput} onChange={handleEmailChange} required />
                                         </div>
                                     </div>
                                     <div className="flex flex-wrap -mx-3 mb-4">
