@@ -50,7 +50,7 @@ function HomePageHeader(){
 
                 <div class="mt-8">
                     <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">
-                        Welcome Back, <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">Username!</span>
+                        Hi, <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">Username!</span>
                     </h1>
 
                     <p className="mt-1.5 text-sm text-gray-500">
