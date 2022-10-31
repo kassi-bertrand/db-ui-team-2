@@ -7,9 +7,17 @@
  *                  will be redirected to this page.
  */
 
+import HomePageHeader from "../components/HomePageHeader";
+
+//TODO: This component must have a "User" prop
 function HomePage(){
     return(
-        <div></div>
+        <div className="flex flex-col min-h-screen overflow-hidden">
+            {/**Home Page Header */}
+            <HomePageHeader/>
+            
+            {/**Page Main content */}
+        </div>
     );
 }
 
