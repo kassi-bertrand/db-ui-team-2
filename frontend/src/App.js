@@ -1,4 +1,3 @@
-import { findRenderedComponentWithType } from "react-dom/test-utils";
 import { Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
