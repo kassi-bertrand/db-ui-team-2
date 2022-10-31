@@ -13,7 +13,54 @@ function HomePageTabs(){
                 {/**Section content */}
                 <div className="pt-20 pb-12">
                     <div className="text-center">
-                        Tabs come here
+                        
+                        {/**Tabs */}
+                        <ul className="flex border-b border-gray-100">
+
+                            {/**A tab */}
+                            <li className="flex-1">
+                                <a className="relative block p-4" href="#">
+                                    <span className="absolute inset-x-0 -bottom-px h-px w-full bg-pink-600"></span>
+                                    <div className="flex items-center justify-center">
+                                        {/**An SVG here */}
+                                        <span className="">Feed</span>
+                                    </div>
+                                </a>
+                            </li>
+
+                            {/**A tab */}
+                            <li className="flex-1">
+                                <a className="relative block p-4" href="#">
+                                    <span className="absolute inset-x-0 -bottom-px h-px w-full bg-pink-600"></span>
+                                    <div className="flex items-center justify-center">
+                                        {/**An SVG here */}
+                                        <span className="">Venues</span>
+                                    </div>
+                                </a>
+                            </li>
+
+                            {/**A tab */}
+                            <li className="flex-1">
+                                <a className="relative block p-4" href="#">
+                                    <span className="absolute inset-x-0 -bottom-px h-px w-full bg-pink-600"></span>
+                                    <div className="flex items-center justify-center">
+                                        {/**An SVG here */}
+                                        <span className="">Performance</span>
+                                    </div>
+                                </a>
+                            </li>
+
+                            {/**A tab */}
+                            <li className="flex-1">
+                                <a className="relative block p-4" href="#">
+                                    <span className="absolute inset-x-0 -bottom-px h-px w-full bg-pink-600"></span>
+                                    <div className="flex items-center justify-center">
+                                        {/**An SVG here */}
+                                        <span className="">Food Service</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
