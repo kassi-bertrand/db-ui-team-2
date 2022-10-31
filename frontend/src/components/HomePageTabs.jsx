@@ -5,10 +5,10 @@
  * Description:     This component is the Home page Tabs.
  */
 
-function HomePageBanner(){
+function HomePageTabs(){
     return(
         <div></div>
     );
 }
 
-export default HomePageBanner;
+export default HomePageTabs;
