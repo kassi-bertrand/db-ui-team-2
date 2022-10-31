@@ -8,6 +8,7 @@
  */
 
 import HomePageHeader from "../components/HomePageHeader";
+import HomePageTabs from "../components/HomePageTabs";
 
 //TODO: This component must have a "User" prop
 function HomePage(){
@@ -17,6 +18,7 @@ function HomePage(){
             <HomePageHeader/>
             
             {/**Page Main content */}
+            <HomePageTabs/>
         </div>
     );
 }
