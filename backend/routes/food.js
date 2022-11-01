@@ -3,6 +3,8 @@ const express = require('express');
 * A router is a special Express object that can be used to define how to route and manage
 * requests. We configure a router here to handle a few routes specific to foods
 */
+const Food = require('../controllers/food');
+
 const router = express.Router();
 // Note: we don't specify `/foods`, just `/`. The association to `/foods` happens
 // in the root index.js file
@@ -11,43 +13,65 @@ router.use(bodyParser.json());
 
 router.get('/', async (req, res, next) => {
    if (req.query.food_user) {
-       const foodByUsername = await req.models.food.fetchFoodsByUsername(req.query.food_user);
+       const foodByUsername = await Food.fetchFoodsByUsername(req.query.food_user);
        res.json(foodByUsername);
        next();
    } if (req.query.restaurant_name) {
-       const foodByName = await req.models.food.fetchFoodsByName(req.query.restaurant_name);
+       const foodByName = await Food.fetchFoodsByName(req.query.restaurant_name);
        res.json(foodByName);
        next();
-   } if (req.query.type) {
-       const foodByType = await req.models.food.fetchFoodsByType(req.query.type);
+   } if (req.query.food_type) {
+       const foodByType = await Food.fetchFoodsByType(req.query.food_type);
        res.json(foodByType);
        next();
    } if (req.query.zip_code) {
-       const foodByZipCode = await req.models.food.fetchFoodsByZipCode(req.query.zip_code);
+       const foodByZipCode = await Food.fetchFoodsByZipCode(req.query.zip_code);
        res.json(foodByZipCode);
        next();
    } if (req.query.available) {
-       const foodByAvailable = await req.models.food.fetchFoodsByAvailable(req.query.available);
+       const foodByAvailable = await Food.fetchFoodsByAvailable(req.query.available);
        res.json(foodByAvailable);
        next();
    } else {
-       const allFoods = await req.models.food.fetchAllFoods();
+       const allFoods = await Food.fetchAllFoods();
        res.json(allFoods);
        next();
    }
 });
 router.post('/', async (req, res, next) => {
-    const createFood = await req.models.food.createFood(req.body.food_user, req.body.restaurant_name, req.body.food_type, req.body.street, req.body.city, req.body.state_initial, req.body.zip_code, req.body.guest_capacity, req.body.avg_price, req.body.available);
+    const createFood = await Food.createFood(req.body.food_user, req.body.restaurant_name, req.body.food_type, req.body.street, req.body.city, req.body.state_initial, req.body.zip_code, req.body.guest_capacity, req.body.avg_price, req.body.available);
     res.status(201).json(createFood);
     next();
  });
  router.put('/', async (req, res, next) => {
-    const updateFood = await req.models.food.updateFood(req.body.restaurant_name, req.body.food_user);
-    res.json(updateFood);
-    next();
- });
+    if (req.body.restaurant_name) {
+        const updateRestaurantName = await Food.updateRestaurantName(req.body.restaurant_name, req.body.food_user);
+        res.json(updateRestaurantName);
+        next();
+    } if (req.body.food_type) {
+        const updateFoodType = await Food.updateFoodType(req.body.food_type, req.body.food_user);
+        res.json(updateFoodType);
+        next();
+    } if (req.body.guest_capacity) {
+        const updateFoodCapacity = await Food.updateFoodCapacity(req.body.guest_capacity, req.body.food_user);
+        res.json(updateFoodCapacity);
+        next();
+    } if (req.body.avg_price) {
+        const updateAveragePrice = await Food.updateAveragePrice(req.body.avg_price, req.body.food_user);
+        res.json(updateAveragePrice);
+        next();
+    } if (req.body.available) {
+        const updateFoodAvailability = await Food.updateFoodAvailability(req.body.available, req.body.food_user);
+        res.json(updateFoodAvailability);
+        next();
+    } if (req.body.street, req.body.city, req.body.state_initial, req.body.zip_code) {
+        const updateFoodAddress = await Food.updateFoodAddress(req.body.street, req.body.city, req.body.state_initial, req.body.zip_code, req.body.food_user);
+        res.json(updateFoodAddress);
+        next();
+    }
+ }); 
  router.delete('/', async (req, res, next) => {
-    const deleteFood = await req.models.food.deleteFood(req.body.food_user);
+    const deleteFood = await Food.deleteFood(req.body.food_user);
     res.status(204).end();
     next();
  });
