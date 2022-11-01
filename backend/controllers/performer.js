@@ -12,8 +12,20 @@ const fetchPerformersByAvailable = async(available) => {
     const result = await Performer.fetchPerformersByAvailable(available);
     return result;
 }
-const updatePerformer = async(performer_name, p_user) => {
-    const result = await Performer.updatePerformer(performer_name, p_user);
+const updatePerformerName = async(performer_name, p_user) => {
+    const result = await Performer.updatePerformerName(performer_name, p_user);
+    return result;
+}
+const updatePerformerDetails = async(details, p_user) => {
+    const result = await Performer.updatePerformerDetails(details, p_user);
+    return result;
+}
+const updateNumPerformers = async(num_performers, p_user) => {
+    const result = await Performer.updateNumPerformers(num_performers, p_user);
+    return result;
+}
+const updatePerformerAvailability = async(available, p_user) => {
+    const result = await Performer.updatePerformerAvailability(available, p_user);
     return result;
 }
 const createPerformer = async(p_user, performer_name, details, num_performers, available) => {
@@ -29,7 +41,10 @@ module.exports = {
     fetchAllPerformers,
     fetchPerformersByName,
     fetchPerformersByAvailable,
-    updatePerformer,
+    updatePerformerName,
+    updatePerformerDetails,
+    updateNumPerformers,
+    updatePerformerAvailability,
     createPerformer,
     deletePerformer
 }
