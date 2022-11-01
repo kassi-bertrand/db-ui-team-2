@@ -23,39 +23,28 @@ function RegistrationPage() {
   //When the value of a form input changes, one of the following functions will run.
   function handleNameChange(e){
     let currentInput = e.target.value;
-    
-    //TODO: Names must be at least 5 five characters long.
-    //Otherwise Register button remains disabled
+    currentInput.length < 5 ? setDisable(true) : setDisable(false);
   }
 
   function handleEmailChange(e){
     let currentInput = e.target.value;
     let emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
-    //TODO: Current input must be validated using email regex above.
-    //HINT: Use the "test" method of the emailRegex object
-    //if test passes, button is enabled, otherwise button remains disabled.
+    emailRegEx.test(currentInput) ? setDisable(false) : setDisable(true);
   }
 
   function handlePhoneChange(e){
     let currentInput = e.target.value;
-
-    //TODO: Phone numbers must be exactly 10 characters long.
-    //Otherwise Register button remains disabled
+    currentInput.length == 10 ? setDisable(false) : setDisable(true);
   }
 
   function handlePasswordChange(e){
     let currentInput = e.target.value;
-
-    //TODO: passwords must be at least five characters long
-    //Otherwise Register button remains disabled
+    currentInput.length >= 5 ? setDisable(false) : setDisable(true);
   }
 
   function handlePasswordCheckChange(e){
     let currentInput = e.target.value;
-
-    //TODO: this input must match the content in the previous input
-    //Otherwise Register button remain disabled
+    currentInput === passwordInput.current.value ? setDisable(false) : setDisable(true);
   }
 
   //Package and send user input to the backend.

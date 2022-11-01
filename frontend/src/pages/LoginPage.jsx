@@ -21,10 +21,7 @@ function LoginPage() {
     function handleEmailChange(e){
         let currentInput = e.target.value;
         let emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    
-        //TODO: Current input must be validated using email regex above.
-        //HINT: Use the "test" method of the emailRegex object
-        //if test passes, button is enabled, otherwise button remains disabled.
+        emailRegEx.test(currentInput) ? setDisable(true) : setDisable(false);
     }
 
     //Package and send user input to the backend
