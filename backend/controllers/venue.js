@@ -24,8 +24,32 @@ const fetchVenuesByAvailable = async(available) =>{
     const result = await Venue.fetchVenuesByAvailable(available);
     return result;
 }
-const updateVenue= async (name, venue_user) =>{
-    const result = await Venue.updateVenue(name, venue_user);
+const updateVenueName = async (venue_name, venue_user) =>{
+    const result = await Venue.updateVenueName(venue_name, venue_user);
+    return result;
+}
+const updateVenueCost = async (cost, venue_user) =>{
+    const result = await Venue.updateVenueCost(cost, venue_user);
+    return result;
+}
+const updateOccassion = async (occasion, venue_user) =>{
+    const result = await Venue.updateOccassion(occasion, venue_user);
+    return result;
+}
+const updateVenueDetails = async (details, venue_user) =>{
+    const result = await Venue.updateVenueDetails(details, venue_user);
+    return result;
+}
+const updateVenueCapacity = async (guest_capacity, venue_user) =>{
+    const result = await Venue.updateVenueCapacity(guest_capacity, venue_user);
+    return result;
+}
+const updateVenueAvailability = async (available, venue_user) =>{
+    const result = await Venue.updateVenueAvailability(available, venue_user);
+    return result;
+}
+const updateVenueAddress = async(street, city, state_initial, zip_code, venue_user) => {
+    const result = await Venue.updateVenueAddress(street, city, state_initial, zip_code, venue_user);
     return result;
 }
 const createVenue = async(venue_user, venue_name, street, city, state_initial, zip_code, cost, details, guest_capacity, occasion, available) => {
@@ -44,7 +68,13 @@ module.exports = {
     fetchVenuesByZipCode,
     fetchVenuesByOccasion,
     fetchVenuesByAvailable,
-    updateVenue,
+    updateVenueName,
+    updateVenueCost,
+    updateOccassion,
+    updateVenueDetails,
+    updateVenueCapacity,
+    updateVenueAvailability,
+    updateVenueAddress,
     createVenue,
     deleteVenue
 };

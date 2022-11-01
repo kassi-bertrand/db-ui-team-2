@@ -20,8 +20,8 @@ router.get('/', async (req, res, next) => {
        const foodByName = await Food.fetchFoodsByName(req.query.restaurant_name);
        res.json(foodByName);
        next();
-   } if (req.query.type) {
-       const foodByType = await Food.fetchFoodsByType(req.query.type);
+   } if (req.query.food_type) {
+       const foodByType = await Food.fetchFoodsByType(req.query.food_type);
        res.json(foodByType);
        next();
    } if (req.query.zip_code) {
@@ -44,10 +44,32 @@ router.post('/', async (req, res, next) => {
     next();
  });
  router.put('/', async (req, res, next) => {
-    const updateFood = await Food.updateFood(req.body.restaurant_name, req.body.food_user);
-    res.json(updateFood);
-    next();
- });
+    if (req.body.restaurant_name) {
+        const updateRestaurantName = await Food.updateRestaurantName(req.body.restaurant_name, req.body.food_user);
+        res.json(updateRestaurantName);
+        next();
+    } if (req.body.food_type) {
+        const updateFoodType = await Food.updateFoodType(req.body.food_type, req.body.food_user);
+        res.json(updateFoodType);
+        next();
+    } if (req.body.guest_capacity) {
+        const updateFoodCapacity = await Food.updateFoodCapacity(req.body.guest_capacity, req.body.food_user);
+        res.json(updateFoodCapacity);
+        next();
+    } if (req.body.avg_price) {
+        const updateAveragePrice = await Food.updateAveragePrice(req.body.avg_price, req.body.food_user);
+        res.json(updateAveragePrice);
+        next();
+    } if (req.body.available) {
+        const updateFoodAvailability = await Food.updateFoodAvailability(req.body.available, req.body.food_user);
+        res.json(updateFoodAvailability);
+        next();
+    } if (req.body.street, req.body.city, req.body.state_initial, req.body.zip_code) {
+        const updateFoodAddress = await Food.updateFoodAddress(req.body.street, req.body.city, req.body.state_initial, req.body.zip_code, req.body.food_user);
+        res.json(updateFoodAddress);
+        next();
+    }
+ }); 
  router.delete('/', async (req, res, next) => {
     const deleteFood = await Food.deleteFood(req.body.food_user);
     res.status(204).end();

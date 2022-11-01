@@ -32,9 +32,23 @@ router.post('/', async (req, res, next) => {
     next();
  });
  router.put('/', async (req, res, next) => {
-    const updatePerformer = await Performer.updatePerformer(req.body.performer_name);
-    res.json(updatePerformer);
-    next();
+    if (req.body.performer_name) {
+        const updatePerformerName = await Performer.updatePerformerName(req.body.performer_name, req.body.p_user);
+        res.json(updatePerformerName);
+        next();
+    } if (req.body.details) {
+        const updatePerformerDetails = await Performer.updatePerformerDetails(req.body.details, req.body.p_user);
+        res.json(updatePerformerDetails);
+        next();
+    } if (req.body.num_performers) {
+        const updateNumPerformers = await Food.updateNumPerformers(req.body.num_performers, req.body.p_user);
+        res.json(updateNumPerformers);
+        next();
+    } if (req.body.available) {
+        const updatePerformerAvailability = await Food.updatePerformerAvailability(req.body.available, req.body.p_user);
+        res.json(updatePerformerAvailability);
+        next();
+    }
  });
  router.delete('/', async (req, res, next) => {
     const deletePerformer = await Performer.deletePerformer(req.body.username);
