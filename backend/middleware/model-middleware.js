@@ -16,12 +16,12 @@ const createModelsMiddleware = async (req, res, next) => {
 }
 
 const disconnectFromDatababaseMiddleware = (req, res, next) => {
-   console.log('Disconnecting from the database');
-   req.disconnect();
-   next();
+  console.log('Disconnecting from the database');
+  req.disconnect();
+  next();
 }
 
 module.exports = {
-   createModelsMiddleware,
-   disconnectFromDatababaseMiddleware
+  createModelsMiddleware,
+  disconnectFromDatababaseMiddleware
 }
