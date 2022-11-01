@@ -8,12 +8,36 @@
 
 import Header from "../components/Header";
 import { Link } from 'react-router-dom';
+import { useRef, useState } from "react";
 
 function LoginPage() {
-    //Run when the user hits the "Sign in" button
+    const [disable, setDisable] = useState(true);
+
+    //UseRefs to grab form inputs' content. For more info check: https://dev.to/sobhandash/react-forms-and-useref-hook-4p1l
+    const emailInput = useRef(null);
+    const passwordInput = useRef(null);
+
+    //When the value of a form input changes, one of the following functions will run.
+    function handleEmailChange(e){
+        let currentInput = e.target.value;
+        let emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        emailRegEx.test(currentInput) ? setDisable(true) : setDisable(false);
+    }
+
+    //Package and send user input to the backend
     function handleSignIn(e){
+        //0- We do not want the page to refresh
         e.preventDefault();
-        //TODO: Implement this function
+
+        //1- Package user inputs in a JSON object
+        const signInInfo = {
+            "email": emailInput.current.value,
+            "password": passwordInput.current.value,
+        }
+        const signInInfoJSON = JSON.stringify(signInInfo);
+        //2- Send signInInfo using api function
+        //3- On success, set the user state
+        //4- Re-direct user to home page
     }
 
     return (
@@ -39,7 +63,7 @@ function LoginPage() {
                                     <div className="flex flex-wrap -mx-3 mb-4 font-inter">
                                         <div className="w-full px-3">
                                             <label className="block text-gray-800 text-sm font-semibold mb-1" htmlFor="email">Email</label>
-                                            <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email address" required />
+                                            <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email address" ref={emailInput} onChange={handleEmailChange} required />
                                         </div>
                                     </div>
                                     <div className="flex flex-wrap -mx-3 mb-4">
@@ -48,12 +72,12 @@ function LoginPage() {
                                                 <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="password">Password</label>
                                                 <Link className="text-sm text-blue-600 hover:underline">Having trouble signing in?</Link>
                                             </div>
-                                            <input id="password" type="password" className="w-full text-gray-800 form-input" placeholder="Enter your password" required />
+                                            <input id="password" type="password" className="w-full text-gray-800 form-input" placeholder="Enter your password" ref={passwordInput} required />
                                         </div>
                                     </div>
                                     <div className="flex flex-wrap -mx-3 mt-6">
                                         <div className="w-full px-3">
-                                            <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full font-semibold" onClick={handleSignIn}>Sign in</button>
+                                            <button className={`btn ${disable? 'bg-blue-400 cursor-not-allowed': 'bg-blue-600 hover:bg-blue-700'} text-white w-full font-semibold font-inter"`} onClick={handleSignIn} disabled={disable}>Sign in</button>
                                         </div>
                                     </div>
                                 </form>

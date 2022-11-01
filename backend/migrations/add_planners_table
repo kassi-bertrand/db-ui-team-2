@@ -11,3 +11,19 @@ exports.up = function(knex) {
 exports.down = function(knex) {
     return knex.schema.dropTable('planners');
 };
+exports.up = function(knex) {
+    return knex.schema.createTable('Form', (table) => {
+        table.string('Location');
+        table.int('Budget');
+        table.string('Details');
+        table.string('Name').notNullable();
+        table.int('PhoneNum').notNullable();
+        table.date('EventDate');
+        table.int('GuestCount');
+        table.string('Occasion').notNullable();
+    });
+}
+
+exports.down = function(knex) {
+    return knex.schema.dropTable('Form');
+};
