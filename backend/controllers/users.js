@@ -1,7 +1,4 @@
 const User = require('../models/users');
-const Planner = require('../models/planners');
-
-const accessTokenSecret = 'mysupercoolsecret';
 
 const createUser = async (username, first_name, last_name, phone_num, email, password) => {
     if(!email){

@@ -1,3 +1,6 @@
+const mysql = require('mysql');
+const util = require('util');
+
 const connectToDatabase = async () => {
     try {
         const DBConnection = mysql.createConnection({
