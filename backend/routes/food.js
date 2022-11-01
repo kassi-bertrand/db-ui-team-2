@@ -11,7 +11,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 router.use(bodyParser.json());
 
-router.get('/', async (req, res, next) => {
+router.get('/a', async (req, res, next) => {
    if (req.query.food_user) {
        const foodByUsername = await Food.fetchFoodsByUsername(req.query.food_user);
        res.json(foodByUsername);
