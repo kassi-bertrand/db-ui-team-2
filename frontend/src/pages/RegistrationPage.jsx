@@ -8,12 +8,62 @@
  */
 import Header from "../components/Header";
 import { Link } from 'react-router-dom';
+import { useRef, useState } from "react";
 
 function RegistrationPage() {
-  //Run when the user hits the "register" button
+  const [disable, setDisable] = useState(true);
+
+  //UseRefs to grab form inputs' content. For more info check: https://dev.to/sobhandash/react-forms-and-useref-hook-4p1l
+  const nameInput = useRef(null);
+  const emailInput = useRef(null);
+  const phoneInput = useRef(null);
+  const passwordInput = useRef(null);
+  const passwordCheckInput = useRef(null);
+
+  //When the value of a form input changes, one of the following functions will run.
+  function handleNameChange(e){
+    let currentInput = e.target.value;
+    currentInput.length < 5 ? setDisable(true) : setDisable(false);
+  }
+
+  function handleEmailChange(e){
+    let currentInput = e.target.value;
+    let emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    emailRegEx.test(currentInput) ? setDisable(false) : setDisable(true);
+  }
+
+  function handlePhoneChange(e){
+    let currentInput = e.target.value;
+    currentInput.length == 10 ? setDisable(false) : setDisable(true);
+  }
+
+  function handlePasswordChange(e){
+    let currentInput = e.target.value;
+    currentInput.length >= 5 ? setDisable(false) : setDisable(true);
+  }
+
+  function handlePasswordCheckChange(e){
+    let currentInput = e.target.value;
+    currentInput === passwordInput.current.value ? setDisable(false) : setDisable(true);
+  }
+
+  //Package and send user input to the backend.
+  //NOTE: It does not perform input verification.
   function handleRegister(e){
+    //0- We do not want the page to refresh
     e.preventDefault();
-    //TODO: Implement this function
+    
+    //1- Package user inputs in a JSON object
+    const signUpInfo = {
+      "name": nameInput.current.value,
+      "email": emailInput.current.value,
+      "phone": phoneInput.current.value,
+      "password": passwordInput.current.value,
+    }
+    const signUpInfoJSON = JSON.stringify(signUpInfo);
+    //2- Send signUpInfo using api function
+    //3- On success, add user ID to JSON, then set the user state
+    //4- Re-direct user to home page
   }
 
   return (
@@ -41,7 +91,7 @@ function RegistrationPage() {
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                             <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="name">Name</label>
-                            <input id="name" type="text" className="form-input w-full text-gray-800" placeholder="Enter your name" required/>
+                            <input id="name" type="text" className="form-input w-full text-gray-800" placeholder="Enter your name" ref={nameInput} onChange={handleNameChange} required/>
                         </div>
                     </div>
 
@@ -49,7 +99,15 @@ function RegistrationPage() {
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                             <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="email">Email</label>
-                            <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email" required/>
+                            <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email" ref={emailInput} onChange={handleEmailChange} required/>
+                        </div>
+                    </div>
+
+                    {/**Form Field */}
+                    <div className="flex flex-wrap -mx-3 mb-4">
+                        <div className="w-full px-3">
+                            <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="phone">Phone Number 📱 🇺🇸</label>
+                            <input id="phone" type="text" className="form-input w-full text-gray-800" placeholder="Enter your phone number" ref={phoneInput} onChange={handlePhoneChange} required/>
                         </div>
                     </div>
 
@@ -57,14 +115,22 @@ function RegistrationPage() {
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                             <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="password">Password</label>
-                            <input id="password" type="password" className="form-input w-full text-gray-800" placeholder="Enter your password" required />
+                            <input id="password" type="password" className="form-input w-full text-gray-800" placeholder="Enter your password" ref={passwordInput} onChange={handlePasswordChange} required />
+                        </div>
+                    </div>
+
+                    {/**Form field */}
+                    <div className="flex flex-wrap -mx-3 mb-4">
+                        <div className="w-full px-3">
+                            <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="password-check">Re-enter password</label>
+                            <input id="password-check" type="password" className="form-input w-full text-gray-800" placeholder="Retype your password" ref={passwordCheckInput} onChange={handlePasswordCheckChange} required />
                         </div>
                     </div>
 
                     {/**Button */}
                     <div className="flex flex-wrap -mx-3 mt-6">
                         <div className="w-full px-3">
-                            <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full font-semibold font-inter" onClick={handleRegister}>Register</button>
+                            <button className={`btn ${disable? 'bg-blue-400 cursor-not-allowed': 'bg-blue-600 hover:bg-blue-700'} text-white w-full font-semibold font-inter"`} onClick={handleRegister} disabled={disable}>Register 🚀</button>
                         </div>
                     </div>
 
