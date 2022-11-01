@@ -3,6 +3,17 @@ const User = require('../controllers/users');
 
 const router = express.Router();
 
+router.get('/', async (req, res, next) => {
+    try {
+        const user = req.user;
+        const result = await User.fetchAllUsers();
+        res.status(201).json(result);
+    } catch (err) {
+        console.error('Failed to get all users ', err);
+        res.status(500).json({ message: err.toString()});
+    }
+ });
+
 router.get('/current', async(req, res, next) => {
     try {
         const user = req.user;

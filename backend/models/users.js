@@ -2,17 +2,15 @@ const knex = require('../database/knex');
 const bcrypt = require ('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const USER_TABLE = 'users';
+const USER_TABLE = 'user';
 
-class User {
-    constructor(_DBQuery, _disconnect) {
-        this.DBQuery = _DBQuery;
-        this.disconnect = _disconnect;
+    const fetchAllUsers = async() =>{
+        const query = knex(USER_TABLE);
+        const results = await query;
+        return results;
     }
-    close () {
-        this.disconnect();
-    }
-    async createNewUser (username, first_name, last_name, phone_num, email, password) {
+
+    const createNewUser = async(username, first_name, last_name, phone_num, email, password) => {
         console.log('Raw password:', password);
         const salt = await bcrypt.genSalt(10);
         console.log('Password salt', salt);
@@ -25,19 +23,19 @@ class User {
 
         return result;
     }
-    async findUserByEmail (email) {
+    const findUserByEmail = async(email) =>{
         const query = knex(USER_TABLE).where({email});
         const result = await query;
         return result;
     }
     
-    async findUserByUsername (username) {
+    const findUserByUsername = async(username) =>{
         const query = knex(USER_TABLE).whereRaw('username LIKE "%' + username + '%"');
         const result = await query;
         return result;
     }
     
-    async authenticateUser (email, password) {
+    const authenticateUser = async(email, password) => {
         const users = await findUserByEmail(email);
         console.log('Results of users query', users);
         if (users.length === 0) {
@@ -54,10 +52,17 @@ class User {
         return null;
     }
     
-    async deleteUser (username){
+    const deleteUser = async(username) =>{
         const query = knex(USER_TABLE).where({ username }).del();
         const result = await query;
         return result;
     }
- }
- module.exports = User;
+ 
+ module.exports = {
+    fetchAllUsers,
+    createNewUser,
+    findUserByEmail,
+    findUserByUsername,
+    authenticateUser,
+    deleteUser
+ };

@@ -1,5 +1,10 @@
 const User = require('../models/users');
 
+const fetchAllUsers = async() => {
+    const result = await User.fetchAllUsers();
+    return result;
+}
+
 const createUser = async (username, first_name, last_name, phone_num, email, password) => {
     if(!email){
         console.error("No email provided");
@@ -35,6 +40,7 @@ const findUserByEmail = async(email) => {
 };
 
 module.exports = {
+    fetchAllUsers,
     createUser,
     authenticateUser,
     findUserByEmail
