@@ -2,7 +2,7 @@ const express = require ('express');
 const UserController = require('../controllers/users');
 const router = express.Router();
 
-router.post('/new', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
     try {
         const body = req.body;
         console.log(body);
@@ -18,6 +18,6 @@ router.post('/new', async (req, res, next) => {
         res.status(400).json({ message: err.toString() });
     }
     next();
-})
+});
 
 module.exports = router;

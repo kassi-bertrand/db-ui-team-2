@@ -27,7 +27,7 @@ app.get('/health', (request, response, next) => {
 
 app.use('/session', sessionRoutes);
 app.use('/users', authenticateJWT, usersRoutes);
-app.use('/register', registerRoutes);
+app.use('/newUser', registerRoutes);
 app.use('/food', foodRoutes);
 app.use('/performer', performerRoutes);
 app.use('/venue', venueRoutes);
