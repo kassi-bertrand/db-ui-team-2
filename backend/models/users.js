@@ -10,7 +10,7 @@ const USER_TABLE = 'user';
         return results;
     }
 
-    const createNewUser = async(username, first_name, last_name, phone_num, email, password) => {
+    const createNewUser = async(name, phone_num, email, password) => {
         console.log('Raw password:', password);
         const salt = await bcrypt.genSalt(10);
         console.log('Password salt', salt);
@@ -29,8 +29,8 @@ const USER_TABLE = 'user';
         return result;
     }
     
-    const findUserByUsername = async(username) =>{
-        const query = knex(USER_TABLE).whereRaw('username LIKE "%' + username + '%"');
+    const findUserByUsername = async(name) =>{
+        const query = knex(USER_TABLE).whereRaw('name LIKE "%' + name + '%"');
         const result = await query;
         return result;
     }
