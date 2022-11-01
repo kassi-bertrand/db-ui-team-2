@@ -18,7 +18,7 @@ function HomePageTabs(){
                         <ul className="flex">
 
                             {/**A tab */}
-                            <li className="flex-1">
+                            <li className="flex-1 hover:bg-gray-200 hover:rounded-md">
                                 <a className="relative block p-4" href="#">
                                     <span className="absolute inset-x-0 -bottom-px h-px w-full"></span>
                                     <div className="flex items-center justify-center">
@@ -31,7 +31,7 @@ function HomePageTabs(){
                             </li>
 
                             {/**A tab */}
-                            <li className="flex-1">
+                            <li className="flex-1 hover:bg-gray-200 hover:rounded-md">
                                 <a className="relative block p-4" href="#">
                                     <span className="absolute inset-x-0 -bottom-px h-px w-full"></span>
                                     <div className="flex items-center justify-center">
@@ -44,7 +44,7 @@ function HomePageTabs(){
                             </li>
 
                             {/**A tab */}
-                            <li className="flex-1">
+                            <li className="flex-1 hover:bg-gray-200 hover:rounded-md">
                                 <a className="relative block p-4" href="#">
                                     <span className="absolute inset-x-0 -bottom-px h-px w-full"></span>
                                     <div className="flex items-center justify-center">
@@ -58,7 +58,7 @@ function HomePageTabs(){
                             </li>
 
                             {/**A tab */}
-                            <li className="flex-1">
+                            <li className="flex-1 hover:bg-gray-200 hover:rounded-md">
                                 <a className="relative block p-4" href="#">
                                     <span className="absolute inset-x-0 -bottom-px h-px w-full"></span>
                                     <div className="flex items-center justify-center">
