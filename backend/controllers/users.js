@@ -1,9 +1,11 @@
 const User = require('../models/users');
-const Planner = require('../models/planners');
 
-const accessTokenSecret = 'mysupercoolsecret';
+const fetchAllUsers = async() => {
+    const result = await User.fetchAllUsers();
+    return result;
+}
 
-const createUser = async (username, first_name, last_name, phone_num, email, password) => {
+const createUser = async (name, phone_num, email, password) => {
     if(!email){
         console.error("No email provided");
     }
@@ -12,15 +14,16 @@ const createUser = async (username, first_name, last_name, phone_num, email, pas
     }
 
     const exists = await User.findUserByEmail(email);
-    const exists1 = await User.findUserByUsername(username);
+    const exists1 = await User.findUserByUsername(name);
 
     if(exists.length != 0){
         console.error("Email already in use.");
     } else if(exists1.length != 0){
         console.error("Username already in use.");
     } else {
-        const user = await User.createNewUser(username, first_name, last_name, phone_num, email, password);
-        return user;
+        const user = await User.createNewUser(name, phone_num, email, password);
+        const return_all = await User.authenticateUser(email, password);
+        return return_all;
     }
     throw new Error("Could not create user.");
 }
@@ -38,6 +41,7 @@ const findUserByEmail = async(email) => {
 };
 
 module.exports = {
+    fetchAllUsers,
     createUser,
     authenticateUser,
     findUserByEmail

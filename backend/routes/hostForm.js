@@ -1,6 +1,5 @@
 const express = require('express');
 const Form = require('../controllers/hostForm');
-
 /**
 * A router is a special Express object that can be used to define how to route and manage
 * requests. We configure a router here to handle a few routes specific to students

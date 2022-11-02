@@ -1,6 +1,6 @@
 // Update with your config settings.
 const mysql = require('mysql');
-
+require("dotenv").config();
 module.exports = {
     development: {
       client: 'mysql',

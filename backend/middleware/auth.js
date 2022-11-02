@@ -1,40 +1,40 @@
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 const accessTokenSecret = 'mysupercoolsecret';
-const authenticateJWT = (req, res, next) => {
-    const authHeader = req.headers.authorization;
-    if (!authHeader) {
-        return res.sendStatus(401);
-    }
-    const token = authHeader.split(' ')[1];
+var token = jwt.sign({foo: 'bar'}, accessTokenSecret);
 
-    jwt.verify(token, accessTokenSecret, (err, user) => {
-        if (err) {
-            return res.sendStatus(403);
-        }
-        req.user = user;
-        next();
-    });
+const authenticateJWT = (req, res, next) => {
+ const authHeader = req.headers.authorization;
+ if (!authHeader) {
+   return res.sendStatus(401);
+ }
+ //const token = authHeader.split(" ")[1];
+ //var decoded = jwt.verify(token, accessTokenSecret)
+ jwt.verify(token, accessTokenSecret, (err, user) => {
+   if (err) {
+     return res.sendStatus(403);
+   }
+   req.user = user;
+   next();
+ });
 };
 
 const authenticateWithClaims = (claims) => (req, res, next) => {
     const authHeader = req.headers.authorization;
-    if(!authHeader) {
-        return res.sendStatus(401);
+    if (!authHeader) {
+      return res.sendStatus(401);
     }
-    const token = authHeader.split(' ')[1];
-
+    const token = authHeader.split(" ")[1];
     jwt.verify(token, accessTokenSecret, (err, user) => {
-        if (err) {
-            return res.sendStatus(403);
-        }
-        for (let claim of claims) {
-            if (user.claims.includes(claim)) {
-                req.user = user;
-                return next();
-            }
-        }
+      if (err) {
         return res.sendStatus(403);
+      }
+      for (let claim of claims) {
+        if (user.claims.includes(claim)) {
+          req.user = user;
+          return next();
+        }
+      }
+      return res.sendStatus(403);
     });
-}
-
-module.exports = { authenticateJWT, authenticateWithClaims };
+   }
+   module.exports = { authenticateJWT, authenticateWithClaims };
