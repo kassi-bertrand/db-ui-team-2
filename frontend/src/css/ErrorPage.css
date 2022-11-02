@@ -1,0 +1,58 @@
+
+* {
+    box-sizing: border-box;
+
+}
+
+.h1-container {
+    display: flex;
+    padding: 1rem;
+    margin-top: 7%;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    @apply text-4xl font-extrabold leading-tight tracking-tighter;
+    color: #FFF;
+    font-size: 4rem;
+    text-shadow:
+        0 0 7px rgb(0, 255, 255),
+        0 0 10px rgb(0, 255, 255),
+        0 0 21px rgb(0, 255, 255),
+        0 0 42px rgb(0, 200, 255),
+        0 0 82px rgb(0, 200, 255);
+}
+
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 
+            0 0 4px rgba(245, 89, 161, .96),
+            0 0 11px rgba(245, 89, 161, .96),
+            0 0 19px rgba(245, 89, 161, .96),
+            0 0 40px rgba(245, 89, 161, .96),
+            0 0 80px rgba(245, 89, 161, .96);
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
+}
+
+.h2-container {
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 1rem;
+    justify-content: center;
+    animation: flicker 1.5s infinite alternate;
+    @apply text-4xl font-extrabold leading-tight tracking-tighter;
+    font-size: 3rem;
+    color: #FFF;
+}
+
+.image {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 1rem;
+    margin-bottom: 0;
+    margin-top: auto;
+}
