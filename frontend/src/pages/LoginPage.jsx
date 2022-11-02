@@ -34,7 +34,6 @@ function LoginPage() {
             "email": emailInput.current.value,
             "password": passwordInput.current.value,
         }
-        const signInInfoJSON = JSON.stringify(signInInfo);
         //2- Send signInInfo using api function
         //3- On success, set the user state
         //4- Re-direct user to home page
