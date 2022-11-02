@@ -27,10 +27,10 @@ function RegistrationPage() {
     let emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
     if(nameInput.current.value.length < 5) setDisable(true);
-    else if(emailRegEx.test(emailInput.current.value) == false) setDisable(true);
-    else if(phoneInput.current.value.length != 10) setDisable(true);
+    else if(emailRegEx.test(emailInput.current.value) === false) setDisable(true);
+    else if(phoneInput.current.value.length !== 10) setDisable(true);
     else if(passwordInput.current.value.length < 5) setDisable(true);
-    else if(passwordInput.current.value != passwordCheckInput.current.value) setDisable(true);
+    else if(passwordInput.current.value !== passwordCheckInput.current.value) setDisable(true);
     else{
       setDisable(false);
     }
