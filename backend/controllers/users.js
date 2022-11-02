@@ -22,7 +22,8 @@ const createUser = async (name, phone_num, email, password) => {
         console.error("Username already in use.");
     } else {
         const user = await User.createNewUser(name, phone_num, email, password);
-        return user;
+        const return_all = await User.authenticateUser(email, password);
+        return return_all;
     }
     throw new Error("Could not create user.");
 }

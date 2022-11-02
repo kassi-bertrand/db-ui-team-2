@@ -18,6 +18,9 @@ const { createModelsMiddleware } = require('./middleware/model-middleware');
 const app = express();
 const port = 8000;
 
+var cors = require('cors');
+app.use(cors());
+
 app.use(bodyParser.json());
 app.use(createModelsMiddleware);
 app.get('/health', (request, response, next) => {
