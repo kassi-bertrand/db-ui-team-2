@@ -6,11 +6,15 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 router.use(bodyParser.json());
+
+const Form = require('../controllers/hostForm');
+
 router.get('/find', async (req, res, next) => {
    try {
-       const fetchInfo = await req.models.form.fetchInfoByPhoneNum(req.body.PhoneNum);
-       res.status(201).json(fetchInfo);
-       next();
+      const form = req.body;
+      const fetchInfo = await Form.fetchInfoByPhoneNum(form.PhoneNum);
+      res.status(201).json(fetchInfo);
+      next();
    }
    catch (err) {
       //console.error('Failed to load current user:', err);
@@ -23,7 +27,7 @@ router.get('/all', async (req, res, next) => {
        res.json(allForm);
        next();*/
        try {
-         const result = await req.models.form.fetchAllForms();
+         const result = await Form.fetchAllForms();
          res.status(201).json(result);
      } catch (err) {
          //console.error('Failed to load current user:', err);
@@ -33,8 +37,9 @@ router.get('/all', async (req, res, next) => {
 });
 router.post('/add', async (req, res, next) => {
    try {
+      const form = req.body;
       //console.log(req.body.Location, req.body.Budget, req.body.Details, req.body.Name, req.body.PhoneNum, req.body.EventDate, req.body.GuestCount,req.body.Occasion);
-      const createForm = await req.models.form.createForm(req.body.Location, req.body.Budget, req.body.Details, req.body.Name, req.body.PhoneNum, req.body.EventDate, req.body.GuestCount,req.body.Occasion);
+      const createForm = await Form.createForm(form.Location, form.Budget, form.Details, form.Name, form.PhoneNum, form.EventDate, form.GuestCount,form.Occasion);
       res.status(201).json(createForm);
       next();
 } catch (err) {
@@ -51,9 +56,10 @@ router.post('/add', async (req, res, next) => {
  });*/
  router.delete('/delete', async (req, res, next) => {
    try {
-    const deleteForm = await req.models.form.deleteForm(req.body.PhoneNum);
-    res.status(204).json({ message: "Success! Deleted!" }).end();
-    next();
+      const form = req.body;
+      const deleteForm = await Form.deleteForm(form.PhoneNum);
+      res.status(204).json({ message: "Success! Deleted!" }).end();
+      next();
    }catch (err) {
       console.error('Failed to delete:', err);
       res.status(400).json({ message: err.toString() });
