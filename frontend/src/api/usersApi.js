@@ -17,14 +17,22 @@ import { apiConfig, apiEndpoint } from './apiConfig';
 
 /**
  * 
- * @param signUpInfoJSON   -> Sign up form input, stringified
- * @return                 -> JSON string with user ID.
- * @description            -> Sends user input from SignUp page.
- *                            Intented to be sent to the "Sign Up"
- *                            route in the backend
+ * @param signUpInfoJSON   -> Sign up form input, packaged as a JSON
+ * @return                 -> JSON - newly created user
+ * @description            -> Sends user input from SignUp page to the
+ *                            backend, to be register as a new user.
+ *                            Intented to be sent to the "newUser"
+ *                            API route in the backend.
  */
-export async function addUser(signUpInfoJSON){
-    //TODO: IMPLEMENT THIS FUNCTION
+export function addUser(signUpInfoJSON){
+    
+    axios.post(`${apiEndpoint}/newUser`, signUpInfoJSON, apiConfig)
+    .then(response => {
+        console.log(response.data);
+    })
+    .catch(response => {
+        alert(response);
+    })
 }
 
 /**
