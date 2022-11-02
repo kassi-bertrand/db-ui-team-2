@@ -20,31 +20,19 @@ function RegistrationPage() {
   const passwordInput = useRef(null);
   const passwordCheckInput = useRef(null);
 
-  //When the value of a form input changes, one of the following functions will run.
-  function handleNameChange(e){
-    let currentInput = e.target.value;
-    currentInput.length < 5 ? setDisable(true) : setDisable(false);
-  }
-
-  function handleEmailChange(e){
-    let currentInput = e.target.value;
+  //When the value of a form input changes, the following function will runs.
+  function handleChange(e){
+    e.preventDefault();
     let emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    emailRegEx.test(currentInput) ? setDisable(false) : setDisable(true);
-  }
 
-  function handlePhoneChange(e){
-    let currentInput = e.target.value;
-    currentInput.length == 10 ? setDisable(false) : setDisable(true);
-  }
-
-  function handlePasswordChange(e){
-    let currentInput = e.target.value;
-    currentInput.length >= 5 ? setDisable(false) : setDisable(true);
-  }
-
-  function handlePasswordCheckChange(e){
-    let currentInput = e.target.value;
-    currentInput === passwordInput.current.value ? setDisable(false) : setDisable(true);
+    if(nameInput.current.value.length < 5) setDisable(true);
+    else if(emailRegEx.test(emailInput.current.value) == false) setDisable(true);
+    else if(phoneInput.current.value.length != 10) setDisable(true);
+    else if(passwordInput.current.value.length < 5) setDisable(true);
+    else if(passwordInput.current.value != passwordCheckInput.current.value) setDisable(true);
+    else{
+      setDisable(false);
+    }
   }
 
   //Package and send user input to the backend.
@@ -91,7 +79,7 @@ function RegistrationPage() {
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                             <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="name">Name</label>
-                            <input id="name" type="text" className="form-input w-full text-gray-800" placeholder="Enter your name" ref={nameInput} onChange={handleNameChange} required/>
+                            <input id="name" type="text" className="form-input w-full text-gray-800" placeholder="Enter your name" ref={nameInput} onChange={handleChange} required/>
                         </div>
                     </div>
 
@@ -99,7 +87,7 @@ function RegistrationPage() {
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                             <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="email">Email</label>
-                            <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email" ref={emailInput} onChange={handleEmailChange} required/>
+                            <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email" ref={emailInput} onChange={handleChange} required/>
                         </div>
                     </div>
 
@@ -107,7 +95,7 @@ function RegistrationPage() {
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                             <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="phone">Phone Number 📱 🇺🇸</label>
-                            <input id="phone" type="text" className="form-input w-full text-gray-800" placeholder="Enter your phone number" ref={phoneInput} onChange={handlePhoneChange} required/>
+                            <input id="phone" type="text" className="form-input w-full text-gray-800" placeholder="Enter your phone number" ref={phoneInput} onChange={handleChange} required/>
                         </div>
                     </div>
 
@@ -115,7 +103,7 @@ function RegistrationPage() {
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                             <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="password">Password</label>
-                            <input id="password" type="password" className="form-input w-full text-gray-800" placeholder="Enter your password" ref={passwordInput} onChange={handlePasswordChange} required />
+                            <input id="password" type="password" className="form-input w-full text-gray-800" placeholder="Enter your password" ref={passwordInput} onChange={handleChange} required />
                         </div>
                     </div>
 
@@ -123,7 +111,7 @@ function RegistrationPage() {
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                             <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="password-check">Re-enter password</label>
-                            <input id="password-check" type="password" className="form-input w-full text-gray-800" placeholder="Retype your password" ref={passwordCheckInput} onChange={handlePasswordCheckChange} required />
+                            <input id="password-check" type="password" className="form-input w-full text-gray-800" placeholder="Retype your password" ref={passwordCheckInput} onChange={handleChange} required />
                         </div>
                     </div>
 
