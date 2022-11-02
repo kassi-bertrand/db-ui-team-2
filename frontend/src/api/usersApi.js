@@ -24,15 +24,14 @@ import { apiConfig, apiEndpoint } from './apiConfig';
  *                            Intented to be sent to the "newUser"
  *                            API route in the backend.
  */
-export function addUser(signUpInfoJSON){
-    
-    axios.post(`${apiEndpoint}/newUser`, signUpInfoJSON, apiConfig)
-    .then(response => {
+export async function addUser(signUpInfoJSON){
+    try{
+        const response = await axios.post(`${apiEndpoint}/newUser`, signUpInfoJSON, apiConfig);
         console.log(response.data);
-    })
-    .catch(response => {
-        alert(response);
-    })
+    } 
+    catch(error){
+        alert(error)
+    }
 }
 
 /**
