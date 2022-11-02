@@ -9,6 +9,7 @@
 import Header from "../components/Header";
 import { Link } from 'react-router-dom';
 import { useRef, useState } from "react";
+import { addUser } from "../api/usersApi";
 
 function RegistrationPage() {
   const [disable, setDisable] = useState(true);
@@ -49,8 +50,9 @@ function RegistrationPage() {
       "password": passwordInput.current.value,
     }
     //2- Send signUpInfo using api function
-    //3- On success, add user ID to JSON, then set the user state
-    //4- Re-direct user to home page
+    addUser(signUpInfo);
+
+    //3- On success, set the user state, Re-direct user to home page
   }
 
   return (
