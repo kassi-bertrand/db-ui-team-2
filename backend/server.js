@@ -11,7 +11,7 @@ const registerRoutes = require('./routes/register');
 const foodRoutes = require('./routes/food');
 const performerRoutes = require('./routes/performer');
 const venueRoutes = require('./routes/venue');
-
+const hostFormRoutes  = require('./routes/hostForm');
 const { authenticateJWT, authenticateWithClaims } = require('./middleware/auth');
 const { createModelsMiddleware } = require('./middleware/model-middleware');
 
@@ -27,7 +27,7 @@ app.get('/health', (request, response, next) => {
 });
 
 app.use('/session', sessionRoutes);
-
+app.use('/form', hostFormRoutes);
 app.use('/users', authenticateJWT, usersRoutes);
 app.use('/newUser', registerRoutes);
 app.use('/food', foodRoutes);
