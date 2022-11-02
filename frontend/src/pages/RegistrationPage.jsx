@@ -44,8 +44,8 @@ function RegistrationPage() {
     //1- Package user inputs in a JSON object
     const signUpInfo = {
       "name": nameInput.current.value,
+      "phone_num": phoneInput.current.value,
       "email": emailInput.current.value,
-      "phone": phoneInput.current.value,
       "password": passwordInput.current.value,
     }
     const signUpInfoJSON = JSON.stringify(signUpInfo);
