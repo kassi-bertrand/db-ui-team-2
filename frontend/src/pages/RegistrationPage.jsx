@@ -48,7 +48,6 @@ function RegistrationPage() {
       "email": emailInput.current.value,
       "password": passwordInput.current.value,
     }
-    const signUpInfoJSON = JSON.stringify(signUpInfo);
     //2- Send signUpInfo using api function
     //3- On success, add user ID to JSON, then set the user state
     //4- Re-direct user to home page
