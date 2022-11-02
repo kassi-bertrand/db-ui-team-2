@@ -55,6 +55,13 @@ export async function getUserById(ID){
  *                             Intented to be sent to the "Sign In"
  *                             or "Login" route in the backend               
  */
-export async function getUser(SignInInfoJSON){
+export async function getUser(signInInfoJSON){
     //TODO: IMPLEMENT THIS FUNCTION
+    try{
+        const response = await axios.post(`${apiEndpoint}/session`, signInInfoJSON, apiConfig);
+        console.log(response.data);
+    } 
+    catch(error){
+        alert(error)
+    }
 }
