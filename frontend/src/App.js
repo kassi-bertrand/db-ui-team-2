@@ -21,16 +21,16 @@ function App() {
    * Visitors will be redirected to login page
    * as long as the state is "null"
    */
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
 
   return (
     <>
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
-        <Route exact path="/register" element={<RegistrationPage setUser={setUser} />} />
-        <Route exact path="/login" element={<LoginPage setUser={setUser} />} />
+        <Route exact path="/register" element={<RegistrationPage user={user} setUser={setUser} />} />
+        <Route exact path="/login" element={<LoginPage user={user} setUser={setUser} />} />
         <Route exact path="/*" element={<ErrorPage />} />
-        <Route exact path="/home" element={<HomePage/>} />
+        <Route exact path="/home" element={<HomePage user={user} setUser={setUser}/>} />
       </Routes>
     </>
   );
