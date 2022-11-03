@@ -10,7 +10,7 @@ import Header from "../components/Header";
 import { Link } from 'react-router-dom';
 import { useRef, useState } from "react";
 
-function LoginPage() {
+function LoginPage({setUser}) {
     const [disable, setDisable] = useState(true);
 
     //UseRefs to grab form inputs' content. For more info check: https://dev.to/sobhandash/react-forms-and-useref-hook-4p1l
