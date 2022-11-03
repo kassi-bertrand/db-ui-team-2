@@ -10,7 +10,6 @@
 import HomePageHeader from "../components/HomePageHeader";
 import HomePageTabs from "../components/HomePageTabs";
 
-//TODO: This component must have a "User" prop
 function HomePage({user, setUser}){
     return(
         <div className="flex flex-col min-h-screen overflow-hidden">
