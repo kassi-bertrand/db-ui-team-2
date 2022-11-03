@@ -16,7 +16,6 @@ function LandingPage() {
     const ref = useRef(null);
 
     const handleScroll = () => {
-        console.log(ref.current)
       ref.current?.scrollIntoView({behavior: 'smooth'});
     };
 
