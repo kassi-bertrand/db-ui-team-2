@@ -21,7 +21,7 @@ function App() {
    * Visitors will be redirected to login page
    * as long as the state is "null"
    */
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
 
   return (
     <>
