@@ -6,18 +6,21 @@
  */
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function HomePageHeader({user, setUser}){
     const [menuHidden, setMenuHidden] = useState(true);
+    const navigate = useNavigate();
 
     function handleClick(){
         setMenuHidden(!menuHidden);
     }
 
     function handleLogout(){
-        //TODO: Implement this function
         //1- Set User state to "null"
+        setUser(null);
         //2- Redirect visitor to login page.
+        navigate("/login");
     }
 
     return(
