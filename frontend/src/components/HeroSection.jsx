@@ -7,7 +7,7 @@
  */
  import { Link } from 'react-router-dom';
 
-function HeroSection() {
+function HeroSection({scrollDown}) {
     return (
         <section className="relative">
 
@@ -26,7 +26,7 @@ function HeroSection() {
                                     <Link to="/login" className="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 sm:w-auto sm:mb-0 font-inter" href="#0">Start Here 🚀</Link>
                                 </div>
                                 <div>
-                                    <Link to="/#solutionSection" className="btn text-white bg-gray-900 hover:bg-gray-800 w-full sm:w-auto sm:ml-4 font-inter" href="#0">Learn more</Link>
+                                    <button onClick={scrollDown} className="btn text-white bg-gray-900 hover:bg-gray-800 w-full sm:w-auto sm:ml-4 font-inter" href="#0">Learn more</button>
                                 </div>
                             </div>
                         </div>
