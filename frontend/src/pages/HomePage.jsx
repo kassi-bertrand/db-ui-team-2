@@ -11,11 +11,11 @@ import HomePageHeader from "../components/HomePageHeader";
 import HomePageTabs from "../components/HomePageTabs";
 
 //TODO: This component must have a "User" prop
-function HomePage(){
+function HomePage({user, setUser}){
     return(
         <div className="flex flex-col min-h-screen overflow-hidden">
             {/**Home Page Header */}
-            <HomePageHeader/>
+            <HomePageHeader user={user} setUser={setUser}/>
             
             {/**Page Main content */}
             <HomePageTabs/>
