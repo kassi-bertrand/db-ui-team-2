@@ -100,7 +100,7 @@ function RegistrationPage({user, setUser}) {
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                             <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="phone">Phone Number 📱 🇺🇸</label>
-                            <input id="phone" type="text" className="form-input w-full text-gray-800" placeholder="Enter your phone number" ref={phoneInput} onChange={handleChange} required/>
+                            <input id="phone" type="tel" className="form-input w-full text-gray-800" placeholder="Enter your phone number" ref={phoneInput} onChange={handleChange} required/>
                         </div>
                     </div>
 
