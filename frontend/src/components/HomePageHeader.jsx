@@ -7,7 +7,6 @@
 
 import { useState } from "react";
 
-//TODO: This component must have a "User" prop
 function HomePageHeader({user, setUser}){
     const [menuHidden, setMenuHidden] = useState(true);
 
