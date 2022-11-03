@@ -27,8 +27,8 @@ import { apiConfig, apiEndpoint } from './apiConfig';
 export async function addUser(signUpInfoJSON){
     try{
         const response = await axios.post(`${apiEndpoint}/newUser`, signUpInfoJSON, apiConfig);
-        console.log(response.data);
-    } 
+        return response.data;
+    }
     catch(error){
         alert(error)
     }
