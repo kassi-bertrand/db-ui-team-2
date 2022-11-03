@@ -27,8 +27,8 @@ function App() {
     <>
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
-        <Route exact path="/register" element={<RegistrationPage />} />
-        <Route exact path="/login" element={<LoginPage />} />
+        <Route exact path="/register" element={<RegistrationPage setUser={setUser} />} />
+        <Route exact path="/login" element={<LoginPage setUser={setUser} />} />
         <Route exact path="/*" element={<ErrorPage />} />
         <Route exact path="/home" element={<HomePage/>} />
       </Routes>
