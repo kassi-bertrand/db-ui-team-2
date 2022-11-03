@@ -7,11 +7,13 @@
  */
 
 import Header from "../components/Header";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useRef, useState } from "react";
+import { getUser } from "../api/usersApi";
 
 function LoginPage({setUser}) {
     const [disable, setDisable] = useState(true);
+    const navigate = useNavigate();
 
     //UseRefs to grab form inputs' content. For more info check: https://dev.to/sobhandash/react-forms-and-useref-hook-4p1l
     const emailInput = useRef(null);
@@ -38,9 +40,12 @@ function LoginPage({setUser}) {
             "email": emailInput.current.value,
             "password": passwordInput.current.value,
         }
-        //2- Send signInInfo using api function
-        //3- On success, set the user state
-        //4- Re-direct user to home page
+        //2-  Send signInInfo using api function
+        //    then set user state using api response
+        //    then redirect client to home.
+        getUser(signInInfo)
+            .then(response => setUser(response))
+            .then(() => navigate('/home'))
     }
 
     return (
