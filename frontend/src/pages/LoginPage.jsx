@@ -11,7 +11,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useRef, useState } from "react";
 import { getUser } from "../api/usersApi";
 
-function LoginPage({setUser}) {
+function LoginPage() {
     const [disable, setDisable] = useState(true);
     const navigate = useNavigate();
 
@@ -41,10 +41,10 @@ function LoginPage({setUser}) {
             "password": passwordInput.current.value,
         }
         //2-  Send signInInfo using api function
-        //    then set user state using api response
+        //    then store user info state in local storage
         //    then redirect client to home.
         getUser(signInInfo)
-            .then(response => setUser(response))
+            .then(response => localStorage.setItem('userJSON', JSON.stringify(response)))
             .then(() => navigate('/home'))
     }
 
