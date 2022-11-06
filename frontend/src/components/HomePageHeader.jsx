@@ -17,10 +17,14 @@ function HomePageHeader({user, setUser}){
     }
 
     function handleLogout(){
-        //1- Set User state to "null"
         setUser(null);
-        //2- Redirect visitor to login page.
+        localStorage.removeItem('userJSON');
         navigate("/login");
+    }
+
+    if(!user){
+        navigate("/login");
+        return <div>Not logged in</div>;
     }
 
     return(
