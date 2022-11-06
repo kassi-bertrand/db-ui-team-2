@@ -11,7 +11,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useRef, useState } from "react";
 import { addUser } from "../api/usersApi";
 
-function RegistrationPage({user, setUser}) {
+function RegistrationPage() {
   const [disable, setDisable] = useState(true);
   const navigate = useNavigate();
 
@@ -52,10 +52,10 @@ function RegistrationPage({user, setUser}) {
     }
     
     //2-  Send signUpInfo using api function
-    //    then set user state using api response
-    //    then redirect client to home.
+    //    then store user info state in local storage
+    //    then redirect user to home.
     addUser(signUpInfo)
-      .then(response => setUser(response))
+      .then(response => localStorage.setItem('userJSON', JSON.stringify(response)))
       .then(() => navigate("/home"));
   }
 
