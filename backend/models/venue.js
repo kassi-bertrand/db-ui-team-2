@@ -2,88 +2,96 @@ const knex = require('../database/knex');
 
 const VENUE_TABLE = 'venue_details';
 
-class Venue {
-    constructor(_DBQuery, _disconnect) {
-        this.DBQuery = _DBQuery;
-        this.disconnect = _disconnect;
-    }
-    close () {
-        this.disconnect();
-    }
-    async fetchAllVenues () {
+    const fetchAllVenues = async() => {
         const query = knex(VENUE_TABLE);
         const results = await query;
         return results;
     }
-    async fetchVenuesByUsername (venue_user) {
+    const fetchVenuesByUsername = async(venue_user) => {
         const query = knex(VENUE_TABLE).where(venue_user);
         const results = await query;
         return results;
     }
-    async fetchVenuesByName (venue_name) {
+    const fetchVenuesByName = async(venue_name) => {
         const query = knex(VENUE_TABLE).where(venue_name);
         const results = await query;
         return results;
     }
-    async fetchVenuesByZipCode (zip_code) {
+    const fetchVenuesByZipCode = async(zip_code) => {
         const query = knex(VENUE_TABLE).where(zip_code);
         const results = await query;
         return results;
     }
-    async fetchVenuesByOccasion (occasion) {
+    const fetchVenuesByOccasion = async(occasion) => {
         const query = knex(VENUE_TABLE).where(occasion);
         const results = await query;
         return results;
     }
-    async fetchVenuesByAvailable (available) {
+    const fetchVenuesByAvailable = async(available) => {
         const query = knex(VENUE_TABLE).where(available);
         const results = await query;
         return results;
     }
-    async updateVenueName(venue_name, venue_user) {
+    const updateVenueName = async(venue_name, venue_user) => {
         const query = knex(VENUE_TABLE).update({venue_name}).where({venue_user});
         const results = await query;
         return results;
     }
-    async updateVenueCost(cost, venue_user) {
+    const updateVenueCost = async(cost, venue_user) => {
         const query = knex(VENUE_TABLE).update({cost}).where({venue_user});
         const results = await query;
         return results;
     }
-    async updateOccassion(occasion, venue_user) {
+    const updateOccassion = async(occasion, venue_user) => {
         const query = knex(VENUE_TABLE).update({occasion}).where({venue_user});
         const results = await query;
         return results;
     }
-    async updateVenueDetails(details, venue_user) {
+    const updateVenueDetails = async(details, venue_user) => {
         const query = knex(VENUE_TABLE).update({details}).where({venue_user});
         const results = await query;
         return results;
     }
-    async updateVenueCapacity(guest_capacity, venue_user) {
+    const updateVenueCapacity = async(guest_capacity, venue_user) => {
         const query = knex(VENUE_TABLE).update({guest_capacity}).where({venue_user});
         const results = await query;
         return results;
     }
-    async updateVenueAvailability(available, venue_user) {
+    const updateVenueAvailability = async(available, venue_user) => {
         const query = knex(VENUE_TABLE).update({available}).where({venue_user});
         const results = await query;
         return results;
     }
-    async updateVenueAddress(occasion, venue_user) {
+    const updateVenueAddress = async(occasion, venue_user) => {
         const query = knex(VENUE_TABLE).update({occasion}).where({venue_user});
         const results = await query;
         return results;
     }
-    async createVenue(venue_user, venue_name, street, city, state_initial, zip_code, cost, details, guest_capacity, occasion, available) {
+    const createVenue = async(venue_user, venue_name, street, city, state_initial, zip_code, cost, details, guest_capacity, occasion, available) => {
         const query = knex(VENUE_TABLE).insert({venue_user, venue_name, street, city, state_initial, zip_code, cost, details, guest_capacity, occasion, available});
         const results = await query;
         return results;
     }
-    async deleteVenue(venue_user) {
+    const deleteVenue = async(venue_user) => {
         const query = knex(VENUE_TABLE).delete().where({venue_user});
         const results = await query;
         return results;
     }
- }
- module.exports = Venue;
+ 
+ module.exports = {
+    fetchAllVenues,
+    fetchVenuesByName,
+    fetchVenuesByUsername,
+    fetchVenuesByZipCode,
+    fetchVenuesByOccasion,
+    fetchVenuesByAvailable,
+    updateVenueName,
+    updateVenueCost,
+    updateOccassion,
+    updateVenueDetails,
+    updateVenueCapacity,
+    updateVenueAvailability,
+    updateVenueAddress,
+    createVenue,
+    deleteVenue
+ };
