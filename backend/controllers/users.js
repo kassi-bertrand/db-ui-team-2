@@ -14,12 +14,9 @@ const createUser = async (name, phone_num, email, password) => {
     }
 
     const exists = await User.findUserByEmail(email);
-    const exists1 = await User.findUserByUsername(name);
 
     if(exists.length != 0){
         console.error("Email already in use.");
-    } else if(exists1.length != 0){
-        console.error("Username already in use.");
     } else {
         const user = await User.createNewUser(name, phone_num, email, password);
         const return_all = await User.authenticateUser(email, password);

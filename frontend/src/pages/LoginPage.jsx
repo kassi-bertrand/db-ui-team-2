@@ -7,21 +7,27 @@
  */
 
 import Header from "../components/Header";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useRef, useState } from "react";
+import { getUser } from "../api/usersApi";
 
 function LoginPage() {
     const [disable, setDisable] = useState(true);
+    const navigate = useNavigate();
 
     //UseRefs to grab form inputs' content. For more info check: https://dev.to/sobhandash/react-forms-and-useref-hook-4p1l
     const emailInput = useRef(null);
     const passwordInput = useRef(null);
 
-    //When the value of a form input changes, one of the following functions will run.
-    function handleEmailChange(e){
-        let currentInput = e.target.value;
+    function handleChange(e){
+        e.preventDefault();
         let emailRegEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        emailRegEx.test(currentInput) ? setDisable(true) : setDisable(false);
+    
+        if(emailRegEx.test(emailInput.current.value) === false) setDisable(true);
+        else if(passwordInput.current.value.length < 5) setDisable(true);
+        else{
+          setDisable(false);
+        }
     }
 
     //Package and send user input to the backend
@@ -34,9 +40,12 @@ function LoginPage() {
             "email": emailInput.current.value,
             "password": passwordInput.current.value,
         }
-        //2- Send signInInfo using api function
-        //3- On success, set the user state
-        //4- Re-direct user to home page
+        //2-  Send signInInfo using api function
+        //    then store user info state in local storage
+        //    then redirect client to home.
+        getUser(signInInfo)
+            .then(response => localStorage.setItem('userJSON', JSON.stringify(response)))
+            .then(() => navigate('/home'))
     }
 
     return (
@@ -62,7 +71,7 @@ function LoginPage() {
                                     <div className="flex flex-wrap -mx-3 mb-4 font-inter">
                                         <div className="w-full px-3">
                                             <label className="block text-gray-800 text-sm font-semibold mb-1" htmlFor="email">Email</label>
-                                            <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email address" ref={emailInput} onChange={handleEmailChange} required />
+                                            <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email address" ref={emailInput} onChange={handleChange} required />
                                         </div>
                                     </div>
                                     <div className="flex flex-wrap -mx-3 mb-4">
@@ -71,7 +80,7 @@ function LoginPage() {
                                                 <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="password">Password</label>
                                                 <Link className="text-sm text-blue-600 hover:underline">Having trouble signing in?</Link>
                                             </div>
-                                            <input id="password" type="password" className="w-full text-gray-800 form-input" placeholder="Enter your password" ref={passwordInput} required />
+                                            <input id="password" type="password" className="w-full text-gray-800 form-input" placeholder="Enter your password" ref={passwordInput} onChange={handleChange} required />
                                         </div>
                                     </div>
                                     <div className="flex flex-wrap -mx-3 mt-6">

@@ -27,8 +27,8 @@ import { apiConfig, apiEndpoint } from './apiConfig';
 export async function addUser(signUpInfoJSON){
     try{
         const response = await axios.post(`${apiEndpoint}/newUser`, signUpInfoJSON, apiConfig);
-        console.log(response.data);
-    } 
+        return response.data;
+    }
     catch(error){
         alert(error)
     }
@@ -56,10 +56,9 @@ export async function getUserById(ID){
  *                             or "Login" route in the backend               
  */
 export async function getUser(signInInfoJSON){
-    //TODO: IMPLEMENT THIS FUNCTION
     try{
         const response = await axios.post(`${apiEndpoint}/session`, signInInfoJSON, apiConfig);
-        console.log(response.data);
+        return response.data
     } 
     catch(error){
         alert(error)

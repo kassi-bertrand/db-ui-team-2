@@ -10,8 +10,15 @@
 import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import SolutionSection from "../components/SolutionSection";
+import {useRef} from 'react';
 
 function LandingPage() {
+    const ref = useRef(null);
+
+    const handleScroll = () => {
+      ref.current?.scrollIntoView({behavior: 'smooth'});
+    };
+
     return (
         <div className="flex flex-col min-h-screen overflow-hidden">
             {/** Site header */}
@@ -21,8 +28,8 @@ function LandingPage() {
             <main className="flex-grow">
 
                 {/**Page sections */}
-                <HeroSection />
-                <SolutionSection/>
+                <HeroSection scrollDown={handleScroll}/>
+                <SolutionSection headerRef={ref}/>
 
             </main>
 

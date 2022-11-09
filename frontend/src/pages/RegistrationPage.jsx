@@ -7,12 +7,13 @@
  *                  create their account on the platform.
  */
 import Header from "../components/Header";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useRef, useState } from "react";
 import { addUser } from "../api/usersApi";
 
 function RegistrationPage() {
   const [disable, setDisable] = useState(true);
+  const navigate = useNavigate();
 
   //UseRefs to grab form inputs' content. For more info check: https://dev.to/sobhandash/react-forms-and-useref-hook-4p1l
   const nameInput = useRef(null);
@@ -49,10 +50,13 @@ function RegistrationPage() {
       "email": emailInput.current.value,
       "password": passwordInput.current.value,
     }
-    //2- Send signUpInfo using api function
-    addUser(signUpInfo);
-
-    //3- On success, set the user state, Re-direct user to home page
+    
+    //2-  Send signUpInfo using api function
+    //    then store user info state in local storage
+    //    then redirect user to home.
+    addUser(signUpInfo)
+      .then(response => localStorage.setItem('userJSON', JSON.stringify(response)))
+      .then(() => navigate("/home"));
   }
 
   return (
@@ -96,7 +100,7 @@ function RegistrationPage() {
                     <div className="flex flex-wrap -mx-3 mb-4">
                         <div className="w-full px-3">
                             <label className="block text-gray-800 text-sm font-semibold mb-1 font-inter" htmlFor="phone">Phone Number 📱 🇺🇸</label>
-                            <input id="phone" type="text" className="form-input w-full text-gray-800" placeholder="Enter your phone number" ref={phoneInput} onChange={handleChange} required/>
+                            <input id="phone" type="tel" className="form-input w-full text-gray-800" placeholder="Enter your phone number" ref={phoneInput} onChange={handleChange} required/>
                         </div>
                     </div>
 

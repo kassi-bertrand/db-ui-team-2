@@ -6,19 +6,25 @@
  */
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-//TODO: This component must have a "User" prop
-function HomePageHeader(){
+function HomePageHeader({user, setUser}){
     const [menuHidden, setMenuHidden] = useState(true);
+    const navigate = useNavigate();
 
     function handleClick(){
         setMenuHidden(!menuHidden);
     }
 
     function handleLogout(){
-        //TODO: Implement this function
-        //1- Set User state to "null"
-        //2- Redirect visitor to login page.
+        setUser(null);
+        localStorage.removeItem('userJSON');
+        navigate("/login");
+    }
+
+    if(!user){
+        navigate("/login");
+        return <div>Not logged in</div>;
     }
 
     return(
@@ -41,9 +47,9 @@ function HomePageHeader(){
                                 />
 
                                 <p className="ml-2 text-left text-xs sm:block">
-                                    <strong className="block font-medium">User name</strong>
+                                    <strong className="block font-medium">{user.name}</strong>
 
-                                    <span className="text-gray-500">user@email.com</span>
+                                    <span className="text-gray-500">{user.email}</span>
                                 </p>
 
                                 <svg
@@ -82,7 +88,7 @@ function HomePageHeader(){
 
                 <div className="mt-8">
                     <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
-                        Hi, <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">Username!</span>
+                        Hi, <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">{user.name}</span>!
                     </h1>
 
                     <p className="mt-1.5 text-sm text-gray-500">
