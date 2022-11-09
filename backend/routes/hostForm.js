@@ -12,7 +12,24 @@ router.get('/find', async (req, res, next) => {
    try {
       const form = req.body;
       const fetchInfo = await Form.fetchInfoByPhoneNum(form.PhoneNum);
+      console.log(fetchInfo)
       res.status(201).json(fetchInfo);
+      next();
+   }
+   catch (err) {
+      //console.error('Failed to load current user:', err);
+      res.status(500).json({ message: err.toString()});
+   }
+   next();
+});
+router.get('/venuefilter', async (req, res, next) => {
+   try {
+      const form = req.body;
+      const fetchDate = await Form.fetchDateByPhoneNum(form.PhoneNum);
+      //const obj = JSON.parse(fetchInfo)
+      //obj.EventDate = new Date(obj.EventDate);
+      console.log(fetchDate)
+      res.status(201).json(fetchDate);
       next();
    }
    catch (err) {

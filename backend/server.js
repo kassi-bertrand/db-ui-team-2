@@ -14,6 +14,7 @@ const venueRoutes = require('./routes/venue');
 const reviewRoutes = require('./routes/reviews');
 const formRoutes = require('./routes/hostForm');
 
+const hostFormRoutes = require('./routes/hostForm');
 const { authenticateJWT, authenticateWithClaims } = require('./middleware/auth');
 const { createModelsMiddleware } = require('./middleware/model-middleware');
 
@@ -36,6 +37,7 @@ app.use('/session', sessionRoutes);
 app.use('/users', authenticateJWT, usersRoutes);
 app.use('/newUser', registerRoutes);
 app.use('/food', foodRoutes);
+app.use('/form', hostFormRoutes);
 app.use('/performer', performerRoutes);
 app.use('/venue', venueRoutes);
 app.use('/reviews', reviewRoutes);

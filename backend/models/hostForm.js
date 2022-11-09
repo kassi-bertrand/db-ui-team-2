@@ -12,7 +12,16 @@ const FORM_TABLE = 'Form';
    }
    const fetchInfoByPhoneNum = async (PhoneNum) => {
     //console.log("we reached here!")
-       const query = knex(FORM_TABLE).where({ PhoneNum });
+       const query = knex(FORM_TABLE).where({ PhoneNum })//.select("EventDate");
+       console.log("knex? here!")
+      // console.log(query);
+       const results = await query;
+       //console.log("results");
+       return results;
+   }
+   const fetchDateByPhoneNum = async (PhoneNum) => {
+    //console.log("we reached here!")
+       const query = knex(FORM_TABLE).where({ PhoneNum }).select("EventDate");
        console.log("knex? here!")
       // console.log(query);
        const results = await query;
@@ -32,6 +41,7 @@ const deleteForm = async (PhoneNum) => {
 }
 module.exports = {
     fetchAllForms,
+    fetchDateByPhoneNum,
     fetchInfoByPhoneNum,
     createForm,
     deleteForm
