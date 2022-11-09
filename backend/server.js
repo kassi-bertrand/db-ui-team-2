@@ -11,7 +11,8 @@ const registerRoutes = require('./routes/register');
 const foodRoutes = require('./routes/food');
 const performerRoutes = require('./routes/performer');
 const venueRoutes = require('./routes/venue');
-const reviewRoutes = require('./routes/reviews')
+const reviewRoutes = require('./routes/reviews');
+const formRoutes = require('./routes/hostForm');
 
 const { authenticateJWT, authenticateWithClaims } = require('./middleware/auth');
 const { createModelsMiddleware } = require('./middleware/model-middleware');
@@ -37,7 +38,8 @@ app.use('/newUser', registerRoutes);
 app.use('/food', foodRoutes);
 app.use('/performer', performerRoutes);
 app.use('/venue', venueRoutes);
-app.use('/reviews', reviewRoutes)
+app.use('/reviews', reviewRoutes);
+app.use('/form', formRoutes);
 app.listen(port, () => {
     console.log(`This app is listening on port ${port}`);
 });
