@@ -8,7 +8,8 @@
  *                  the user is currently on.
  */
 
-import EventCard from "./EventCard";
+
+import UserEvent from "./UserEvent";
 import UserFeed from "./UserFeed";
 
 function HomePageContent({activeTab}){
@@ -21,17 +22,19 @@ function HomePageContent({activeTab}){
 
     //TODO: API call to get events created by the user here
     const userEvents = [
-
+        {"organizer": "Kassi", "phoneNumber":"5555555555", "address1": "2987 Union Street", "address2": "apt 221", "city": "Seattle", "state": "WA", "zipCode": "98114", "guestCount": "5", "eventType": "birthday"},
+        {"organizer": "Kassi", "phoneNumber":"5555555555", "address1": "2987 Union Street", "address2": "apt 221", "city": "Seattle", "state": "WA", "zipCode": "98114", "guestCount": "12", "eventType": "birthday"},
+        {"organizer": "Kassi", "phoneNumber":"5555555555", "address1": "2987 Union Street", "address2": "apt 221", "city": "Seattle", "state": "WA", "zipCode": "98114", "guestCount": "19", "eventType": "birthday"}
     ];
 
     //TODO: API call to get services created by the user here
     const userServices = [
 
     ];
-    
+
     const TABS = {
         'Feed': <UserFeed events={feedEvents}/>,
-        'Events': <EventCard events={userEvents}/>,
+        'Events': <UserEvent events={userEvents}/>,
         'Services': <div>Service by the users</div>
     };
 
