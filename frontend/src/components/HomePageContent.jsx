@@ -8,6 +8,7 @@
  *                  the user is currently on.
  */
 
+import EventCard from "./EventCard";
 import UserFeed from "./UserFeed";
 
 function HomePageContent({activeTab}){
@@ -19,11 +20,18 @@ function HomePageContent({activeTab}){
     ];
 
     //TODO: API call to get events created by the user here
+    const userEvents = [
+
+    ];
 
     //TODO: API call to get services created by the user here
+    const userServices = [
+
+    ];
+    
     const TABS = {
         'Feed': <UserFeed events={feedEvents}/>,
-        'Events': <div>Events by the user</div>,
+        'Events': <EventCard events={userEvents}/>,
         'Services': <div>Service by the users</div>
     };
 
