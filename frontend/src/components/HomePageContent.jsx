@@ -23,8 +23,8 @@ function HomePageContent({activeTab}){
     //TODO: API call to get services created by the user here
     const TABS = {
         'Feed': <UserFeed events={feedEvents}/>,
-        'Events': <div>Event by the user</div>,
-        'Services': <div>Services by the users</div>
+        'Events': <div>Events by the user</div>,
+        'Services': <div>Service by the users</div>
     };
 
     return(
