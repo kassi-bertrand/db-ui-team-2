@@ -1,7 +1,7 @@
 /**
  * Author:          Kassi Bertrand
  * filename:        UserEvent.jsx
- * Date:            11-1s-2022
+ * Date:            11-13-2022
  * Description:     This component is used in the
  *                  HomePageContent component and 
  *                  renders all events under the
@@ -9,10 +9,14 @@
  */
 
 import EventCard from "./EventCard";
+import PlusButton from "./PlusButton";
 
 function UserEvent({events}){
     return(
         <>
+            {/**First, Render Plus button */}
+            <PlusButton title="New Event"/>
+            {/**Then, Render all events */}
             {
                 events.map((anEvent, index) =>{
                     return(
