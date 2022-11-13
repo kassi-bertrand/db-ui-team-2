@@ -1,7 +1,7 @@
 /**
  * Author:          Kassi Bertrand
  * filename:        FeedCard.jsx
- * Date:            11-06-2022
+ * Date:            11-12-2022
  * Description:     This component is used to display
  *                  event information at a glance.
  *                  This component is displayed in the
