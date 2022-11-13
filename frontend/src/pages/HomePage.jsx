@@ -15,6 +15,7 @@ import HomePageTabs from "../components/HomePageTabs";
 
 function HomePage(){
     const [user, setUser] = useState(undefined);
+    const [activeTab, setActiveTab] = useState("Feed");
 
     useEffect(() => {
         let userJSON = JSON.parse(localStorage.getItem('userJSON'));
@@ -27,9 +28,9 @@ function HomePage(){
             <HomePageHeader user={user} setUser={setUser}/>
             
             {/**Page Main content */}
-            <HomePageTabs/>
+            <HomePageTabs setCurrentTab={setActiveTab}/>
 
-            <HomePageContent/>
+            <HomePageContent currentTab={activeTab}/>
         </div>
     );
 }
