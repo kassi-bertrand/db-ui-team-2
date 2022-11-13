@@ -22,17 +22,13 @@ function FeedCard({organizer, phoneNumber, address1, address2, city, state, zipC
                 </div>
 
                 <div class="ml-3 hidden flex-shrink-0 sm:block">
-                    <img
-                        alt="Just an image"
-                        src="https://picsum.photos/200"
-                        class="h-16 w-16 rounded-lg object-cover shadow-sm"
-                    />
+                    {/**Render chip component here */}
                 </div>
             </div>
 
             <div class="mt-4 sm:pr-8">
                 <p class="text-sm text-gray-500">
-                    {organizer} is organizing a {eventType} at {address1} {address2} {zipCode}. Join them!
+                    {organizer} is organizing a {eventType} at {address1} {address2} {zipCode}!
                 </p>
             </div>
 
