@@ -8,39 +8,45 @@
  *                  HomePage, under the Feed tab.
  */
 
+import BadgeOpen from "./BadgeOpen";
+import BadgeClose from "./BadgeClose";
+import VerificationBadge from "./VerfificationBadge";
+
 function FeedCard({organizer, phoneNumber, address1, address2, city, state, zipCode, date, guestCount, eventType}){
     return(
-        <a href="#" class="relative block overflow-hidden rounded-lg border border-gray-100 p-8 font-inter">
-            <span class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
+        <a href="#" className="relative block overflow-hidden rounded-lg border border-gray-200 p-8 font-inter">
+            <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 to-blue-500"></span>
 
-            <div class="justify-between sm:flex">
+            <div className="justify-between sm:flex">
                 <div>
-                    <h3 class="text-xl font-bold text-gray-900">
-                        {organizer} is organizing a {eventType}! 🥳
+                    <h3 className="text-xl font-bold text-gray-900">
+                        {eventType}! 🥳
                     </h3>
-                    <p class="mt-1 text-xs font-medium text-gray-600">By {organizer}</p>
+                    <div className="flex text-gray-600 content-center space-x-2">
+                        <p className="mt-1 text-xs font-medium inline-block align-middle">By {organizer} <span className="inline-block align-middle"> <VerificationBadge/></span></p>
+                    </div>
                 </div>
 
-                <div class="ml-3 hidden flex-shrink-0 sm:block">
-                    {/**Render chip component here */}
+                <div className="ml-3 hidden flex-shrink-0 sm:block">
+                    <BadgeOpen/>
                 </div>
             </div>
 
-            <div class="mt-4 sm:pr-8">
-                <p class="text-sm text-gray-500">
-                    {organizer} is organizing a {eventType} at {address1} {address2} {zipCode}!
+            <div className="mt-4 sm:pr-8">
+                <p className="text-sm text-gray-500">
+                    {organizer} is organizing a {eventType} at {address1} {address2}, {zipCode}!
                 </p>
             </div>
 
-            <dl class="mt-6 flex">
-                <div class="flex flex-col-reverse">
-                    <dt class="text-sm font-medium text-gray-600">Location</dt>
-                    <dd class="text-xs text-gray-500">{city}, {state}</dd>
+            <dl className="mt-6 flex">
+                <div className="flex flex-col-reverse">
+                    <dt className="text-sm font-medium text-gray-600">Location</dt>
+                    <dd className="text-xs text-gray-500">{city}, {state}</dd>
                 </div>
 
-                <div class="ml-3 flex flex-col-reverse sm:ml-6">
-                    <dt class="text-sm font-medium text-gray-600">Guests</dt>
-                    <dd class="text-xs text-gray-500">{guestCount}</dd>
+                <div className="ml-3 flex flex-col-reverse sm:ml-6">
+                    <dt className="text-sm font-medium text-gray-600">Guests</dt>
+                    <dd className="text-xs text-gray-500">{guestCount}</dd>
                 </div>
             </dl>
         </a>
