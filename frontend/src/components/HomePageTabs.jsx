@@ -5,7 +5,7 @@
  * Description:     This component is the Home page Tabs.
  */
 
-function HomePageTabs(){
+function HomePageTabs({setActiveTab}){
     return(
         <section className="overflow-x-scroll font-inter">
             <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
@@ -18,7 +18,7 @@ function HomePageTabs(){
                         <ul className="flex">
 
                             {/**A tab */}
-                            <li className="flex-1 hover:bg-gray-200 hover:rounded-md">
+                            <li className="flex-1 hover:bg-gray-200 hover:rounded-md" onClick={() => setActiveTab("Feed")}>
                                 <a className="relative block p-4" href="#">
                                     <span className="absolute inset-x-0 -bottom-px h-px w-full"></span>
                                     <div className="flex items-center justify-center">
@@ -31,7 +31,7 @@ function HomePageTabs(){
                             </li>
 
                             {/**A tab */}
-                            <li className="flex-1 hover:bg-gray-200 hover:rounded-md">
+                            <li className="flex-1 hover:bg-gray-200 hover:rounded-md" onClick={() => setActiveTab("Events")}>
                                 <a className="relative block p-4" href="#">
                                     <span className="absolute inset-x-0 -bottom-px h-px w-full"></span>
                                     <div className="flex items-center justify-center">
@@ -44,7 +44,7 @@ function HomePageTabs(){
                             </li>
 
                             {/**A tab */}
-                            <li className="flex-1 hover:bg-gray-200 hover:rounded-md">
+                            <li className="flex-1 hover:bg-gray-200 hover:rounded-md" onClick={() => setActiveTab("Services")}>
                                 <a className="relative block p-4" href="#">
                                     <span className="absolute inset-x-0 -bottom-px h-px w-full"></span>
                                     <div className="flex items-center justify-center">
