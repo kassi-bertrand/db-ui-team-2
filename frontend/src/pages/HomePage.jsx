@@ -28,9 +28,9 @@ function HomePage(){
             <HomePageHeader user={user} setUser={setUser}/>
             
             {/**Page Main content */}
-            <HomePageTabs setCurrentTab={setActiveTab}/>
+            <HomePageTabs setActiveTab={setActiveTab}/>
 
-            <HomePageContent currentTab={activeTab}/>
+            <HomePageContent activeTab={activeTab}/>
         </div>
     );
 }
