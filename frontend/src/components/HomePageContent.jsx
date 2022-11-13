@@ -13,7 +13,7 @@ import UserFeed from "./UserFeed";
 function HomePageContent({activeTab}){
     //API call to get events on user feed happens here
     const events = [
-        {"organizer": "Kassi Bertrand", "phoneNumber":"1111111111", "address1": "Test Rd", "address2": "apt 3421", "city": "Dallas", "state": "TX", "zipCode": "56322", "guestCount": "24", "eventType": "birthday"},
+        {"organizer": "Giovanni Boscan", "phoneNumber":"1111111111", "address1": "Test Rd", "address2": "apt 3421", "city": "Dallas", "state": "TX", "zipCode": "56322", "guestCount": "24", "eventType": "birthday"},
         {"organizer": "Rudy Lucas", "phoneNumber":"2222222222", "address1": "Test Rd", "address2": "apt 2452", "city": "Dallas", "state": "TX", "zipCode": "63256", "guestCount": "50", "eventType": "birthday"}
     ];
 
