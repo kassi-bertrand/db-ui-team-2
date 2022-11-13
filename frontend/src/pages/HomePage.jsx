@@ -9,6 +9,7 @@
 
 import { useEffect } from "react";
 import { useState } from "react";
+import HomePageContent from "../components/HomePageContent";
 import HomePageHeader from "../components/HomePageHeader";
 import HomePageTabs from "../components/HomePageTabs";
 
@@ -27,6 +28,8 @@ function HomePage(){
             
             {/**Page Main content */}
             <HomePageTabs/>
+
+            <HomePageContent/>
         </div>
     );
 }
