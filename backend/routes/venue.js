@@ -39,7 +39,7 @@ router.get('/', async (req, res, next) => {
    }
 });
 router.post('/', async (req, res, next) => {
-    const createVenue = await Venue.createVenue(req.body.venue_user, req.body.venue_name, req.body.street, req.body.city, req.body.state_initial, req.body.zip_code, req.body.cost, req.body.details, req.body.guest_capacity, req.body.occasion, req.body.available);
+    const createVenue = await Venue.createVenue(req.body.venue_user, req.body.venue_name, req.body.street, req.body.city, req.body.state_initial, req.body.zip_code, req.body.cost, req.body.details, req.body.guest_capacity, req.body.occasion, req.body.available, req.body.start_date, req.body.end_date);
     res.status(201).json(createVenue);
     next();
  });
@@ -73,6 +73,11 @@ router.post('/', async (req, res, next) => {
       res.json(updateVenueAddress);
       next();
    }
+ });
+ router.put('/booked', async (req, res, next) => {
+   const updateDateBooked = await Venue.updateDateBooked(req.body.Booked, req.body.venue_user);
+   res.json(updateDateBooked);
+   next();
  });
  router.delete('/', async (req, res, next) => {
     const deleteVenue = await Venue.deleteVenue(req.body.venue_user);

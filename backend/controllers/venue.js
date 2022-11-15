@@ -52,8 +52,12 @@ const updateVenueAddress = async(street, city, state_initial, zip_code, venue_us
     const result = await Venue.updateVenueAddress(street, city, state_initial, zip_code, venue_user);
     return result;
 }
-const createVenue = async(venue_user, venue_name, street, city, state_initial, zip_code, cost, details, guest_capacity, occasion, available) => {
-    const result = await Venue.createVenue(venue_user, venue_name, street, city, state_initial, zip_code, cost, details, guest_capacity, occasion, available);
+const updateDateBooked = async(Booked, venue_user) => {
+    const result = await Venue.updateDateBooked(Booked, venue_user);
+    return result;
+}
+const createVenue = async(venue_user, venue_name, street, city, state_initial, zip_code, cost, details, guest_capacity, occasion, available, start_date, end_date) => {
+    const result = await Venue.createVenue(venue_user, venue_name, street, city, state_initial, zip_code, cost, details, guest_capacity, occasion, available, start_date, end_date);
     return result;
 }
 const deleteVenue = async(venue_user) =>{
@@ -76,5 +80,6 @@ module.exports = {
     updateVenueAvailability,
     updateVenueAddress,
     createVenue,
-    deleteVenue
+    deleteVenue,
+    updateDateBooked
 };

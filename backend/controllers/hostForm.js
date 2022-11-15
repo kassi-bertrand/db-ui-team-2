@@ -19,6 +19,21 @@ const fetchDateByPhoneNum = async (PhoneNum) => {
         const result = await Form.fetchDateByPhoneNum(PhoneNum);
         return result;
 }
+const fetchLocationByPhoneNum = async (PhoneNum) => {
+    //console.log("we reached here!")
+        const result = await Form.fetchLocationByPhoneNum(PhoneNum);
+        return result;
+}
+const fetchGuestCountByPhoneNum = async (PhoneNum) => {
+    //console.log("we reached here!")
+        const result = await Form.fetchGuestCountByPhoneNum(PhoneNum);
+        return result;
+}
+const fetchBudgetByPhoneNum = async (PhoneNum) => {
+    //console.log("we reached here!")
+        const result = await Form.fetchBudgetByPhoneNum(PhoneNum);
+        return result;
+}
 const createForm = async (Location, Budget, Details, Name, PhoneNum, EventDate, GuestCount,Occasion, form_user) => {
     //console.log(Location, Budget, Details, Name, PhoneNum, EventDate, GuestCount,Occasion);
     const result = await Form.createForm(Location, Budget, Details, Name, PhoneNum, EventDate, GuestCount,Occasion, form_user);
@@ -33,5 +48,8 @@ module.exports = {
     fetchInfoByPhoneNum,
     fetchDateByPhoneNum,
     createForm,
-    deleteForm
+    deleteForm,
+    fetchLocationByPhoneNum,
+    fetchGuestCountByPhoneNum,
+    fetchBudgetByPhoneNum
 }

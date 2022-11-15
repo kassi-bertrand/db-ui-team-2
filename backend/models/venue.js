@@ -7,7 +7,12 @@ const VENUE_TABLE = 'venue_details';
         const results = await query;
         return results;
     }
-    const fetchVenuesByUsername = async(venue_user) => {
+        const fetchVenuesByUsername = async(venue_user) => {
+        const query = knex(VENUE_TABLE).where(venue_user);
+        const results = await query;
+        return results;
+    }
+    const fetchStartByUsername = async(venue_user) => {
         const query = knex(VENUE_TABLE).where(venue_user);
         const results = await query;
         return results;
@@ -67,7 +72,12 @@ const VENUE_TABLE = 'venue_details';
         const results = await query;
         return results;
     }
-    const createVenue = async(venue_user, venue_name, street, city, state_initial, zip_code, cost, details, guest_capacity, occasion, available) => {
+    const updateDateBooked = async(Booked, venue_user) => {
+        const query = knex(VENUE_TABLE).where({venue_user}).update({ Booked: knex.raw('CONCAT(Booked, ?)',[','+Booked]) });
+        const results = await query;
+        return results;
+    }
+    const createVenue = async(venue_user, venue_name, street, city, state_initial, zip_code, cost, details, guest_capacity, occasion, available, start_date, end_date) => {
         const query = knex(VENUE_TABLE).insert({venue_user, venue_name, street, city, state_initial, zip_code, cost, details, guest_capacity, occasion, available});
         const results = await query;
         return results;
@@ -93,5 +103,6 @@ const VENUE_TABLE = 'venue_details';
     updateVenueAvailability,
     updateVenueAddress,
     createVenue,
-    deleteVenue
+    deleteVenue,
+    updateDateBooked
  };

@@ -28,6 +28,33 @@ const FORM_TABLE = 'Form';
        //console.log("results");
        return results;
    }
+   const fetchLocationByPhoneNum = async (PhoneNum) => {
+    //console.log("we reached here!")
+       const query = knex(FORM_TABLE).where({ PhoneNum }).select("Location");
+       console.log("knex? here!")
+      // console.log(query);
+       const results = await query;
+       //console.log("results");
+       return results;
+   }
+   const fetchGuestCountByPhoneNum = async (PhoneNum) => {
+    //console.log("we reached here!")
+       const query = knex(FORM_TABLE).where({ PhoneNum }).select("GuestCount");
+       console.log("knex? here!")
+      // console.log(query);
+       const results = await query;
+       //console.log("results");
+       return results;
+   }
+   const fetchBudgetByPhoneNum = async (PhoneNum) => {
+    //console.log("we reached here!")
+       const query = knex(FORM_TABLE).where({ PhoneNum }).select("Budget");
+       console.log("knex? here!")
+      // console.log(query);
+       const results = await query;
+       //console.log("results");
+       return results;
+   }
 const createForm = async (Location, Budget, Details, Name, PhoneNum, EventDate, GuestCount,Occasion, form_user) => {
     //console.log(Location, Budget, Details, Name, PhoneNum, EventDate, GuestCount,Occasion);
     const query = knex(FORM_TABLE).insert({Location, Budget, Details, Name, PhoneNum, EventDate, GuestCount,Occasion, form_user});
@@ -44,5 +71,8 @@ module.exports = {
     fetchDateByPhoneNum,
     fetchInfoByPhoneNum,
     createForm,
-    deleteForm
+    deleteForm,
+    fetchLocationByPhoneNum,
+    fetchGuestCountByPhoneNum,
+    fetchBudgetByPhoneNum
  }
