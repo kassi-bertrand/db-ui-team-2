@@ -49,7 +49,7 @@ router.get('/all', async (req, res, next) => {
      }
      next();
 });
-router.post('/add', async (req, res, next) => {
+router.post('/new', async (req, res, next) => {
    try {
       const form = req.body;
       //console.log(req.body.Location, req.body.Budget, req.body.Details, req.body.Name, req.body.PhoneNum, req.body.EventDate, req.body.GuestCount,req.body.Occasion);
