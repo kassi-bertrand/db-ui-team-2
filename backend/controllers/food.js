@@ -49,8 +49,12 @@ const updateFoodAddress = async(street, city, state_initial, zip_code, food_user
     const result = await Food.updateFoodAddress(street, city, state_initial, zip_code, food_user);
     return result;
 }
-const createFood = async(food_user, restaurant_name, food_type, street, city, state_initial, zip_code, guest_capacity, avg_price, available) =>{
-    const result = await Food.createFood(food_user, restaurant_name, food_type, street, city, state_initial, zip_code, guest_capacity, avg_price, available);
+const updateDateBooked = async(Booked, food_user) => {
+    const result = await Food.updateDateBooked(Booked, food_user);
+    return result;
+}
+const createFood = async(food_user, restaurant_name, food_type, street, city, state_initial, zip_code, guest_capacity, avg_price, available,start_date, end_date) =>{
+    const result = await Food.createFood(food_user, restaurant_name, food_type, street, city, state_initial, zip_code, guest_capacity, avg_price, available,start_date, end_date);
     return result;
 }
 const deleteFood = async(food_user) => {
@@ -72,5 +76,6 @@ module.exports = {
     updateFoodAvailability,
     updateFoodAddress,
     createFood,
+    updateDateBooked,
     deleteFood
 };

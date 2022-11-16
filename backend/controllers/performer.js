@@ -28,16 +28,21 @@ const updatePerformerAvailability = async(available, p_user) => {
     const result = await Performer.updatePerformerAvailability(available, p_user);
     return result;
 }
-const createPerformer = async(p_user, performer_name, details, num_performers, available) => {
-    const result = await Performer.createPerformer(p_user, performer_name, details, num_performers, available);
+const createPerformer = async(p_user, performer_name, details, num_performers, available,start_date,end_date) => {
+    const result = await Performer.createPerformer(p_user, performer_name, details, num_performers, available,start_date,end_date);
     return result;
 }
 const deletePerformer = async(p_user) =>{
     const result = await Performer.deletePerformer(p_user);
     return result;
 }
+const updateDateBooked = async(Booked, food_user) => {
+    const result = await Performer.updateDateBooked(Booked, p_user);
+    return result;
+}
 
 module.exports = {
+    updateDateBooked,
     fetchAllPerformers,
     fetchPerformersByName,
     fetchPerformersByAvailable,

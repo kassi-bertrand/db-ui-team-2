@@ -70,8 +70,13 @@ const FOOD_TABLE = 'food_details';
         const results = await query;
         return results;
     }
-    const createFood= async(food_user, restaurant_name, food_type, street, city, state_initial, zip_code, guest_capacity, avg_price, available) =>{
-        const query = knex(FOOD_TABLE).insert({food_user, restaurant_name, food_type, street, city, state_initial, zip_code, guest_capacity, avg_price, available});
+    const updateDateBooked = async(Booked, food_user) => {
+        const query = knex(FOOD_TABLE).where({food_user}).update({ Booked: knex.raw('CONCAT(Booked, ?)',[','+Booked]) });
+        const results = await query;
+        return results;
+    }
+    const createFood= async(food_user, restaurant_name, food_type, street, city, state_initial, zip_code, guest_capacity, avg_price, available, start_date, end_date) =>{
+        const query = knex(FOOD_TABLE).insert({food_user, restaurant_name, food_type, street, city, state_initial, zip_code, guest_capacity, avg_price, available,start_date, end_date});
         const results = await query;
         return results;
     }
@@ -95,6 +100,7 @@ const FOOD_TABLE = 'food_details';
     updateFoodAvailability,
     updateFoodAddress,
     createFood,
-    deleteFood
+    deleteFood,
+    updateDateBooked
 };
  //module.exports = Food;

@@ -39,10 +39,16 @@ router.get('/', async (req, res, next) => {
    }
 });
 router.post('/', async (req, res, next) => {
-    const createFood = await Food.createFood(req.body.food_user, req.body.restaurant_name, req.body.food_type, req.body.street, req.body.city, req.body.state_initial, req.body.zip_code, req.body.guest_capacity, req.body.avg_price, req.body.available);
+    const createFood = await Food.createFood(req.body.food_user, req.body.restaurant_name, req.body.food_type, req.body.street, req.body.city, req.body.state_initial, req.body.zip_code, req.body.guest_capacity, req.body.avg_price, req.body.available,
+        req.body.start_date, req.body.end_date);
     res.status(201).json(createFood);
     next();
  });
+ router.put('/booked', async (req, res, next) => {
+    const updateDateBooked = await Food.updateDateBooked(req.body.Booked, req.body.food_user);
+    res.json(updateDateBooked);
+    next();
+  });
  router.put('/', async (req, res, next) => {
     if (req.body.restaurant_name) {
         const updateRestaurantName = await Food.updateRestaurantName(req.body.restaurant_name, req.body.food_user);

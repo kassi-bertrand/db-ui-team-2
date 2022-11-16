@@ -27,10 +27,16 @@ router.get('/', async (req, res, next) => {
    }
 });
 router.post('/', async (req, res, next) => {
-    const createPerformer = await Performer.createPerformer(req.body.p_user, req.body.performer_name, req.body.details, req.body.num_performers, req.body.available);
+    const createPerformer = await Performer.createPerformer(req.body.p_user, req.body.performer_name, req.body.details, req.body.num_performers, req.body.available, req.body.start_date
+        ,req.body.end_date);
     res.status(201).json(createPerformer);
     next();
  });
+ router.put('/booked', async (req, res, next) => {
+    const updateDateBooked = await Performer.updateDateBooked(req.body.Booked, req.body.p_user);
+    res.json(updateDateBooked);
+    next();
+  });
  router.put('/', async (req, res, next) => {
     if (req.body.performer_name) {
         const updatePerformerName = await Performer.updatePerformerName(req.body.performer_name, req.body.p_user);

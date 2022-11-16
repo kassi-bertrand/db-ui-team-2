@@ -95,6 +95,43 @@ router.get('/foodfilter', async (req, res, next) => {
    }
    next();
 });
+router.get('/performerfilter', async (req, res, next) => {
+   try {
+      const form = req.body;
+      const fetchDate = await Form.fetchDateByPhoneNum(form.PhoneNum);
+      var hostDate = JSON.stringify(fetchDate);
+      hostDate = hostDate.replace('[{"EventDate":"', "");
+      hostDate = hostDate.replace('"}]', "");
+      hostDate = hostDate.replace('T00:00:00.000Z', "");
+      console.log(hostDate);
+      const fetchLocation = await Form.fetchLocationByPhoneNum(form.PhoneNum);
+      var hostLocation = JSON.stringify(fetchLocation);
+      hostLocation = hostLocation.replace('[{"Location":"', "");
+      hostLocation = hostLocation.replace('"}]', "");
+      console.log(hostLocation);
+      const fetchGuestCount = await Form.fetchGuestCountByPhoneNum(form.PhoneNum);
+      var hostGuestCount = JSON.stringify(fetchGuestCount);
+      hostGuestCount = hostGuestCount.replace('[{"GuestCount":', "");
+      hostGuestCount = hostGuestCount.replace('}]', "");
+      console.log(hostGuestCount);
+      const fetchBudget = await Form.fetchBudgetByPhoneNum(form.PhoneNum);
+      var hostBudget = JSON.stringify(fetchBudget);
+      hostBudget = hostBudget.replace('[{"Budget":', "");
+      hostBudget = hostBudget.replace('}]', "");
+      console.log(hostBudget);
+      const dates = knex('performer_details').where('start_date', '<=', hostDate).andWhere('end_date', '>=', hostDate).andWhereRaw('LOCATE(?, Booked) = 0',
+      [hostDate])/*.andWhereRaw('LOCATE(?, city) > 0', [hostLocation]).andWhere('guest_capacity', '>=', hostGuestCount).andWhere('avg_price', '<=', hostBudget);*/
+      const results = await dates;
+      res.status(201).json(results);
+      next();
+   }
+   catch (err) {
+      //console.error('Failed to load current user:', err);
+      res.status(500).json({ message: err.toString()});
+   }
+   next();
+});
+
 router.get('/all', async (req, res, next) => {
 
        try {
