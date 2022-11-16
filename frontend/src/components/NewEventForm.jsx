@@ -10,13 +10,12 @@
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from '@headlessui/react'
 
-function NewEventForm(){
-    const [open, setOpen] = useState(false);
+function NewEventForm({isOpen, setIsOpen}){
     const cancelButtonRef = useRef(null);
 
     return(
-        <Transition.Root show={open} as={Fragment}>
-            <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={setOpen}>
+        <Transition.Root show={isOpen} as={Fragment}>
+            <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={() => setIsOpen(false)}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"
@@ -29,7 +28,7 @@ function NewEventForm(){
                     <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
                 </Transition.Child>
 
-                <div className="fixed inset-0 z-10 overflow-y-auto">
+                <div className="fixed inset-0 z-10 overflow-y-auto font-inter">
                     <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
                         <Transition.Child
                             as={Fragment}
@@ -40,7 +39,295 @@ function NewEventForm(){
                             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                         >
-                            {/**Dialog.Panel here */}
+                            <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-2xl">
+                                <div className="mx-auto px-4 sm:px-6">
+                                    
+                                    <div className="pt-10 pb-0 md:pt-10">
+                                        {/**Modal Header */}
+                                        <div>
+                                            <h1 className="max-w-3xl px-8 -mx-3 pb-0 text-left font-bold md:pb-0 text-lg">
+                                                New Event 📅 📝
+                                            </h1>
+                                            <p className="max-w-3xl px-8 -mx-3 text-left text-neutral-600 pb-8 md:pb-8">
+                                                Fill out this form to give your attendees more information
+                                                about your event.
+                                            </p>
+                                        </div>
+
+                                        {/**The Event Form */}
+                                        <div className="max-w-lg mx-auto">
+                                            <form>
+                                                <div className="flex flex-wrap -mx-3 mb-4 font-inter">
+                                                    <div className="w-full px-8">
+                                                        <label
+                                                            className="block text-gray-800 text-sm font-semibold mb-1"
+                                                            htmlFor="name"
+                                                        >
+                                                            Your Name
+                                                        </label>
+                                                        <input
+                                                            id="name"
+                                                            type="text"
+                                                            className="form-input w-full text-gray-800 shadow-md text-sm"
+                                                            placeholder="Enter your name/company"
+                                                            required
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex flex-wrap -mx-3 mb-4">
+                                                    <div className="w-full px-8">
+                                                        <div className="flex justify-between">
+                                                            <label
+                                                            className="block text-gray-800 text-sm font-semibold mb-1 font-inter"
+                                                            htmlFor="phone-number"
+                                                            >
+                                                                Phone number
+                                                            </label>
+                                                        </div>
+                                                        <input
+                                                            id="phone-number"
+                                                            type="text"
+                                                            className="w-full text-gray-800 form-input shadow-md text-sm"
+                                                            placeholder="Enter your phone number"
+                                                            required
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex flex-wrap -mx-3 mb-4 mt-5">
+                                                    <div className="w-full px-8">
+                                                        <div className="flex justify-between">
+                                                            <label
+                                                            className="block text-gray-800 text-sm font-semibold mb-1 font-inter"
+                                                            htmlFor="street-address"
+                                                            >
+                                                                Street address
+                                                            </label>
+                                                        </div>
+                                                        <input
+                                                            id="street-address-1"
+                                                            type="text"
+                                                            className="w-full text-gray-800 form-input shadow-md text-sm"
+                                                            placeholder="Enter the street address of the event"
+                                                            required
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                                <div className="grid grid-cols-2">
+                                                    <div className="flex flex-wrap -mx-3 mb-4">
+                                                        <div className="w-full px-8">
+                                                            <div className="flex justify-between">
+                                                                <label
+                                                                    className="block text-gray-800 text-sm font-semibold mb-1 font-inter"
+                                                                    htmlFor="city"
+                                                                >
+                                                                    City
+                                                                </label>
+                                                            </div>
+                                                            <input
+                                                                id="city"
+                                                                type="text"
+                                                                className="w-full text-gray-800 form-input shadow-md text-sm"
+                                                                placeholder="Enter the name of the city"
+                                                                required
+                                                            />
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="flex flex-wrap -mx-3 mb-4">
+                                                        <div className="w-full px-8">
+                                                            <div className="flex justify-between">
+                                                                <label
+                                                                    className="block text-gray-800 text-sm font-semibold mb-1 font-inter"
+                                                                    htmlFor="state"
+                                                                >
+                                                                    State
+                                                                </label>
+                                                            </div>
+                                                            <select id="state" className="w-full text-gray-800 form-input shadow-md text-sm" required defaultValue={""}>
+                                                                <option value="" disabled>
+                                                                    Your State?
+                                                                </option>
+                                                                <option value="AL">Alabama</option>
+                                                                <option value="AK">Alaska</option>
+                                                                <option value="AZ">Arizona</option>
+                                                                <option value="AR">Arkansas</option>
+                                                                <option value="CA">California</option>
+                                                                <option value="CO">Colorado</option>
+                                                                <option value="CT">Connecticut</option>
+                                                                <option value="DE">Delaware</option>
+                                                                <option value="DC">District Of Columbia</option>
+                                                                <option value="FL">Florida</option>
+                                                                <option value="GA">Georgia</option>
+                                                                <option value="HI">Hawaii</option>
+                                                                <option value="ID">Idaho</option>
+                                                                <option value="IL">Illinois</option>
+                                                                <option value="IN">Indiana</option>
+                                                                <option value="IA">Iowa</option>
+                                                                <option value="KS">Kansas</option>
+                                                                <option value="KY">Kentucky</option>
+                                                                <option value="LA">Louisiana</option>
+                                                                <option value="ME">Maine</option>
+                                                                <option value="MD">Maryland</option>
+                                                                <option value="MA">Massachusetts</option>
+                                                                <option value="MI">Michigan</option>
+                                                                <option value="MN">Minnesota</option>
+                                                                <option value="MS">Mississippi</option>
+                                                                <option value="MO">Missouri</option>
+                                                                <option value="MT">Montana</option>
+                                                                <option value="NE">Nebraska</option>
+                                                                <option value="NV">Nevada</option>
+                                                                <option value="NH">New Hampshire</option>
+                                                                <option value="NJ">New Jersey</option>
+                                                                <option value="NM">New Mexico</option>
+                                                                <option value="NY">New York</option>
+                                                                <option value="NC">North Carolina</option>
+                                                                <option value="ND">North Dakota</option>
+                                                                <option value="OH">Ohio</option>
+                                                                <option value="OK">Oklahoma</option>
+                                                                <option value="OR">Oregon</option>
+                                                                <option value="PA">Pennsylvania</option>
+                                                                <option value="RI">Rhode Island</option>
+                                                                <option value="SC">South Carolina</option>
+                                                                <option value="SD">South Dakota</option>
+                                                                <option value="TN">Tennessee</option>
+                                                                <option value="TX">Texas</option>
+                                                                <option value="UT">Utah</option>
+                                                                <option value="VT">Vermont</option>
+                                                                <option value="VA">Virginia</option>
+                                                                <option value="WA">Washington</option>
+                                                                <option value="WV">West Virginia</option>
+                                                                <option value="WI">Wisconsin</option>
+                                                                <option value="WY">Wyoming</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="flex flex-wrap -mx-3 mb-4">
+                                                        <div className="w-full px-8">
+                                                            <div className="flex justify-between">
+                                                                <label
+                                                                    className="block text-gray-800 text-sm font-semibold mb-1 font-inter"
+                                                                    htmlFor="zip-code"
+                                                                >
+                                                                    ZIP Code
+                                                                </label>
+                                                            </div>
+                                                            <input
+                                                                id="zip-code"
+                                                                type="text"
+                                                                className="w-full text-gray-800 form-input shadow-md text-sm"
+                                                                placeholder="Enter the ZIP Code"
+                                                                required
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex flex-wrap -mx-3 mb-4 mt-5">
+                                                    <div className="w-full px-8">
+                                                        <div className="flex justify-between">
+                                                            <label
+                                                                className="block text-gray-800 text-sm font-semibold mb-1 font-inter"
+                                                                htmlFor="date"
+                                                            >
+                                                                Date of the event
+                                                            </label>
+                                                        </div>
+                                                        <input
+                                                            id="date"
+                                                            type="date"
+                                                            className="w-full text-gray-800 form-input shadow-md text-sm"
+                                                            required
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex flex-wrap -mx-3 mb-4">
+                                                    <div className="w-full px-8">
+                                                        <div className="flex justify-between">
+                                                            <label
+                                                                className="block text-gray-800 text-sm font-semibold mb-1 font-inter"
+                                                                htmlFor="budget"
+                                                            >
+                                                                Event budget
+                                                            </label>
+                                                        </div>
+                                                        <input
+                                                            id="budget"
+                                                            type="text"
+                                                            className="w-full text-gray-800 form-input shadow-md text-sm"
+                                                            placeholder="Enter an integer ammount in US Dollars (optional)"
+                                                            required
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex flex-wrap -mx-3 mb-4">
+                                                    <div className="w-full px-8">
+                                                        <div className="flex justify-between">
+                                                            <label
+                                                                className="block text-gray-800 text-sm font-semibold mb-1 font-inter"
+                                                                htmlFor="guest-count"
+                                                            >
+                                                                Estimated guest count
+                                                            </label>
+                                                        </div>
+                                                        <input
+                                                            id="guest-count"
+                                                            type="number"
+                                                            className="w-full text-gray-800 form-input shadow-md text-sm"
+                                                            placeholder="Enter an estimated guest count"
+                                                            min="0"
+                                                            required
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                                <div className="flex flex-wrap -mx-3 mb-4">
+                                                    <div className="w-full px-8">
+                                                        <div className="flex justify-between">
+                                                            <label
+                                                                className="block text-gray-800 text-sm font-semibold mb-1 font-inter"
+                                                                htmlFor="occasion"
+                                                            >
+                                                                Occasion
+                                                            </label>
+                                                        </div>
+                                                        <select
+                                                            id="occasion"
+                                                            className="w-full text-gray-800 form-input shadow-md text-sm"
+                                                            required
+                                                            defaultValue={""}
+                                                        >
+                                                            <option value="" disabled>The occasion? </option>
+                                                            <option value="Birthday">Birthday</option>
+                                                            <option value="Aniversary">Aniversary</option>
+                                                            <option value="Concert">Concert</option>
+                                                            <option value="Fundraising">Fundraising</option>
+                                                            <option value="Other">Other</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                {/**Submit and Cancel button */}
+                                                <div className="flex flex-wrap -mx-3 mt-12 mb-8">
+                                                    <div className="w-full px-8">
+                                                        <button
+                                                            className="btn text-white bg-blue-600 hover:bg-blue-700 font-semibold rounded-lg"
+                                                            onClick={() => {}}
+                                                        >
+                                                            Submit
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Dialog.Panel>
                         </Transition.Child>
                     </div>
                 </div>
