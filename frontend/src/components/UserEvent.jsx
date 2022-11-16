@@ -8,14 +8,17 @@
  *                  "My Events" tab
  */
 
+import { useState } from "react";
 import EventCard from "./EventCard";
+import NewEventForm from "./NewEventForm";
 import PlusButton from "./PlusButton";
 
 function UserEvent({events}){
+    const [isOpen, setIsOpen] = useState(false);
     return(
         <>
             {/**First, Render Plus button */}
-            <PlusButton title="New Event"/>
+            <PlusButton title="New Event" setIsOpen={setIsOpen}/>
             {/**Then, Render all events */}
             {
                 events.map((anEvent, index) =>{
@@ -34,6 +37,7 @@ function UserEvent({events}){
                     );
                 })
             }
+            <NewEventForm isOpen={isOpen} setIsOpen={setIsOpen}/>
         </>
     );
 }
