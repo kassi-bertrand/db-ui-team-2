@@ -152,7 +152,7 @@ router.post('/new', async (req, res, next) => {
       //const form = req.body;
       const fetchInfo = await Form.fetchInfoByPhoneNum(createForm);
       //console.log(fetchInfo)
-      res.status(201).json(fetchInfo);
+      res.status(201).json(fetchInfo[0]);
       next();
 } catch (err) {
    console.error('Failed to create new form:', err);
