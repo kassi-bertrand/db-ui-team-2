@@ -7,7 +7,7 @@
 
 function HomePageTabs({setActiveTab}){
     return(
-        <section className="overflow-x-scroll font-inter">
+        <section className="font-inter">
             <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
                 
                 {/**Section content */}
