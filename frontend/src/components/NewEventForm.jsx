@@ -14,8 +14,6 @@ function NewEventForm({user, isOpen, setIsOpen}){
     const cancelButtonRef = useRef(null);
 
     //User inputs are stored in those Refs
-    const nameInput = useRef(user.name);
-    const phoneInput = useRef(user.phone_num);
     const streetInput = useRef(null);
     const cityInput = useRef(null);
     const stateInput = useRef(null);
@@ -81,7 +79,7 @@ function NewEventForm({user, isOpen, setIsOpen}){
                                                         <input
                                                             id="name"
                                                             type="text"
-                                                            ref={nameInput}
+                                                            value={user.name}
                                                             className="form-input w-full text-gray-800 shadow-md text-sm"
                                                             placeholder="Enter your name/company"
                                                             required
@@ -102,7 +100,7 @@ function NewEventForm({user, isOpen, setIsOpen}){
                                                         <input
                                                             id="phone-number"
                                                             type="text"
-                                                            ref={phoneInput}
+                                                            value={user.phone_num}
                                                             className="w-full text-gray-800 form-input shadow-md text-sm"
                                                             placeholder="Enter your phone number"
                                                             required
