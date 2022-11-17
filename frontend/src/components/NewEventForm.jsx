@@ -8,7 +8,8 @@
  */
 
 import { Fragment, useRef, useState } from "react";
-import { Dialog, Transition } from '@headlessui/react'
+import { Dialog, Transition } from '@headlessui/react';
+import { addEvent } from '../api/eventsApi';
 
 function NewEventForm({user, isOpen, setIsOpen}){
     const cancelButtonRef = useRef(null);
@@ -19,8 +20,8 @@ function NewEventForm({user, isOpen, setIsOpen}){
     const stateInput = useRef(null);
     const zipCodeInput = useRef(null);
     const dateInput = useRef(null);
-    const budgetInput = useRef(0);
-    const guestCountInput = useRef(0);
+    const budgetInput = useRef(null);
+    const guestCountInput = useRef(null);
     const occasionInput = useRef(null);
     const detailInput = useRef(null);
 
@@ -28,15 +29,16 @@ function NewEventForm({user, isOpen, setIsOpen}){
         e.preventDefault();
 
         const newEventJSON = {
-            "userID": user.id,
+            "user_id": user.id,
             "name": user.name,
-            "phoneNum": user.phone_num,
+            "phone_num": user.phone_num,
             "street": streetInput.current.value,
             "city": cityInput.current.value,
             "state": stateInput.current.value,
-            "eventDate": dateInput.current.value,
-            "budget": budgetInput.current.value,
-            "guestCount": guestCountInput.current.value,
+            "zip_code": Number(zipCodeInput.current.value),
+            "event_date": dateInput.current.value,
+            "budget": Number(budgetInput.current.value),
+            "guest_count": Number(guestCountInput.current.value),
             "occasion": occasionInput.current.value,
             "details": detailInput.current.value,
         }
@@ -46,6 +48,9 @@ function NewEventForm({user, isOpen, setIsOpen}){
 
         //  send newEventJSON to the backend
         //      then - update the user event list
+        addEvent(newEventJSON)
+            .then(response => console.log(response));
+        
     }
 
     return(
