@@ -82,6 +82,7 @@ function NewEventForm({user, isOpen, setIsOpen}){
                                                             value={user.name}
                                                             className="form-input w-full text-gray-800 shadow-md text-sm"
                                                             placeholder="Enter your name/company"
+                                                            disabled
                                                             required
                                                         />
                                                     </div>
@@ -103,6 +104,7 @@ function NewEventForm({user, isOpen, setIsOpen}){
                                                             value={user.phone_num}
                                                             className="w-full text-gray-800 form-input shadow-md text-sm"
                                                             placeholder="Enter your phone number"
+                                                            disabled
                                                             required
                                                         />
                                                     </div>
