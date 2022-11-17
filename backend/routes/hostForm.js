@@ -12,8 +12,9 @@ router.get('/find', async (req, res, next) => {
    try {
       const form = req.body;
       const fetchInfo = await Form.fetchInfoByPhoneNum(form.form_num);
-      console.log(fetchInfo)
-      res.status(201).json(fetchInfo);
+      
+      console.log(fetchInfo[0]);
+      res.status(201).json(fetchInfo[0]);
       next();
    }
    catch (err) {
