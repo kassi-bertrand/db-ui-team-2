@@ -24,6 +24,27 @@ function NewEventForm({user, isOpen, setIsOpen}){
     const occasionInput = useRef(null);
     const detailInput = useRef(null);
 
+    function handleSubmit(e){
+        e.preventDefault();
+
+        const newEventJSON = {
+            "userID": user.id,
+            "name": user.name,
+            "phoneNum": user.phone_num,
+            "street": streetInput.current.value,
+            "city": cityInput.current.value,
+            "state": stateInput.current.value,
+            "eventDate": dateInput.current.value,
+            "budget": budgetInput.current.value,
+            "guestCount": guestCountInput.current.value,
+            "occasion": occasionInput.current.value,
+            "details": detailInput.current.value,
+        }
+
+        //close modal
+        setIsOpen(false);
+    }
+
     return(
         <Transition.Root show={isOpen} as={Fragment}>
             <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={() => setIsOpen(false)}>
@@ -326,7 +347,7 @@ function NewEventForm({user, isOpen, setIsOpen}){
                                                         >
                                                             <option value="" disabled>The occasion? </option>
                                                             <option value="Birthday">Birthday</option>
-                                                            <option value="Aniversary">Aniversary</option>
+                                                            <option value="Aniversary">Anniversary</option>
                                                             <option value="Concert">Concert</option>
                                                             <option value="Fundraising">Fundraising</option>
                                                             <option value="Other">Other</option>
@@ -354,7 +375,7 @@ function NewEventForm({user, isOpen, setIsOpen}){
                                                     <div className="w-full px-8">
                                                         <button
                                                             className="btn text-white bg-blue-600 hover:bg-blue-700 font-semibold rounded-lg"
-                                                            onClick={() => {}}
+                                                            onClick={handleSubmit}
                                                         >
                                                             Submit
                                                         </button>
