@@ -10,8 +10,21 @@
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from '@headlessui/react'
 
-function NewEventForm({isOpen, setIsOpen}){
+function NewEventForm({user, isOpen, setIsOpen}){
     const cancelButtonRef = useRef(null);
+
+    //User inputs are stored in those Refs
+    const nameInput = useRef(user.name);
+    const phoneInput = useRef(user.phone_num);
+    const streetInput = useRef(null);
+    const cityInput = useRef(null);
+    const stateInput = useRef(null);
+    const zipCodeInput = useRef(null);
+    const dateInput = useRef(null);
+    const budgetInput = useRef(0);
+    const guestCountInput = useRef(0);
+    const occasionInput = useRef(null);
+    const detailInput = useRef(null);
 
     return(
         <Transition.Root show={isOpen} as={Fragment}>
@@ -68,6 +81,7 @@ function NewEventForm({isOpen, setIsOpen}){
                                                         <input
                                                             id="name"
                                                             type="text"
+                                                            ref={nameInput}
                                                             className="form-input w-full text-gray-800 shadow-md text-sm"
                                                             placeholder="Enter your name/company"
                                                             required
@@ -88,6 +102,7 @@ function NewEventForm({isOpen, setIsOpen}){
                                                         <input
                                                             id="phone-number"
                                                             type="text"
+                                                            ref={phoneInput}
                                                             className="w-full text-gray-800 form-input shadow-md text-sm"
                                                             placeholder="Enter your phone number"
                                                             required
@@ -108,6 +123,7 @@ function NewEventForm({isOpen, setIsOpen}){
                                                         <input
                                                             id="street-address-1"
                                                             type="text"
+                                                            ref={streetInput}
                                                             className="w-full text-gray-800 form-input shadow-md text-sm"
                                                             placeholder="Enter the street address of the event"
                                                             required
@@ -129,6 +145,7 @@ function NewEventForm({isOpen, setIsOpen}){
                                                             <input
                                                                 id="city"
                                                                 type="text"
+                                                                ref={cityInput}
                                                                 className="w-full text-gray-800 form-input shadow-md text-sm"
                                                                 placeholder="Enter the name of the city"
                                                                 required
@@ -146,7 +163,7 @@ function NewEventForm({isOpen, setIsOpen}){
                                                                     State
                                                                 </label>
                                                             </div>
-                                                            <select id="state" className="w-full text-gray-800 form-input shadow-md text-sm" required defaultValue={""}>
+                                                            <select id="state" ref={stateInput} className="w-full text-gray-800 form-input shadow-md text-sm" required defaultValue={""}>
                                                                 <option value="" disabled>
                                                                     Your State?
                                                                 </option>
@@ -218,6 +235,7 @@ function NewEventForm({isOpen, setIsOpen}){
                                                             <input
                                                                 id="zip-code"
                                                                 type="text"
+                                                                ref={zipCodeInput}
                                                                 className="w-full text-gray-800 form-input shadow-md text-sm"
                                                                 placeholder="Enter the ZIP Code"
                                                                 required
@@ -239,6 +257,7 @@ function NewEventForm({isOpen, setIsOpen}){
                                                         <input
                                                             id="date"
                                                             type="date"
+                                                            ref={dateInput}
                                                             className="w-full text-gray-800 form-input shadow-md text-sm"
                                                             required
                                                         />
@@ -258,6 +277,7 @@ function NewEventForm({isOpen, setIsOpen}){
                                                         <input
                                                             id="budget"
                                                             type="text"
+                                                            ref={budgetInput}
                                                             className="w-full text-gray-800 form-input shadow-md text-sm"
                                                             placeholder="Enter an integer ammount in US Dollars (optional)"
                                                             required
@@ -278,6 +298,7 @@ function NewEventForm({isOpen, setIsOpen}){
                                                         <input
                                                             id="guest-count"
                                                             type="number"
+                                                            ref={guestCountInput}
                                                             className="w-full text-gray-800 form-input shadow-md text-sm"
                                                             placeholder="Enter an estimated guest count"
                                                             min="0"
@@ -298,6 +319,7 @@ function NewEventForm({isOpen, setIsOpen}){
                                                         </div>
                                                         <select
                                                             id="occasion"
+                                                            ref={occasionInput}
                                                             className="w-full text-gray-800 form-input shadow-md text-sm"
                                                             required
                                                             defaultValue={""}
@@ -322,7 +344,7 @@ function NewEventForm({isOpen, setIsOpen}){
                                                                 Any Details? (optional)
                                                             </label>
                                                         </div>
-                                                            <textarea id="details" name="details" rows="5" cols="50" className="w-full text-gray-800 form-input shadow-md text-sm" placeholder="Write here! ✍️✨">
+                                                            <textarea id="details" name="details" rows="5" cols="50" ref={detailInput} className="w-full text-gray-800 form-input shadow-md text-sm" placeholder="Write here! ✍️✨">
                                                             </textarea>
                                                     </div>
                                                 </div>
