@@ -43,6 +43,9 @@ function NewEventForm({user, isOpen, setIsOpen}){
 
         //close modal
         setIsOpen(false);
+
+        //  send newEventJSON to the backend
+        //      then - update the user event list
     }
 
     return(
