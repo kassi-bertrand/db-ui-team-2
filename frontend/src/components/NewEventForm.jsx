@@ -312,6 +312,21 @@ function NewEventForm({isOpen, setIsOpen}){
                                                     </div>
                                                 </div>
 
+                                                <div className="flex flex-wrap -mx-3 mb-4">
+                                                    <div className="w-full px-8">
+                                                        <div className="flex justify-between">
+                                                            <label
+                                                                className="block text-gray-800 text-sm font-semibold mb-1 font-inter"
+                                                                htmlFor="details"
+                                                            >
+                                                                Any Details? (optional)
+                                                            </label>
+                                                        </div>
+                                                            <textarea id="details" name="details" rows="5" cols="50" className="w-full text-gray-800 form-input shadow-md text-sm" placeholder="Write here! ✍️✨">
+                                                            </textarea>
+                                                    </div>
+                                                </div>
+
                                                 {/**Submit and Cancel button */}
                                                 <div className="flex flex-wrap -mx-3 mt-12 mb-8">
                                                     <div className="w-full px-8">
