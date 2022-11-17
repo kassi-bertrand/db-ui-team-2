@@ -23,7 +23,7 @@ import { apiConfig, apiEndpoint } from './apiConfig';
  */
 export async function addEvent(newEventJSON){
     try{
-        const response = await axios.post(`${apiEndpoint}/form/new`, newEventJSON);
+        const response = await axios.post(`${apiEndpoint}/events/new`, newEventJSON);
         return response.data;
     }
     catch(error){
