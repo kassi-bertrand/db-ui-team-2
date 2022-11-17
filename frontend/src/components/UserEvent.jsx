@@ -13,7 +13,7 @@ import EventCard from "./EventCard";
 import NewEventForm from "./NewEventForm";
 import PlusButton from "./PlusButton";
 
-function UserEvent({events}){
+function UserEvent({user, events}){
     const [isOpen, setIsOpen] = useState(false);
     return(
         <>
@@ -37,7 +37,7 @@ function UserEvent({events}){
                     );
                 })
             }
-            <NewEventForm isOpen={isOpen} setIsOpen={setIsOpen}/>
+            <NewEventForm user={user} isOpen={isOpen} setIsOpen={setIsOpen}/>
         </>
     );
 }
