@@ -146,7 +146,7 @@ router.post('/new', async (req, res, next) => {
    try {
       const form = req.body;
       //console.log(req.body.Location, req.body.Budget, req.body.Details, req.body.Name, req.body.PhoneNum, req.body.EventDate, req.body.GuestCount,req.body.Occasion);
-      const createForm = await Form.createForm(form.Location, form.Budget, form.Details, form.Name, form.PhoneNum, form.EventDate, form.GuestCount,form.Occasion, form.form_user);
+      const createForm = await Form.createForm(form.user_id, form.name, form.phone_num, form.street, form.city, form.state, form.zip_code, form.event_date, form.budget, form.guest_count,form.occasion, form.details);
       //res.status(201).json(createForm);
       //const form = req.body;
       const fetchInfo = await Form.fetchInfoByPhoneNum(createForm);

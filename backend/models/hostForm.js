@@ -55,9 +55,9 @@ const FORM_TABLE = 'Form';
        //console.log("results");
        return results;
    }
-const createForm = async (Location, Budget, Details, Name, PhoneNum, EventDate, GuestCount,Occasion, form_user) => {
+const createForm = async (user_id, name, phone_num, street, city, state, zip_code, event_date, budget, guest_count,occasion, details) => {
     //console.log(Location, Budget, Details, Name, PhoneNum, EventDate, GuestCount,Occasion);
-    const query = knex(FORM_TABLE).insert({Location, Budget, Details, Name, PhoneNum, EventDate, GuestCount,Occasion, form_user});
+    const query = knex(FORM_TABLE).insert({user_id, name, phone_num, street, city, state, zip_code, event_date, budget, guest_count,occasion, details});
     const results = await query;
     return results;
 }

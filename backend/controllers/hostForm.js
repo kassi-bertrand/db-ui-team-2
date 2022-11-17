@@ -34,9 +34,9 @@ const fetchBudgetByPhoneNum = async (form_num) => {
         const result = await Form.fetchBudgetByPhoneNum(form_num);
         return result;
 }
-const createForm = async (Location, Budget, Details, Name, PhoneNum, EventDate, GuestCount,Occasion, form_user) => {
+const createForm = async (user_id, name, phone_num, street, city, state, zip_code, event_date, budget, guest_count,occasion, details) => {
     //console.log(Location, Budget, Details, Name, PhoneNum, EventDate, GuestCount,Occasion);
-    const result = await Form.createForm(Location, Budget, Details, Name, PhoneNum, EventDate, GuestCount,Occasion, form_user);
+    const result = await Form.createForm(user_id, name, phone_num, street, city, state, zip_code, event_date, budget, guest_count,occasion, details);
     return result;
 }
 const deleteForm = async (form_num) => {
