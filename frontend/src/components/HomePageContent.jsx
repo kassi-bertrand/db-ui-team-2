@@ -20,13 +20,6 @@ function HomePageContent({user, activeTab}){
         {"organizer": "Safwan", "phoneNumber":"3333333333", "address1": "4360 Davis Street", "address2": "apt 221", "city": "Benton", "state": "GA", "zipCode": "74325", "guestCount": "15", "eventType": "birthday"}
     ];
 
-    //TODO: API call to get events created by the user here
-    const userEvents = [
-        {"organizer": "Kassi", "phoneNumber":"5555555555", "address1": "2987 Union Street", "address2": "apt 221", "city": "Seattle", "state": "WA", "zipCode": "98114", "guestCount": "5", "eventType": "birthday"},
-        {"organizer": "Kassi", "phoneNumber":"5555555555", "address1": "2987 Union Street", "address2": "apt 221", "city": "Seattle", "state": "WA", "zipCode": "98114", "guestCount": "12", "eventType": "birthday"},
-        {"organizer": "Kassi", "phoneNumber":"5555555555", "address1": "2987 Union Street", "address2": "apt 221", "city": "Seattle", "state": "WA", "zipCode": "98114", "guestCount": "19", "eventType": "birthday"}
-    ];
-
     //TODO: API call to get services created by the user here
     const userServices = [
 
@@ -34,7 +27,7 @@ function HomePageContent({user, activeTab}){
 
     const TABS = {
         'Feed': <UserFeed events={feedEvents}/>,
-        'Events': <UserEvent user={user} events={userEvents}/>,
+        'Events': <UserEvent user={user}/>,
         'Services': <div>Service by the users</div>
     };
 
