@@ -23,7 +23,7 @@ router.get('/form_num', async (req, res, next) => {
    }
    next();
 });
-router.get('/id', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
    try {
       const form = req.query;
       const fetchInfo = await Form.fetchInfoByUserId(form.user_id);
