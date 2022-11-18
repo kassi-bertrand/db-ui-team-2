@@ -13,7 +13,7 @@ import BadgeOpen from "./BadgeOpen";
 import BadgeClose from "./BadgeClose";
 import VerificationBadge from "./VerfificationBadge";
 
-function EventCard({organizer, phoneNumber, address1, address2, city, state, zipCode, date, guestCount, eventType}){
+function EventCard({user_id, name, phone_num, street, city, state, zip_code, event_date, budget, guest_count, occasion, details}){
     return(
         <a href="#" className="relative block overflow-hidden rounded-lg border border-gray-200 p-8 font-inter">
             <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 to-blue-500"></span>
@@ -32,8 +32,8 @@ function EventCard({organizer, phoneNumber, address1, address2, city, state, zip
 
             <div className="mt-4 sm:pr-8">
                 <p className="text-sm text-gray-500">
-                    You created a {eventType}. <br/>
-                    The expected guest count is: {guestCount}
+                    You created a {occasion}. <br/>
+                    The expected guest count is: {guest_count}
                 </p>
             </div>
 
