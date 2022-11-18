@@ -8,13 +8,22 @@
  *                  "My Events" tab
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getEventsById } from "../api/eventsApi";
 import EventCard from "./EventCard";
 import NewEventForm from "./NewEventForm";
 import PlusButton from "./PlusButton";
 
-function UserEvent({user, events}){
+function UserEvent({user, setUserEvents}){
     const [isOpen, setIsOpen] = useState(false);
+    const [events, setEvents] = useState([])
+
+    //Get events created by the user and store them
+    //POSSIBLE IMPROVEMENT: Every time, user tap on "My Events" an HTTP request
+    //is made. But do we have do to this?
+    useEffect(()=>{
+        getEventsById(user.id).then(response => setEvents(response));
+    }, [])
     return(
         <>
             {/**First, Render Plus button */}
@@ -24,20 +33,23 @@ function UserEvent({user, events}){
                 events.map((anEvent, index) =>{
                     return(
                         <EventCard 
-                            organizer={anEvent.organizer}
-                            phoneNumber={anEvent.phoneNumber}
-                            address1={anEvent.address1}
-                            address2={anEvent.address2}
+                            user_id={anEvent.user_id}
+                            name={anEvent.name}
+                            phone_num={anEvent.phone_num}
+                            street={anEvent.street}
                             city={anEvent.city}
                             state={anEvent.state}
-                            zipCode={anEvent.zipCode}
-                            guestCount={anEvent.guestCount}
-                            eventType={anEvent.eventType}
+                            zip_code={anEvent.zip_code}
+                            event_date={anEvent.event_date}
+                            budget={anEvent.event_date}
+                            guest_count={anEvent.guest_count}
+                            occasion={anEvent.occasion}
+                            details={anEvent.details}
                         />
                     );
                 })
             }
-            <NewEventForm user={user} isOpen={isOpen} setIsOpen={setIsOpen}/>
+            <NewEventForm user={user} events={events} isOpen={isOpen} setIsOpen={setIsOpen} setEvents={setEvents}/>
         </>
     );
 }
