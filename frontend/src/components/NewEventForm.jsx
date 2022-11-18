@@ -11,7 +11,7 @@ import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from '@headlessui/react';
 import { addEvent } from '../api/eventsApi';
 
-function NewEventForm({user, events, isOpen, setIsOpen, setUserEvents}){
+function NewEventForm({user, events, isOpen, setIsOpen, setEvents}){
     const cancelButtonRef = useRef(null);
 
     //User inputs are stored in those Refs
@@ -49,7 +49,7 @@ function NewEventForm({user, events, isOpen, setIsOpen, setUserEvents}){
         //  send newEventJSON to the backend
         //      then - update the user event list
         addEvent(newEventJSON)
-            .then(response => setUserEvents([...events, response]))        
+            .then(response => setEvents([...events, response]))        
     }
 
     return(
