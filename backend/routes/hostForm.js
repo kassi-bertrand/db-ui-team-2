@@ -25,7 +25,7 @@ router.get('/form_num', async (req, res, next) => {
 });
 router.get('/id', async (req, res, next) => {
    try {
-      const form = req.body;
+      const form = req.query;
       const fetchInfo = await Form.fetchInfoByUserId(form.user_id);
       
       console.log(fetchInfo);
