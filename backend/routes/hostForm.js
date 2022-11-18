@@ -10,7 +10,7 @@ router.use(bodyParser.json());
 
 router.get('/form_num', async (req, res, next) => {
    try {
-      const form = req.que;
+      const form = req.query;
       const fetchInfo = await Form.fetchInfoByPhoneNum(form.form_num);
       
       console.log(fetchInfo[0]);
