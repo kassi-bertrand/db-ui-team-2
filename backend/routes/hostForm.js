@@ -8,13 +8,28 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 router.use(bodyParser.json());
 
-router.get('/find', async (req, res, next) => {
+router.get('/form_num', async (req, res, next) => {
    try {
-      const form = req.body;
+      const form = req.que;
       const fetchInfo = await Form.fetchInfoByPhoneNum(form.form_num);
       
       console.log(fetchInfo[0]);
       res.status(201).json(fetchInfo[0]);
+      next();
+   }
+   catch (err) {
+      //console.error('Failed to load current user:', err);
+      res.status(500).json({ message: err.toString()});
+   }
+   next();
+});
+router.get('/id', async (req, res, next) => {
+   try {
+      const form = req.body;
+      const fetchInfo = await Form.fetchInfoByUserId(form.user_id);
+      
+      console.log(fetchInfo);
+      res.status(201).json(fetchInfo);
       next();
    }
    catch (err) {

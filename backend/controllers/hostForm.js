@@ -9,6 +9,10 @@ const fetchAllForms = async () => {
     const result = await Form.fetchAllForms();
     return result;
 }
+const fetchInfoByUserId = async (user_id) => {
+    const result = await Form.fetchInfoByUserId(user_id);
+    return result;
+}
 const fetchInfoByPhoneNum = async (form_num) => {
 //console.log("we reached here!")
     const result = await Form.fetchInfoByPhoneNum(form_num);
@@ -44,6 +48,7 @@ const deleteForm = async (form_num) => {
     return result;
 }
 module.exports = {
+    fetchInfoByUserId,
     fetchAllForms,
     fetchBudgetByPhoneNum,
     fetchLocationByPhoneNum,
