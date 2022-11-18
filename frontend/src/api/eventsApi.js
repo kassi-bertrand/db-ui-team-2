@@ -30,3 +30,20 @@ export async function addEvent(newEventJSON){
         alert(error);
     }
 }
+
+/**
+ * 
+ * @param UserId            -> ID a registered user 
+ * @returns                 -> JSON array
+ * @description             -> request the set of all events created
+ *                             by the registered user.
+ */
+export async function getEventsById(UserId){
+    try{
+        const response = await axios.get(`${apiEndpoint}/events?user_id=${UserId}`);
+        return response.data;
+    }
+    catch(error){
+        alert(error);
+    }
+}
