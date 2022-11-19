@@ -18,9 +18,7 @@ function UserEvent({user, setUserEvents}){
     const [isOpen, setIsOpen] = useState(false);
     const [events, setEvents] = useState([])
 
-    //Get events created by the user and store them
-    //POSSIBLE IMPROVEMENT: Every time, user tap on "My Events" an HTTP request
-    //is made. But do we have do to this?
+    //Get events created by the user and set "events" state
     useEffect(()=>{
         getEventsById(user.id).then(response => setEvents(response));
     }, [])
