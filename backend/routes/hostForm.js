@@ -23,11 +23,11 @@ router.get('/form_num', async (req, res, next) => {
    }
    next();
 });
-router.get('/', async (req, res, next) => {
+router.get('/:user_id', async (req, res, next) => {
    try {
-      const form = req.query;
+      const form = req.params;
       const fetchInfo = await Form.fetchInfoByUserId(form.user_id);
-      
+      console.log(form.user_id);
       console.log(fetchInfo);
       res.status(201).json(fetchInfo);
       next();
