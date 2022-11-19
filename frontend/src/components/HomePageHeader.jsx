@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 function HomePageHeader({user, setUser}){
     const [menuHidden, setMenuHidden] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
 
     function handleClick(){
@@ -20,6 +21,11 @@ function HomePageHeader({user, setUser}){
         setUser(null);
         localStorage.removeItem('userJSON');
         navigate("/login");
+    }
+
+    function handleProfile(){
+        //Set modal visible
+        setIsOpen(true);
     }
 
     if(!user){
