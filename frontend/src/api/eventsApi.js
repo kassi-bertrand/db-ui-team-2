@@ -40,7 +40,7 @@ export async function addEvent(newEventJSON){
  */
 export async function getEventsById(UserId){
     try{
-        const response = await axios.get(`${apiEndpoint}/events?user_id=${UserId}`);
+        const response = await axios.get(`${apiEndpoint}/events/${UserId}`);
         return response.data;
     }
     catch(error){
