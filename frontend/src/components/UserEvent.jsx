@@ -14,7 +14,7 @@ import EventCard from "./EventCard";
 import NewEventForm from "./NewEventForm";
 import PlusButton from "./PlusButton";
 
-function UserEvent({user, setUserEvents}){
+function UserEvent({user}){
     const [isOpen, setIsOpen] = useState(false);
     const [events, setEvents] = useState([])
 
