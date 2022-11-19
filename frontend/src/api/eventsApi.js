@@ -47,3 +47,23 @@ export async function getEventsById(UserId){
         alert(error);
     }
 }
+
+
+/**
+ * 
+ * @param UserId            -> ID of a registered user
+ * @returns                 -> JSON array
+ * @description             -> request the set of all events to be
+ *                             displayed in the user feed. In other words,
+ *                             we request events created  by everyone, but
+ *                             this user. 
+ */
+export async function getEventFeed(UserId){
+    try{
+        const response = await axios.get(`${apiEndpoint}/(ASK BACKEND)?user_id=${UserId}`)
+        return response.data;
+    }
+    catch(error){
+        alert(error);
+    }
+}
