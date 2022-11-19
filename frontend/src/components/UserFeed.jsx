@@ -8,9 +8,17 @@
  *                  Feed tab
  */
 
+import { useEffect, useState } from 'react';
 import FeedCard from './FeedCard';
 
 function UserFeed({events}){
+    const [feed, setFeed] = useState([])
+
+    //Get events to display in the user feed and set the "feed" state
+    useEffect(() => {
+        //TODO: Call "getEventFeed" API function HERE
+    },[])
+
     return(
         <>
             {
