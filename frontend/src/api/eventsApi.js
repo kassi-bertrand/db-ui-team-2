@@ -60,7 +60,7 @@ export async function getEventsById(UserId){
  */
 export async function getUserFeed(UserId){
     try{
-        const response = await axios.get(`${apiEndpoint}/feed/${UserId}`)
+        const response = await axios.get(`${apiEndpoint}/events/feed/${UserId}`)
         return response.data;
     }
     catch(error){
