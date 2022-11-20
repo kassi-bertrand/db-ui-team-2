@@ -2,7 +2,7 @@ const knex = require('../database/knex');
 
 const FORM_TABLE = 'Form';
 
-   const fetchAllForms = async (user_id) => {
+   const fetchInfoWoCurrUser = async (user_id) => {
     console.log("we reached here!")
        const query = knex(FORM_TABLE).whereNot({ user_id })
        //console.log("knex? here!")
@@ -77,7 +77,7 @@ const deleteForm = async (form_num) => {
 }
 module.exports = {
     fetchInfoByUserId,
-    fetchAllForms,
+    fetchInfoWoCurrUser,
     fetchGuestCountByPhoneNum,
     fetchLocationByPhoneNum,
     fetchBudgetByPhoneNum,

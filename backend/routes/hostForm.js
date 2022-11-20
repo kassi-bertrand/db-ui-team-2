@@ -150,7 +150,7 @@ router.get('/performerfilter', async (req, res, next) => {
 router.get('/feed/:user_id', async (req, res, next) => {
    try {
       const form = req.params;
-      const fetchInfo = await Form.fetchAllForms(form.user_id);
+      const fetchInfo = await Form.fetchInfoWoCurrUser(form.user_id);
       console.log(form.user_id);
       console.log(fetchInfo);
       res.status(201).json(fetchInfo);
@@ -158,7 +158,7 @@ router.get('/feed/:user_id', async (req, res, next) => {
    }
    catch (err) {
       //console.error('Failed to load current user:', err);
-      res.status(500).json({ message: err.toString()});
+      //res.status(500).json({ message: err.toString()});
    }
    next();
 });

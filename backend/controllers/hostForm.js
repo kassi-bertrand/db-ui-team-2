@@ -5,8 +5,8 @@ const Form = require('../models/hostForm');
     return result;
 }*/
 
-const fetchAllForms = async (user_id) => {
-    const result = await Form.fetchAllForms(user_id);
+const fetchInfoWoCurrUser = async (user_id) => {
+    const result = await Form.fetchInfoWoCurrUser(user_id);
     return result;
 }
 const fetchInfoByUserId = async (user_id) => {
@@ -49,7 +49,7 @@ const deleteForm = async (form_num) => {
 }
 module.exports = {
     fetchInfoByUserId,
-    fetchAllForms,
+    fetchInfoWoCurrUser,
     fetchBudgetByPhoneNum,
     fetchLocationByPhoneNum,
     fetchGuestCountByPhoneNum,
