@@ -9,20 +9,21 @@
  */
 
 import { useEffect, useState } from 'react';
+import { getUserFeed } from '../api/eventsApi';
 import FeedCard from './FeedCard';
 
-function UserFeed({events}){
+function UserFeed({user}){
     const [feed, setFeed] = useState([])
 
     //Get events to display in the user feed and set the "feed" state
     useEffect(() => {
-        //TODO: Call "getEventFeed" API function HERE
+        getUserFeed(user.id).then(response => setFeed(response))
     },[])
 
     return(
         <>
             {
-                events.map((anEvent, index) =>{
+                feed.map((anEvent, index) =>{
                     return(
                             <FeedCard 
                                 user_id={anEvent.user_id}
