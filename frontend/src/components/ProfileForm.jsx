@@ -22,7 +22,8 @@ function ProfileForm({isOpen, setIsOpen}){
     //Read userJSON from localstorage, in a JSON object
     let user = JSON.parse(localStorage.getItem('userJSON'));
 
-    function handleSubmit(){
+    function handleSubmit(e){
+        e.preventDefault();
         //form new userJSON
         const newUserJSON = {
             "user_id": user.user_id,
@@ -73,7 +74,7 @@ function ProfileForm({isOpen, setIsOpen}){
                                         {/**Modal Header */}
                                         <div>
                                             <h1 className="max-w-3xl px-8 -mx-3 pb-0 text-left font-bold md:pb-0 text-lg">
-                                                Your Profile 🔏
+                                                Update Your Profile 🔏
                                             </h1>
                                             <p className="max-w-3xl px-8 -mx-3 text-left text-neutral-600 pb-8 md:pb-8">
                                                 Below are the information you entered when registering, feel free to update them
@@ -90,12 +91,11 @@ function ProfileForm({isOpen, setIsOpen}){
                                                             className="block text-gray-800 text-sm font-semibold mb-1"
                                                             htmlFor="name"
                                                         >
-                                                            Your current name
+                                                            Curent name: {user.name}
                                                         </label>
                                                         <input
                                                             id="name"
                                                             type="text"
-                                                            value={user.name}
                                                             ref={nameInput}
                                                             className="form-input w-full text-gray-800 shadow-md text-sm"
                                                             placeholder="Enter a new name"
@@ -111,13 +111,12 @@ function ProfileForm({isOpen, setIsOpen}){
                                                             className="block text-gray-800 text-sm font-semibold mb-1 font-inter"
                                                             htmlFor="phone-number"
                                                             >
-                                                                Your current phone number
+                                                                Current phone number: {user.phone_num}
                                                             </label>
                                                         </div>
                                                         <input
                                                             id="phone-number"
                                                             type="text"
-                                                            value={user.phone_num}
                                                             ref={phoneInput}
                                                             className="w-full text-gray-800 form-input shadow-md text-sm"
                                                             placeholder="Enter your new phone number"
@@ -133,13 +132,12 @@ function ProfileForm({isOpen, setIsOpen}){
                                                                 className="block text-gray-800 text-sm font-semibold mb-1 font-inter"
                                                                 htmlFor="email"
                                                             >
-                                                                Your current email
+                                                                Current email: {user.email}
                                                             </label>
                                                         </div>
                                                         <input
                                                             id="email"
                                                             type="text"
-                                                            value={user.email}
                                                             ref={emailInput}
                                                             className="w-full text-gray-800 form-input shadow-md text-sm"
                                                             placeholder="Enter your new email"
