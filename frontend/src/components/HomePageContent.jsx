@@ -13,12 +13,6 @@ import UserEvent from "./UserEvent";
 import UserFeed from "./UserFeed";
 
 function HomePageContent({user, activeTab}){
-    //TODO: API call to get events on user feed happens here
-    const feedEvents = [
-        {"organizer": "Giovanni Boscan", "phoneNumber":"1111111111", "address1": "Test Rd", "address2": "apt 3421", "city": "Dallas", "state": "TX", "zipCode": "56322", "guestCount": "24", "eventType": "birthday"},
-        {"organizer": "Rudy Lucas", "phoneNumber":"2222222222", "address1": "304 Dancing Dove Lane", "address2": "apt 2452", "city": "New York", "state": "NY", "zipCode": "63256", "guestCount": "50", "eventType": "birthday"},
-        {"organizer": "Safwan", "phoneNumber":"3333333333", "address1": "4360 Davis Street", "address2": "apt 221", "city": "Benton", "state": "GA", "zipCode": "74325", "guestCount": "15", "eventType": "birthday"}
-    ];
 
     //TODO: API call to get services created by the user here
     const userServices = [
@@ -26,7 +20,7 @@ function HomePageContent({user, activeTab}){
     ];
 
     const TABS = {
-        'Feed': <UserFeed events={feedEvents}/>,
+        'Feed': <UserFeed user={user}/>,
         'Events': <UserEvent user={user}/>,
         'Services': <div>Service by the users</div>
     };
