@@ -58,9 +58,9 @@ export async function getEventsById(UserId){
  *                             we request events created  by everyone, but
  *                             this user. 
  */
-export async function getEventFeed(UserId){
+export async function getUserFeed(UserId){
     try{
-        const response = await axios.get(`${apiEndpoint}/(ASK BACKEND)?user_id=${UserId}`)
+        const response = await axios.get(`${apiEndpoint}/feed/${UserId}`)
         return response.data;
     }
     catch(error){
