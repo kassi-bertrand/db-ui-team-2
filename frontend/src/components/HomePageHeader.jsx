@@ -7,6 +7,7 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ProfileForm from "./ProfileForm";
 
 function HomePageHeader({user, setUser}){
     const [menuHidden, setMenuHidden] = useState(true);
@@ -113,6 +114,7 @@ function HomePageHeader({user, setUser}){
                     </p>
                 </div>
             </div>
+            <ProfileForm isOpen={isOpen} setIsOpen={setIsOpen}/>
         </header>
     );
 }
