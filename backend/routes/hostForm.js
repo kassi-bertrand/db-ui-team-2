@@ -147,16 +147,20 @@ router.get('/performerfilter', async (req, res, next) => {
    next();
 });
 
-router.get('/all', async (req, res, next) => {
-
-       try {
-         const result = await Form.fetchAllForms();
-         res.status(201).json(result);
-     } catch (err) {
-         //console.error('Failed to load current user:', err);
-         res.status(500).json({ message: err.toString()});
-     }
-     next();
+router.get('/feed/:user_id', async (req, res, next) => {
+   try {
+      const form = req.params;
+      const fetchInfo = await Form.fetchAllForms(form.user_id);
+      console.log(form.user_id);
+      console.log(fetchInfo);
+      res.status(201).json(fetchInfo);
+      next();
+   }
+   catch (err) {
+      //console.error('Failed to load current user:', err);
+      res.status(500).json({ message: err.toString()});
+   }
+   next();
 });
 router.post('/new', async (req, res, next) => {
    try {

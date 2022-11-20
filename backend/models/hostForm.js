@@ -2,11 +2,11 @@ const knex = require('../database/knex');
 
 const FORM_TABLE = 'Form';
 
-   const fetchAllForms = async () => {
-    //console.log("we reached here!")
-       const query = knex(FORM_TABLE);
+   const fetchAllForms = async (user_id) => {
+    console.log("we reached here!")
+       const query = knex(FORM_TABLE).whereNot({ user_id })
        //console.log("knex? here!")
-       console.log(query);
+       //console.log(query);
        const results = await query;
        return results;
    }

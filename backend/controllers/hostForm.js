@@ -5,8 +5,8 @@ const Form = require('../models/hostForm');
     return result;
 }*/
 
-const fetchAllForms = async () => {
-    const result = await Form.fetchAllForms();
+const fetchAllForms = async (user_id) => {
+    const result = await Form.fetchAllForms(user_id);
     return result;
 }
 const fetchInfoByUserId = async (user_id) => {
