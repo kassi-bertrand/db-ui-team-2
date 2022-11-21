@@ -11,6 +11,7 @@
 
 import UserEvent from "./UserEvent";
 import UserFeed from "./UserFeed";
+import UserServices from "./UserServices";
 
 function HomePageContent({user, activeTab}){
 
@@ -22,7 +23,7 @@ function HomePageContent({user, activeTab}){
     const TABS = {
         'Feed': <UserFeed user={user}/>,
         'Events': <UserEvent user={user}/>,
-        'Services': <div>Service by the users</div>
+        'Services': <UserServices user={user}/>
     };
 
     return(
