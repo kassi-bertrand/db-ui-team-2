@@ -17,11 +17,11 @@ function UserFeed({user}){
 
     //Get events to display in the user feed and set the "feed" state
     useEffect(() => {
-        const fetch = async() => {
+        const fetchData = async() => {
             getUserFeed(user.id).then(response => setFeed(response));
         }
 
-        fetch()
+        fetchData()
     },[user]);
 
     if(!user){

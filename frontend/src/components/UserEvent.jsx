@@ -20,8 +20,12 @@ function UserEvent({user}){
 
     //Get events created by the user and set "events" state
     useEffect(()=>{
-        getEventsById(user.id).then(response => setEvents(response));
-    }, [])
+        const fetchData = async() => {
+            getEventsById(user.id).then(response => setEvents(response));
+        }
+
+        fetchData();
+    }, [user])
     return(
         <>
             {/**First, Render Plus button */}
