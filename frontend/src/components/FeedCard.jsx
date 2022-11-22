@@ -14,7 +14,7 @@ import VerificationBadge from "./VerfificationBadge";
 
 function FeedCard({organizer, phoneNumber, address1, address2, city, state, zipCode, date, guestCount, eventType}){
     return(
-        <a href="#" className="relative block overflow-hidden rounded-lg border border-gray-200 p-8 font-inter">
+        <a href="#" className="relative block overflow-hidden rounded-lg border border-secondary p-8 font-inter transform motion-safe:hover:scale-110">
             <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 to-blue-500"></span>
 
             <div className="justify-between sm:flex">
