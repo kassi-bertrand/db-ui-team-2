@@ -8,15 +8,18 @@
  *                  "My Events" tab
  */
 
+import { useContext } from "react";
 import { useEffect, useState } from "react";
 import { getEventsById } from "../api/eventsApi";
+import { MyContext } from "../pages/HomePage";
 import EventCard from "./EventCard";
 import NewEventForm from "./NewEventForm";
 import PlusButton from "./PlusButton";
 
-function UserEvent({user}){
+function UserEvent(){
     const [isOpen, setIsOpen] = useState(false);
     const [events, setEvents] = useState([])
+    const {user, setUser} = useContext(MyContext);
 
     //Get events created by the user and set "events" state
     useEffect(()=>{

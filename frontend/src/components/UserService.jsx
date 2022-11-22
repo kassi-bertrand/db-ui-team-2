@@ -1,12 +1,15 @@
- import { useEffect, useState } from "react";
+ import { useContext } from "react";
+import { useEffect, useState } from "react";
  import { getServicesById } from "../api/servicesApi";
+import { MyContext } from "../pages/HomePage";
  import ServiceCard from "./EventCard";
  import NewServiceForm from "./NewServiceForm";
  import PlusButton from "./PlusButton";
  
- function UserService({user}){
+ function UserService(){
      const [isOpen, setIsOpen] = useState(false);
      const [services, setServices] = useState([]);
+     const {user, setUser} = useContext(MyContext);
  
      //Get services created by the user and set "services" state
      useEffect(()=>{

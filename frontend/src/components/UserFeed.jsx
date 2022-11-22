@@ -8,12 +8,15 @@
  *                  Feed tab
  */
 
+import { useContext } from 'react';
 import { useEffect, useState } from 'react';
 import { getUserFeed } from '../api/eventsApi';
+import { MyContext } from '../pages/HomePage';
 import FeedCard from './FeedCard';
 
-function UserFeed({user}){
+function UserFeed(){
     const [feed, setFeed] = useState([])
+    const {user, setUser} = useContext(MyContext);
 
     //Get events to display in the user feed and set the "feed" state
     useEffect(() => {
