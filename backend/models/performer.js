@@ -37,8 +37,8 @@ const PERFORMER_TABLE = 'performer_details';
         const results = await query;
         return results;
     }
-    const createPerformer = async(p_user, performer_name, details, num_performers, available) => {
-        const query = knex(PERFORMER_TABLE).insert({p_user, performer_name, details, num_performers, available});
+    const createPerformer = async(p_user, performer_name, details, num_performers, available,start_date,end_date) => {
+        const query = knex(PERFORMER_TABLE).insert({p_user, performer_name, details, num_performers, available,start_date,end_date});
         const results = await query;
         return results;
     }
@@ -47,8 +47,14 @@ const PERFORMER_TABLE = 'performer_details';
         const results = await query;
         return results;
     }
+    const updateDateBooked = async(Booked, p_user) => {
+        const query = knex(FOOD_TABLE).where({food_user}).update({ Booked: knex.raw('CONCAT(Booked, ?)',[','+Booked]) });
+        const results = await query;
+        return results;
+    }
  
  module.exports  = {
+    updateDateBooked,
     fetchAllPerformers,
     fetchPerformersByName,
     fetchPerformersByAvailable,

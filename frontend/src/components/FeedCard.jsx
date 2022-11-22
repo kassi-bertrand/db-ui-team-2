@@ -12,7 +12,7 @@ import BadgeOpen from "./BadgeOpen";
 import BadgeClose from "./BadgeClose";
 import VerificationBadge from "./VerfificationBadge";
 
-function FeedCard({organizer, phoneNumber, address1, address2, city, state, zipCode, date, guestCount, eventType}){
+function FeedCard({user_id, name, phone_num, street, city, state, zip_code, event_date, budget, guest_count, occasion, details}){
     return(
         <a href="#" className="relative block overflow-hidden rounded-lg border border-secondary p-8 font-inter transform motion-safe:hover:scale-110">
             <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 to-blue-500"></span>
@@ -20,10 +20,10 @@ function FeedCard({organizer, phoneNumber, address1, address2, city, state, zipC
             <div className="justify-between sm:flex">
                 <div>
                     <h3 className="text-xl font-bold text-gray-900">
-                        {eventType}! 🥳
+                        {occasion}! 🥳
                     </h3>
                     <div className="flex text-gray-600 content-center space-x-2">
-                        <p className="mt-1 text-xs font-medium inline-block align-middle">By {organizer} <span className="inline-block align-middle"> <VerificationBadge/></span></p>
+                        <p className="mt-1 text-xs font-medium inline-block align-middle">By {name} <span className="inline-block align-middle"> <VerificationBadge/></span></p>
                     </div>
                 </div>
 
@@ -34,7 +34,7 @@ function FeedCard({organizer, phoneNumber, address1, address2, city, state, zipC
 
             <div className="mt-4 sm:pr-8">
                 <p className="text-sm text-gray-500">
-                    {organizer} is organizing a {eventType} at {address1} {address2}, {zipCode}!
+                    {name} is organizing a {occasion} at {street} {zip_code}!
                 </p>
             </div>
 
@@ -46,7 +46,7 @@ function FeedCard({organizer, phoneNumber, address1, address2, city, state, zipC
 
                 <div className="ml-3 flex flex-col-reverse sm:ml-6">
                     <dt className="text-sm font-medium text-gray-600">Guests</dt>
-                    <dd className="text-xs text-gray-500">{guestCount}</dd>
+                    <dd className="text-xs text-gray-500">{guest_count}</dd>
                 </div>
             </dl>
         </a>

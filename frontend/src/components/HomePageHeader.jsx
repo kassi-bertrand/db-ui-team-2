@@ -7,9 +7,11 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ProfileForm from "./ProfileForm";
 
 function HomePageHeader({user, setUser}){
     const [menuHidden, setMenuHidden] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
 
     function handleClick(){
@@ -20,6 +22,11 @@ function HomePageHeader({user, setUser}){
         setUser(null);
         localStorage.removeItem('userJSON');
         navigate("/login");
+    }
+
+    function handleProfile(){
+        //Set modal visible
+        setIsOpen(true);
     }
 
     if(!user){
@@ -69,6 +76,17 @@ function HomePageHeader({user, setUser}){
 
                             {/**Dropdown menu - hidden by default */}
                             <div className={`absolute ${menuHidden? 'invisible': 'visible'} right-0 z-10 mt-4 origin-top-right rounded-md border border-gray-100 bg-white shadow-lg`}>
+                                <div className="flex p-2">
+                                    <div className="py-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                    </div>
+
+                                    <a onClick={handleProfile} className="block rounded-lg px-4 py-2 text-sm hover:bg-gray-50">
+                                        Profile
+                                    </a>
+                                </div>
                                 <div className="flex p-2 text-red-600">
                                     <div className="py-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
@@ -96,6 +114,7 @@ function HomePageHeader({user, setUser}){
                     </p>
                 </div>
             </div>
+            <ProfileForm isOpen={isOpen} setIsOpen={setIsOpen}/>
         </header>
     );
 }

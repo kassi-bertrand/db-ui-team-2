@@ -39,7 +39,7 @@ app.use('/food', foodRoutes);
 app.use('/performer', performerRoutes);
 app.use('/venue', venueRoutes);
 app.use('/reviews', reviewRoutes);
-app.use('/form', formRoutes);
+app.use('/events', formRoutes);
 app.listen(port, () => {
     console.log(`This app is listening on port ${port}`);
 });

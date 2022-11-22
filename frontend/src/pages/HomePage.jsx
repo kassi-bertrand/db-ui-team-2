@@ -30,7 +30,7 @@ function HomePage(){
             {/**Page Main content */}
             <HomePageTabs setActiveTab={setActiveTab}/>
 
-            <HomePageContent activeTab={activeTab}/>
+            <HomePageContent user={user} activeTab={activeTab}/>
         </div>
     );
 }
