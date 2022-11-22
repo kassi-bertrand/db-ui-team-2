@@ -28,8 +28,8 @@ const updatePerformerAvailability = async(available, p_user) => {
     const result = await Performer.updatePerformerAvailability(available, p_user);
     return result;
 }
-const createPerformer = async(p_user, performer_name, details, num_performers, available) => {
-    const result = await Performer.createPerformer(p_user, performer_name, details, num_performers, available);
+const createPerformer = async(user_id, name, phone_num, zip_code, details) => {
+    const result = await Performer.createPerformer(user_id, name, phone_num, zip_code, details);
     return result;
 }
 const deletePerformer = async(p_user) =>{

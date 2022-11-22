@@ -37,8 +37,8 @@ const PERFORMER_TABLE = 'performer_details';
         const results = await query;
         return results;
     }
-    const createPerformer = async(p_user, performer_name, details, num_performers, available,start_date,end_date) => {
-        const query = knex(PERFORMER_TABLE).insert({p_user, performer_name, details, num_performers, available,start_date,end_date});
+    const createPerformer = async(user_id, name, phone_num, zip_code, details) => {
+        const query = knex(PERFORMER_TABLE).insert({user_id, name, phone_num, zip_code, details});
         const results = await query;
         return results;
     }

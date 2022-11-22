@@ -67,8 +67,8 @@ const VENUE_TABLE = 'venue_details';
         const results = await query;
         return results;
     }
-    const createVenue = async(user_id, venue_name, phone_num, street, city, state_initial, zip_code, cost, guest_capacity, occasion, details) => {
-        const query = knex(VENUE_TABLE).insert({user_id, venue_name, phone_num, street, city, state_initial, zip_code, cost, guest_capacity, occasion, details});
+    const createVenue = async(user_id, name, phone_num, street, city, state_initial, zip_code, cost, guest_capacity, details) => {
+        const query = knex(VENUE_TABLE).insert({user_id, name, phone_num, street, city, state_initial, zip_code, cost, guest_capacity, details});
         const results = await query;
         return results;
     }

@@ -27,7 +27,7 @@ router.get('/', async (req, res, next) => {
    }
 });
 router.post('/', async (req, res, next) => {
-    const createPerformer = await Performer.createPerformer(req.body.p_user, req.body.performer_name, req.body.details, req.body.num_performers, req.body.available);
+    const createPerformer = await Performer.createPerformer(req.body.user_id, req.body.name, req.body.phone_num, req.body.zip_code, req.body.details);
     res.status(201).json(createPerformer);
     next();
  });

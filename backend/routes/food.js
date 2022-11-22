@@ -39,7 +39,7 @@ router.get('/', async (req, res, next) => {
    }
 });
 router.post('/', async (req, res, next) => {
-    const createFood = await Food.createFood(req.body.food_user, req.body.restaurant_name, req.body.food_type, req.body.street, req.body.city, req.body.state_initial, req.body.zip_code, req.body.guest_capacity, req.body.avg_price, req.body.available);
+    const createFood = await Food.createFood(req.body.user_id, req.body.name, req.body.phone_num, req.body.street, req.body.city, req.body.state_initial, req.body.zip_code, req.body.details);
     res.status(201).json(createFood);
     next();
  });
