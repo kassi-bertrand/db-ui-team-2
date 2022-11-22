@@ -2,44 +2,41 @@
  import { Dialog, Transition } from '@headlessui/react';
  import { addEvent } from '../api/eventsApi';
  
- function NewServiceForm({user, services, isOpen, setIsOpen, setServices}){
+ function NewCateringServiceForm({user, services, isOpen, setIsOpen, setServices}){
      const cancelButtonRef = useRef(null);
  
      //User inputs are stored in those Refs
+     const nameInput = useRef(null);
      const streetInput = useRef(null);
      const cityInput = useRef(null);
      const stateInput = useRef(null);
      const zipCodeInput = useRef(null);
      const dateInput = useRef(null);
      const priceInput = useRef(null);
-     const guestCountInput = useRef(null);
-     const typeInput = useRef(null);
      const detailInput = useRef(null);
  
      function handleSubmit(e){
          e.preventDefault();
  
-         const newServiceJSON = {
+         const newCateringServiceJSON = {
              "user_id": user.id,
-             "name": user.name,
+             "name": nameInput.current.value,
              "phone_num": user.phone_num,
              "street": streetInput.current.value,
              "city": cityInput.current.value,
-             "state": stateInput.current.value,
+             "state_initial": stateInput.current.value,
+             "availability": dateInput.current.value,
+             "price": Number(priceInput.current.value),
              "zip_code": Number(zipCodeInput.current.value),
-             "event_date": dateInput.current.value,
-             "budget": Number(priceInput.current.value),
-             "guest_count": Number(guestCountInput.current.value),
-             "occasion": typeInput.current.value,
              "details": detailInput.current.value,
          }
  
          //close modal
          setIsOpen(false);
  
-         //  send newServiceJSON to the backend
-         //      then - update the user event list
-         addEvent(newServiceJSON)
+         //  send newServiceJSON to the backend with addCateringService
+         //      then - update the user service list
+         addCateringService(newCateringServiceJSON)
              .then(response => setServices([...services, response]))        
      }
  
@@ -76,7 +73,7 @@
                                          {/**Modal Header */}
                                          <div>
                                              <h1 className="max-w-3xl px-8 -mx-3 pb-0 text-left font-bold md:pb-0 text-lg">
-                                                 New Service 📅 📝
+                                                 New Catering service 📅 📝
                                              </h1>
                                              <p className="max-w-3xl px-8 -mx-3 text-left text-neutral-600 pb-8 md:pb-8">
                                                  Fill out this form to give your attendees more information
@@ -85,22 +82,6 @@
                                          </div>
  
                                          {/**The Event Form */}
-
-                                         {
-                                            /*
-                                            Service form fields:
-
-                                            1. Name
-                                            2. Phone
-                                            3. Address
-                                            4. Availability date
-                                            5. Price
-                                            6. Guest capacity
-                                            7. Type of service (entertainment, venue, catering)
-                                            8. Extra info
-                                            */
-                                         }
-
                                          <div className="max-w-lg mx-auto">
                                              <form>
                                                  <div className="flex flex-wrap -mx-3 mb-4 font-inter">
@@ -114,10 +95,9 @@
                                                          <input
                                                              id="name"
                                                              type="text"
-                                                             value={user.name}
+                                                             ref={nameInput}
                                                              className="form-input w-full text-gray-800 shadow-md text-sm"
                                                              placeholder="Enter your name/company"
-                                                             disabled
                                                              required
                                                          />
                                                      </div>
@@ -160,7 +140,7 @@
                                                              type="text"
                                                              ref={streetInput}
                                                              className="w-full text-gray-800 form-input shadow-md text-sm"
-                                                             placeholder="Enter the street address of the event"
+                                                             placeholder="Enter your company street"
                                                              required
                                                          />
                                                      </div>
@@ -286,7 +266,7 @@
                                                                  className="block text-gray-800 text-sm font-semibold mb-1 font-inter"
                                                                  htmlFor="date"
                                                              >
-                                                                 Availability Date
+                                                                When are you available?
                                                              </label>
                                                          </div>
                                                          <input
@@ -319,54 +299,7 @@
                                                          />
                                                      </div>
                                                  </div>
- 
-                                                 <div className="flex flex-wrap -mx-3 mb-4">
-                                                     <div className="w-full px-8">
-                                                         <div className="flex justify-between">
-                                                             <label
-                                                                 className="block text-gray-800 text-sm font-semibold mb-1 font-inter"
-                                                                 htmlFor="guest-count"
-                                                             >
-                                                                 Estimated guest count
-                                                             </label>
-                                                         </div>
-                                                         <input
-                                                             id="guest-count"
-                                                             type="number"
-                                                             ref={guestCountInput}
-                                                             className="w-full text-gray-800 form-input shadow-md text-sm"
-                                                             placeholder="Enter an estimated guest count"
-                                                             min="0"
-                                                             required
-                                                         />
-                                                     </div>
-                                                 </div>
- 
-                                                 <div className="flex flex-wrap -mx-3 mb-4">
-                                                     <div className="w-full px-8">
-                                                         <div className="flex justify-between">
-                                                             <label
-                                                                 className="block text-gray-800 text-sm font-semibold mb-1 font-inter"
-                                                                 htmlFor="type-of-service"
-                                                             >
-                                                                 Type of service
-                                                             </label>
-                                                         </div>
-                                                         <select
-                                                             id="type-of-service"
-                                                             ref={typeInput}
-                                                             className="w-full text-gray-800 form-input shadow-md text-sm"
-                                                             required
-                                                             defaultValue={""}
-                                                         >
-                                                             <option value="" disabled>Type of service?</option>
-                                                             <option value="Entertainment">Entertainment</option>
-                                                             <option value="Venue">Venue</option>
-                                                             <option value="Catering">Catering</option>
-                                                             <option value="Other">Other</option>
-                                                         </select>
-                                                     </div>
-                                                 </div>
+
  
                                                  <div className="flex flex-wrap -mx-3 mb-4">
                                                      <div className="w-full px-8">
@@ -407,4 +340,4 @@
      );
  }
  
- export default NewServiceForm;
+ export default NewCateringServiceForm;
