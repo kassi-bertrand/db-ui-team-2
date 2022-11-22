@@ -1,5 +1,5 @@
 /**
- * Author:          Kassi Bertrand
+ * Author:          Giovanni Boscan  & Kassi Bertrand
  * filename:        HomePageContent.jsx
  * Date:            11-22-2022
  * Description:     This component is used in the
