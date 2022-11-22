@@ -30,26 +30,28 @@ function UserFeed({user}){
 
     return(
         <>
-            {
-                feed.map((anEvent, index) =>{
-                    return(
-                            <FeedCard 
-                                user_id={anEvent.user_id}
-                                name={anEvent.name}
-                                phone_num={anEvent.phone_num}
-                                street={anEvent.street}
-                                city={anEvent.city}
-                                state={anEvent.state}
-                                zip_code={anEvent.zip_code}
-                                event_date={anEvent.event_date}
-                                budget={anEvent.event_date}
-                                guest_count={anEvent.guest_count}
-                                occasion={anEvent.occasion}
-                                details={anEvent.details}
-                            />
-                    );
-                })
-            }
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start md:max-w-2xl lg:max-w-none">
+                {
+                    feed.map((anEvent, index) =>{
+                        return(
+                                <FeedCard 
+                                    user_id={anEvent.user_id}
+                                    name={anEvent.name}
+                                    phone_num={anEvent.phone_num}
+                                    street={anEvent.street}
+                                    city={anEvent.city}
+                                    state={anEvent.state}
+                                    zip_code={anEvent.zip_code}
+                                    event_date={anEvent.event_date}
+                                    budget={anEvent.event_date}
+                                    guest_count={anEvent.guest_count}
+                                    occasion={anEvent.occasion}
+                                    details={anEvent.details}
+                                />
+                        );
+                    })
+                }
+            </div>
         </>
     );
 }

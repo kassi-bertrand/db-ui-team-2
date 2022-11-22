@@ -29,9 +29,7 @@ function HomePageContent({user, activeTab}){
     return(
         <section className="font-inter">
             <div className="max-w-screen-xl mx-auto px-4 sm:px-6">
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start md:max-w-2xl lg:max-w-none">
-                    {TABS[activeTab]}
-                </div>
+                {TABS[activeTab]}
             </div>
         </section>
     );
