@@ -50,7 +50,6 @@ function FeedCard({organizer, phoneNumber, address1, address2, city, state, zipC
                 </div>
             </dl>
         </a>
-
     );
 }
 
