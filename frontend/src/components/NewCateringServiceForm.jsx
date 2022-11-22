@@ -1,6 +1,7 @@
  import { Fragment, useRef, useState } from "react";
  import { Dialog, Transition } from '@headlessui/react';
  import { addEvent } from '../api/eventsApi';
+import { addCateringService } from "../api/servicesApi";
  
  function NewCateringServiceForm({user, services, isOpen, setIsOpen, setServices}){
      const cancelButtonRef = useRef(null);
