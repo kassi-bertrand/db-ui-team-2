@@ -5,14 +5,18 @@
  * Description:     This component is the Home page header.
  */
 
+import { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { MyContext } from "../pages/HomePage";
 import ProfileForm from "./ProfileForm";
 
-function HomePageHeader({user, setUser}){
+function HomePageHeader(){
     const [menuHidden, setMenuHidden] = useState(true);
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
+
+    const {user, setUser} = useContext(MyContext);
 
     function handleClick(){
         setMenuHidden(!menuHidden);
