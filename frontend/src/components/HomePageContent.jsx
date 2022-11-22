@@ -13,17 +13,12 @@ import UserEvent from "./UserEvent";
 import UserFeed from "./UserFeed";
 import UserService from "./UserService";
 
-function HomePageContent({user, activeTab}){
-
-    //TODO: API call to get services created by the user here
-    const userServices = [
-
-    ];
+function HomePageContent({activeTab}){
 
     const TABS = {
-        'Feed': <UserFeed user={user}/>,
-        'Events': <UserEvent user={user}/>,
-        'Services': <UserService user={user}/>
+        'Feed': <UserFeed/>,
+        'Events': <UserEvent/>,
+        'Services': <UserService/>
     };
 
     return(
