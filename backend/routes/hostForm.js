@@ -38,11 +38,12 @@ router.get('/:user_id', async (req, res, next) => {
    }
    next();
 });
-/*router.get('/:Filter/:filtering', async (req, res, next) => {
+/*router.get('/search/:Filter/:filtering', async (req, res, next) => {
       try {
          //const form = req.params;
          const filterType = req.params.Filter;
          const filter = req.params.filtering;
+         console.log(filter);
          var fetchInfo;
          if(filterType == "city"){
             fetchInfo = await Form.fetchInfoByCity(filter);
@@ -63,7 +64,7 @@ router.get('/:user_id', async (req, res, next) => {
          res.status(500).json({ message: err.toString()});
       }
       next();
-});*/
+});*/ 
 router.get('/venuefilter', async (req, res, next) => {
    try {
       const form = req.body;

@@ -41,7 +41,7 @@ router.get('/', async (req, res, next) => {
 router.post('/new', async (req, res, next) => {
     const createFood = await Food.createFood(req.body.user_id, req.body.name, req.body.phone_num, req.body.street, req.body.city, req.body.state_initial, req.body.availability, req.body.zip_code, req.body.details);
     const foodByUsername = await Food.fetchFoodsByServID(createFood);
-    res.status(201).json(foodByUsername);
+    res.status(201).json(foodByUsername[0]);
     next();
  });
  router.put('/', async (req, res, next) => {
