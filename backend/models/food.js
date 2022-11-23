@@ -70,8 +70,8 @@ const FOOD_TABLE = 'food_details';
         const results = await query;
         return results;
     }
-    const createFood= async(user_id, name, phone_num, street, city, state_initial, zip_code, details) =>{
-        const query = knex(FOOD_TABLE).insert({user_id, name, phone_num, street, city, state_initial, zip_code, details});
+    const createFood= async(user_id, name, phone_num, street, city, state_initial, availability, zip_code, details) =>{
+        const query = knex(FOOD_TABLE).insert({user_id, name, phone_num, street, city, state_initial, availability, zip_code, details});
         const results = await query;
         return results;
     }

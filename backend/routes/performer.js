@@ -31,6 +31,7 @@ router.post('/', async (req, res, next) => {
     res.status(201).json(createPerformer);
     next();
  });
+ 
  router.put('/', async (req, res, next) => {
     if (req.body.performer_name) {
         const updatePerformerName = await Performer.updatePerformerName(req.body.performer_name, req.body.p_user);

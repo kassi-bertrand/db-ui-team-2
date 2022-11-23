@@ -38,8 +38,8 @@ router.get('/', async (req, res, next) => {
        next();
    }
 });
-router.post('/', async (req, res, next) => {
-    const createFood = await Food.createFood(req.body.user_id, req.body.name, req.body.phone_num, req.body.street, req.body.city, req.body.state_initial, req.body.zip_code, req.body.details);
+router.post('/new', async (req, res, next) => {
+    const createFood = await Food.createFood(req.body.user_id, req.body.name, req.body.phone_num, req.body.street, req.body.city, req.body.state_initial, req.body.availability, req.body.zip_code, req.body.details);
     res.status(201).json(createFood);
     next();
  });

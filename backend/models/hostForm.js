@@ -4,7 +4,7 @@ const FORM_TABLE = 'Form';
 
    const fetchInfoWoCurrUser = async (user_id) => {
     console.log("we reached here!")
-       const query = knex(FORM_TABLE).whereNot({ user_id })
+       const query = knex(FORM_TABLE).whereNot({ user_id }).orderBy('event_date', 'DESC');
        //console.log("knex? here!")
        //console.log(query);
        const results = await query;

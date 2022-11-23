@@ -49,8 +49,8 @@ const updateFoodAddress = async(street, city, state_initial, zip_code, food_user
     const result = await Food.updateFoodAddress(street, city, state_initial, zip_code, food_user);
     return result;
 }
-const createFood = async(user_id, name, phone_num, street, city, state_initial, zip_code, details) =>{
-    const result = await Food.createFood(user_id, name, phone_num, street, city, state_initial, zip_code, details);
+const createFood = async(user_id, name, phone_num, street, city, state_initial, availability, zip_code, details) =>{
+    const result = await Food.createFood(user_id, name, phone_num, street, city, state_initial, availability, zip_code, details);
     return result;
 }
 const deleteFood = async(food_user) => {
