@@ -38,6 +38,32 @@ router.get('/:user_id', async (req, res, next) => {
    }
    next();
 });
+router.get('/:Filter/:filtering', async (req, res, next) => {
+      try {
+         //const form = req.params;
+         const filterType = req.params.Filter;
+         const filter = req.params.filtering;
+         var fetchInfo;
+         if(filterType == "city"){
+            fetchInfo = await Form.fetchInfoByCity(filter);
+         }
+         else if(filterType == "date"){
+             fetchInfo = await Form.fetchInfoByDate(filter);
+         }
+         else if(filterType == "name"){
+             fetchInfo = await Form.fetchInfoByName(filter);
+         }
+         //console.log(form.user_id);
+         console.log(fetchInfo);
+         res.status(201).json(fetchInfo);
+         next();
+      }
+      catch (err) {
+         //console.error('Failed to load current user:', err);
+         res.status(500).json({ message: err.toString()});
+      }
+      next();
+});
 router.get('/venuefilter', async (req, res, next) => {
    try {
       const form = req.body;

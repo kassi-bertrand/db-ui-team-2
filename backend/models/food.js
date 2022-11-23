@@ -15,8 +15,8 @@ const FOOD_TABLE = 'food_details';
         const results = await query;
         return results;
     }
-    const fetchFoodsByUsername = async(food_user)=> {
-        const query = knex(FOOD_TABLE).where({food_user});
+    const fetchFoodsByServID = async(food_num)=> {
+        const query = knex(FOOD_TABLE).where({food_num});
         const results = await query;
         return results;
     }
@@ -83,7 +83,7 @@ const FOOD_TABLE = 'food_details';
  //}
  module.exports = {
     fetchAllFoods,
-    fetchFoodsByUsername,
+    fetchFoodsByServID,
     fetchFoodsByName,
     fetchFoodsByType,
     fetchFoodsByZipCode,

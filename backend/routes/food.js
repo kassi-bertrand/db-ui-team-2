@@ -13,7 +13,7 @@ router.use(bodyParser.json());
 
 router.get('/', async (req, res, next) => {
    if (req.query.food_user) {
-       const foodByUsername = await Food.fetchFoodsByUsername(req.query.food_user);
+       const foodByUsername = await Food.fetchFoodsByServID(req.query.food_num);
        res.json(foodByUsername);
        next();
    } if (req.query.restaurant_name) {
@@ -40,7 +40,8 @@ router.get('/', async (req, res, next) => {
 });
 router.post('/new', async (req, res, next) => {
     const createFood = await Food.createFood(req.body.user_id, req.body.name, req.body.phone_num, req.body.street, req.body.city, req.body.state_initial, req.body.availability, req.body.zip_code, req.body.details);
-    res.status(201).json(createFood);
+    const foodByUsername = await Food.fetchFoodsByServID(createFood);
+    res.status(201).json(foodByUsername);
     next();
  });
  router.put('/', async (req, res, next) => {

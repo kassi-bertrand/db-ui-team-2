@@ -5,8 +5,8 @@ const fetchAllFoods = async() => {
     return result;
 }
 
-const fetchFoodsByUsername = async(food_user)  => {
-    const result = await Food.fetchFoodsByUsername(food_user);
+const fetchFoodsByServID = async(food_num)  => {
+    const result = await Food.fetchFoodsByServID(food_num);
     return result;
 }
 const fetchFoodsByName = async(restaurant_name) => {
@@ -60,7 +60,7 @@ const deleteFood = async(food_user) => {
 
 module.exports = {
     fetchAllFoods,
-    fetchFoodsByUsername,
+    fetchFoodsByServID,
     fetchFoodsByName,
     fetchFoodsByType,
     fetchFoodsByZipCode,

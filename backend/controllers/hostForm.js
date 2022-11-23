@@ -13,6 +13,18 @@ const fetchInfoByUserId = async (user_id) => {
     const result = await Form.fetchInfoByUserId(user_id);
     return result;
 }
+const fetchInfoByCity = async (city) => {
+    const result = await Form.fetchInfoByCity(city);
+    return result;
+}
+const fetchInfoByDate = async (event_date) => {
+    const result = await Form.fetchInfoByDate(event_date);
+    return result;
+}
+const fetchInfoByName = async (name) => {
+    const result = await Form.fetchInfoByDate(name);
+    return result;
+}
 const fetchInfoByPhoneNum = async (form_num) => {
 //console.log("we reached here!")
     const result = await Form.fetchInfoByPhoneNum(form_num);
@@ -50,6 +62,9 @@ const deleteForm = async (form_num) => {
 module.exports = {
     fetchInfoByUserId,
     fetchInfoWoCurrUser,
+    fetchInfoByCity,
+    fetchInfoByDate,
+    fetchInfoByName,
     fetchBudgetByPhoneNum,
     fetchLocationByPhoneNum,
     fetchGuestCountByPhoneNum,
