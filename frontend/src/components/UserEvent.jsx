@@ -40,6 +40,7 @@ function UserEvent(){
                         return(
                             <EventCard 
                                 user_id={anEvent.user_id}
+                                event_id={anEvent.form_num}
                                 name={anEvent.name}
                                 phone_num={anEvent.phone_num}
                                 street={anEvent.street}

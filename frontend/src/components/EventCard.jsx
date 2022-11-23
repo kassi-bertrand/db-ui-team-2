@@ -13,7 +13,7 @@ import BadgeOpen from "./BadgeOpen";
 import BadgeClose from "./BadgeClose";
 import VerificationBadge from "./VerfificationBadge";
 
-function EventCard({user_id, name, phone_num, street, city, state, zip_code, event_date, budget, guest_count, occasion, details}){
+function EventCard({user_id, event_id, name, phone_num, street, city, state, zip_code, event_date, budget, guest_count, occasion, details}){
     return(
         <a href="#" className="relative block overflow-hidden rounded-lg border border-gray-200 p-8 font-inter">
             <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 to-blue-500"></span>
