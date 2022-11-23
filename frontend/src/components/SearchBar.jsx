@@ -40,28 +40,46 @@ export default function SearchBar(){
 
 const solutions = [
   {
-    name: 'Insights',
-    description: 'Measure actions your users take',
+    name: 'By name',
+    description: 'Filter your feed by host',
     href: '##',
     icon: IconOne,
   },
   {
-    name: 'Automations',
-    description: 'Create your own targeted content',
+    name: 'By catering',
+    description: 'Want to see events with food & drinks? 🍲🍹',
     href: '##',
     icon: IconTwo,
   },
   {
-    name: 'Reports',
-    description: 'Keep track of your growth',
+    name: 'By date',
+    description: 'Filter by date and see events that fit your schedule',
     href: '##',
     icon: IconThree,
+  },
+  {
+    name: 'By performance artist',
+    description: 'Use this option to see who will be performing 🕺💃',
+    href: '##',
+    icon: IconThree,
+  },
+  {
+    name: 'By venue',
+    description: 'Find events happening at one location 🗺️',
+    href: '##',
+    icon: IconOne,
+  },
+  {
+    name: 'By city',
+    description: 'Find events happening at your city! 🏙️',
+    href: '##',
+    icon: IconOne,
   },
 ]
 
 function DropDown() {
   return (
-    <div className="relative max-w-sm px-4">
+    <div className="relative max-w-sm px-4 font-inter">
       <Popover className="relative">
         {({ open }) => (
           <>
@@ -108,21 +126,6 @@ function DropDown() {
                         </div>
                       </a>
                     ))}
-                  </div>
-                  <div className="bg-gray-50 p-4">
-                    <a
-                      href="##"
-                      className="flow-root rounded-md px-2 py-2 transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
-                    >
-                      <span className="flex items-center">
-                        <span className="text-sm font-medium text-gray-900">
-                          Documentation
-                        </span>
-                      </span>
-                      <span className="block text-sm text-gray-500">
-                        Start integrating products and tools
-                      </span>
-                    </a>
                   </div>
                 </div>
               </Popover.Panel>
