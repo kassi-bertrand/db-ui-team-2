@@ -49,7 +49,7 @@ export async function getPerformanceServicesById(UserId){
  * @returns                     -> JSON object
  * @description                 -> sends user input from newCateringServiceForm form to
  *                                 the backend to be registered in catering table.
- *                                 Intended to be sent to the '/service/catering/new' route.
+ *                                 Intended to be sent to the '/catering/new' route.
  */
 export async function addCateringService(CateringServiceJSON){
     try{
@@ -68,7 +68,7 @@ export async function addCateringService(CateringServiceJSON){
  * @returns                     -> JSON object
  * @description                 -> sends user input from newVenueServiceForm to
  *                                  the backend to be registered in the venue table
- *                                  Intented to be sent to the '/service/venue/new'
+ *                                  Intented to be sent to the '/venue/new'
  */
 export async function addVenueService(VenueServiceJSON){
     //Implement this function. Remember the try/Catch.
@@ -81,7 +81,7 @@ export async function addVenueService(VenueServiceJSON){
  * @return                          -> JSON object
  * @description                     -> send user input from newPerformanceServiceForm
  *                                     to the backend to be registered in the peformance
- *                                     table. Intented to be sent to the '/service/performance/new'
+ *                                     table. Intented to be sent to the '/performance/new'
  *                                     route.
  */
 export async function addPerformanceService(PerformanceServiceJSON){
