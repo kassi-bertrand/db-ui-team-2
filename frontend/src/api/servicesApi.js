@@ -53,7 +53,8 @@ export async function getPerformanceServicesById(UserId){
  */
 export async function addCateringService(CateringServiceJSON){
     try{
-        //TODO: Implement this function
+        const response = await axios.post(`${apiEndpoint}/catering/new`, CateringServiceJSON);
+        return response.data;
     }
     catch(error){
         alert("Could not send catering service to backend");
