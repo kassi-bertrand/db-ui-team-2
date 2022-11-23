@@ -11,6 +11,7 @@
 import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { MyContext } from "../pages/HomePage";
+import CateringServiceCard from "./CateringServiceCard";
 import NewCateringServiceForm from "./NewCateringServiceForm";
 import PlusButton from "./PlusButton";
 
@@ -42,7 +43,23 @@ function CateringServices(){
                 <PlusButton title="New Catering" setIsOpen={setIsOpen}/>
                 {/**TODO: Then, Render all "CateringServiceCard" component here */}
                 {
-
+                    services.map((aCateringService, index) =>{
+                        return(
+                            <CateringServiceCard
+                                user_id={aCateringService.user_id}
+                                catering_id={aCateringService.food_num}
+                                name={aCateringService.name}
+                                phone_num={aCateringService.phone_num}
+                                street={aCateringService.street}
+                                city={aCateringService.city}
+                                state_initial={aCateringService.state_initial}
+                                availability={aCateringService.availability}
+                                rating={aCateringService.rating}
+                                zip_code={aCateringService.zip_code}
+                                details={aCateringService.details}
+                            />
+                        );
+                    })
                 }
                 <NewCateringServiceForm user={user} services={services} isOpen={isOpen} setIsOpen={setIsOpen} setServices={setServices}/>
             </div>

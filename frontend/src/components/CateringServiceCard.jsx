@@ -7,7 +7,7 @@
  *                  This component is used by the CateringServices component.
  */
 
-function CateringServiceCard({user_id, name, phone_num, street, city, state_initial, availability, rating, price, zip_code, details}){
+function CateringServiceCard({user_id, catering_id, name, phone_num, street, city, state_initial, availability, rating, zip_code, details}){
     return(
         <a href="#" className="relative block overflow-hidden rounded-lg border border-gray-200 p-8 font-inter">
             <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 to-blue-500"></span>
