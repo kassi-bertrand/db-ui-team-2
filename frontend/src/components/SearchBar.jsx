@@ -41,45 +41,45 @@ export default function SearchBar({setContent}){
 
 const solutions = [
   {
-    name: 'By name',
+    name: 'Name',
     description: 'Filter your feed by host',
     href: '##',
     icon: IconOne,
   },
   {
-    name: 'By catering',
+    name: 'Catering',
     description: 'Want to see events with food & drinks? 🍲🍹',
     href: '##',
     icon: IconTwo,
   },
   {
-    name: 'By date',
+    name: 'Date',
     description: 'Filter by date and see events that fit your schedule',
     href: '##',
     icon: IconThree,
   },
   {
-    name: 'By performance artist',
+    name: 'Artist',
     description: 'Use this option to see who will be performing 🕺💃',
     href: '##',
     icon: IconThree,
   },
   {
-    name: 'By venue',
+    name: 'Venue',
     description: 'Find events happening at one location 🗺️',
     href: '##',
     icon: IconOne,
   },
   {
-    name: 'By city',
-    description: 'Find events happening at your city! 🏙️',
+    name: 'City',
+    description: 'Find events happening in your city! 🏙️',
     href: '##',
     icon: IconOne,
   },
 ]
 
 function DropDown() {
-  const [category, setCategory] = useState("Choose :)");
+  const [category, setCategory] = useState("Choose");
 
   return (
     <div className="relative max-w-sm px-4 font-inter">
@@ -107,7 +107,7 @@ function DropDown() {
               leaveFrom="opacity-100 translate-y-0"
               leaveTo="opacity-0 translate-y-1"
             >
-              <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
+              <Popover.Panel className="absolute left-1/2 z-10 mt-3 w-screen max-w-sm -translate-x-12 transform px-4 sm:px-0 lg:max-w-3xl">
                 <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
                   <div className="relative grid gap-8 bg-white p-7 lg:grid-cols-2">
                     {solutions.map((item) => (
@@ -115,6 +115,7 @@ function DropDown() {
                         key={item.name}
                         href={item.href}
                         className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                        onClick={()=> setCategory(item.name)}
                       >
                         <div className="flex h-10 w-10 shrink-0 items-center justify-center text-white sm:h-12 sm:w-12">
                           <item.icon aria-hidden="true" />
