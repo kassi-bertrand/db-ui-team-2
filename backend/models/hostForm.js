@@ -21,7 +21,7 @@ const FORM_TABLE = 'Form';
    }
    const fetchInfoByUserId = async (user_id) => {
     //console.log("we reached here!")
-       const query = knex(FORM_TABLE).where({ user_id })//.select("EventDate");
+       const query = knex(FORM_TABLE).where({ user_id }).orderBy('event_date', 'DESC');//.select("EventDate");
        console.log("knex? here!")
       // console.log(query);
        const results = await query;
