@@ -12,7 +12,6 @@ import { addCateringService } from "../api/servicesApi";
      const stateInput = useRef(null);
      const zipCodeInput = useRef(null);
      const dateInput = useRef(null);
-     const priceInput = useRef(null);
      const detailInput = useRef(null);
  
      function handleSubmit(e){
@@ -26,7 +25,6 @@ import { addCateringService } from "../api/servicesApi";
              "city": cityInput.current.value,
              "state_initial": stateInput.current.value,
              "availability": dateInput.current.value,
-             "price": Number(priceInput.current.value),
              "zip_code": Number(zipCodeInput.current.value),
              "details": detailInput.current.value,
          }
@@ -274,27 +272,6 @@ import { addCateringService } from "../api/servicesApi";
                                                              type="date"
                                                              ref={dateInput}
                                                              className="w-full text-gray-800 form-input shadow-md text-sm"
-                                                             required
-                                                         />
-                                                     </div>
-                                                 </div>
- 
-                                                 <div className="flex flex-wrap -mx-3 mb-4">
-                                                     <div className="w-full px-8">
-                                                         <div className="flex justify-between">
-                                                             <label
-                                                                 className="block text-gray-800 text-sm font-semibold mb-1 font-inter"
-                                                                 htmlFor="price"
-                                                             >
-                                                                 Price
-                                                             </label>
-                                                         </div>
-                                                         <input
-                                                             id="price"
-                                                             type="text"
-                                                             ref={priceInput}
-                                                             className="w-full text-gray-800 form-input shadow-md text-sm"
-                                                             placeholder="Enter an integer ammount in US Dollars (optional)"
                                                              required
                                                          />
                                                      </div>
