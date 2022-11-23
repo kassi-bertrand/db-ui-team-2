@@ -40,7 +40,7 @@ function VenueServices(){
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start md:max-w-2xl lg:max-w-none">
                 {/**First, Render Plus button */}
                 <PlusButton title="New Venue" setIsOpen={setIsOpen}/>
-                {/**TODO: Then, Render all venue cards here */}
+                {/**TODO: Then, Render all "VenueServiceCard" here */}
                 {
 
                 }

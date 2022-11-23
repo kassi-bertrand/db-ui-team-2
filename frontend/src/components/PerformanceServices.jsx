@@ -41,7 +41,7 @@ function PerformanceServices(){
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start md:max-w-2xl lg:max-w-none">
                 {/**First, Render Plus button */}
                 <PlusButton title="New Performace" setIsOpen={setIsOpen}/>
-                {/**TODO: Then, Render all Performance cards here */}
+                {/**TODO: Then, Render all "PerformanceServiceCard" components here */}
                 {
 
                 }
