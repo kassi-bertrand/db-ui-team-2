@@ -1,6 +1,6 @@
 /**
  * Author:          Kassi Bertrand
- * filename:        EventCard.jsx
+ * filename:        ServiceCard.jsx
  * Date:            11-13-2022
  * Description:     This component is used to display
  *                  events created by the user.
