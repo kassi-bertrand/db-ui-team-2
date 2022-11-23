@@ -21,10 +21,9 @@ function CateringServices(){
     const {user, setUser} = useContext(MyContext);
 
     //Get all catering services created by the user and set "services" state
-    //TODO: Complete This useEffect function
     useEffect(()=>{
         const fetchCatering = async() => {
-            //getCateringServicesById(user.id).then(response => ...);
+            getCateringServicesById(user.id).then(response => setServices(response));
         }
 
         fetchCatering()
