@@ -10,6 +10,7 @@
 
 import { useContext, useEffect } from "react";
 import { useState } from "react";
+import { getCateringServicesById } from "../api/servicesApi";
 import { MyContext } from "../pages/HomePage";
 import CateringServiceCard from "./CateringServiceCard";
 import NewCateringServiceForm from "./NewCateringServiceForm";
