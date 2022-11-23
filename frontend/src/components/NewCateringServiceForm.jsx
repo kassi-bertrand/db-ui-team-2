@@ -21,7 +21,6 @@ import { addCateringService } from "../api/servicesApi";
  
          const newCateringServiceJSON = {
              "user_id": user.id,
-             "rating": Number(0),
              "name": nameInput.current.value,
              "phone_num": user.phone_num,
              "street": streetInput.current.value,
