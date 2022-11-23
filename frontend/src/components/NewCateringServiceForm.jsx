@@ -35,7 +35,7 @@ import { addCateringService } from "../api/servicesApi";
          //  send newServiceJSON to the backend with addCateringService
          //      then - update the user service list
          addCateringService(newCateringServiceJSON)
-             .then(response => setServices([...services, response]))        
+             .then(response => setServices([...services, response]));     
      }
  
      return(
