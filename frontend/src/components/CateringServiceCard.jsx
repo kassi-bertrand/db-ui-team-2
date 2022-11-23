@@ -6,6 +6,8 @@
  *                  catering services created by the user.
  *                  This component is used by the CateringServices component.
  */
+import BadgeOpen from './BadgeOpen';
+import VerificationBadge from './VerfificationBadge';
 
 function CateringServiceCard({user_id, catering_id, name, phone_num, street, city, state_initial, availability, rating, zip_code, details}){
     return(
