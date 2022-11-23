@@ -29,7 +29,6 @@ function CateringServiceCard({user_id, catering_id, name, phone_num, street, cit
             <div className="mt-4 sm:pr-8">
                 <p className="text-sm text-gray-500">
                     You created a <strong>Catering</strong> service. It is available on: {availability}<br/>
-                    {details}
                 </p>
             </div>
 
