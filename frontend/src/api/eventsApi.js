@@ -67,3 +67,20 @@ export async function getUserFeed(UserId){
         alert(error);
     }
 }
+
+/**
+ * 
+ * @param type                  -> the type of event we interested in
+ * @param filterInput           -> the value we want to match
+ * @returns                     -> All events matching the type, and the filter input.
+ * @description                 -> Request all event of type "type" and value "value"
+ */
+export async function getEventByFilter(type, filterInput){
+    try{
+        const response = await axios.get(`${apiEndpoint}/events/search/${type}/${filterInput}`);
+        return response.data;
+    }
+    catch(error){
+        alert("No result");
+    }
+}
