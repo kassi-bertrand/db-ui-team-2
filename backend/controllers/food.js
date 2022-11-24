@@ -9,6 +9,10 @@ const fetchFoodsByServID = async(food_num)  => {
     const result = await Food.fetchFoodsByServID(food_num);
     return result;
 }
+const fetchInfoByUserId = async (user_id) => {
+    const result = await Food.fetchInfoByUserId(user_id);
+    return result;
+}
 const fetchFoodsByName = async(restaurant_name) => {
     const result = await Food.fetchFoodsByName(restaurant_name);
     return result;
@@ -61,6 +65,7 @@ const deleteFood = async(food_user) => {
 module.exports = {
     fetchAllFoods,
     fetchFoodsByServID,
+    fetchInfoByUserId,
     fetchFoodsByName,
     fetchFoodsByType,
     fetchFoodsByZipCode,

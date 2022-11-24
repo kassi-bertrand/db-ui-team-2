@@ -20,6 +20,15 @@ const FOOD_TABLE = 'food_details';
         const results = await query;
         return results;
     }
+    const fetchInfoByUserId = async (user_id) => {
+        //console.log("we reached here!")
+           const query = knex(FOOD_TABLE).where({ user_id }).orderBy('event_date', 'DESC');//.select("EventDate");
+           console.log("knex? here!")
+          // console.log(query);
+           const results = await query;
+           //console.log("results");
+           return results;
+    }
     const fetchFoodsByName= async(restaurant_name)=>  {
         const query = knex(FOOD_TABLE).where({restaurant_name});
         const results = await query;
@@ -84,6 +93,7 @@ const FOOD_TABLE = 'food_details';
  module.exports = {
     fetchAllFoods,
     fetchFoodsByServID,
+    fetchInfoByUserId,
     fetchFoodsByName,
     fetchFoodsByType,
     fetchFoodsByZipCode,

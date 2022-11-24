@@ -38,7 +38,7 @@ router.get('/:user_id', async (req, res, next) => {
    }
    next();
 });
-/*router.get('/search/:Filter/:filtering', async (req, res, next) => {
+router.get('/search/:Filter/:filtering', async (req, res, next) => {
       try {
          //const form = req.params;
          const filterType = req.params.Filter;
@@ -51,7 +51,7 @@ router.get('/:user_id', async (req, res, next) => {
          else if(filterType == "date"){
              fetchInfo = await Form.fetchInfoByDate(filter);
          }
-         else if(filterType == "name"){
+         else if(filterType == "name"){ 
              fetchInfo = await Form.fetchInfoByName(filter);
          }
          //console.log(form.user_id);
@@ -64,7 +64,7 @@ router.get('/:user_id', async (req, res, next) => {
          res.status(500).json({ message: err.toString()});
       }
       next();
-});*/ 
+});
 router.get('/venuefilter', async (req, res, next) => {
    try {
       const form = req.body;
