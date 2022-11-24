@@ -44,6 +44,13 @@ router.post('/new', async (req, res, next) => {
     res.status(201).json(foodByUsername[0]);
     next();
  });
+ router.put('/rating', async (req, res, next) => {
+    const rating = await Food.rateCaterer(req.body.food_num, req.body.rate);
+    //const foodByUsername = await Food.fetchFoodsByServID(req.body.form_num);
+    const foodByUsername = await Food.fetchFoodsByServID(req.body.food_num);
+    res.status(201).json(foodByUsername);
+    next();
+ });
  router.get('/:user_id', async (req, res, next) => {
     try {
        const form = req.params;

@@ -10,6 +10,7 @@ const FORM_TABLE = 'Form';
        const results = await query;
        return results;
    }
+
    const fetchInfoByPhoneNum = async (form_num) => {
     //console.log("we reached here!")
        const query = knex(FORM_TABLE).where({ form_num })//.select("EventDate");

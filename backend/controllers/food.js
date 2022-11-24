@@ -57,6 +57,10 @@ const createFood = async(user_id, name, phone_num, street, city, state_initial, 
     const result = await Food.createFood(user_id, name, phone_num, street, city, state_initial, availability, zip_code, details);
     return result;
 }
+const rateCaterer = async(food_num, rate) =>{
+    const result = await Food.rateCaterer(food_num, rate);
+    return result;
+}
 const deleteFood = async(food_user) => {
     const result = await Food.deleteFood(food_user);
     return result;
@@ -77,5 +81,6 @@ module.exports = {
     updateFoodAvailability,
     updateFoodAddress,
     createFood,
+    rateCaterer,
     deleteFood
 };
