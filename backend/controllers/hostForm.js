@@ -22,7 +22,7 @@ const fetchInfoByDate = async (event_date) => {
     return result;
 }
 const fetchInfoByName = async (name) => {
-    const result = await Form.fetchInfoByDate(name);
+    const result = await Form.fetchInfoByName(name);
     return result;
 }
 const fetchInfoByPhoneNum = async (form_num) => {
