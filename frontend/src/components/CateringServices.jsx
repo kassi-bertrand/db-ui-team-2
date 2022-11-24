@@ -10,6 +10,7 @@
 
 import { useContext, useEffect } from "react";
 import { useState } from "react";
+import { getCateringServicesById } from "../api/servicesApi";
 import { MyContext } from "../pages/HomePage";
 import CateringServiceCard from "./CateringServiceCard";
 import NewCateringServiceForm from "./NewCateringServiceForm";
@@ -21,10 +22,9 @@ function CateringServices(){
     const {user, setUser} = useContext(MyContext);
 
     //Get all catering services created by the user and set "services" state
-    //TODO: Complete This useEffect function
     useEffect(()=>{
         const fetchCatering = async() => {
-            //getCateringServicesById(user.id).then(response => ...);
+            getCateringServicesById(user.id).then(response => setServices(response));
         }
 
         fetchCatering()
