@@ -22,7 +22,7 @@ const FOOD_TABLE = 'food_details';
     }
     const fetchInfoByUserId = async (user_id) => {
         //console.log("we reached here!")
-           const query = knex(FOOD_TABLE).where({ user_id })//.orderBy('event_date', 'DESC');//.select("EventDate");
+           const query = knex(FOOD_TABLE).where({ user_id })
            console.log("knex? here!")
           // console.log(query);
            const results = await query;
