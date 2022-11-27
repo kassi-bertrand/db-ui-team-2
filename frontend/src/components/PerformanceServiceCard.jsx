@@ -6,6 +6,8 @@
  *                  performance services created by the user.
  *                  This component is used by the CateringServices component.
  */
+ import BadgeOpen from './BadgeOpen';
+ import VerificationBadge from './VerfificationBadge';
 
  function PerformanceServiceCard({user_id, name, phone_num, street, city, state_initial, availability, rating, price, zip_code, details}){
     return(
