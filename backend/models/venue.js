@@ -12,6 +12,11 @@ const VENUE_TABLE = 'venue_details';
         const results = await query;
         return results;
     }
+    const fetchVenuesByServID = async(venue_num)=> {
+        const query = knex(FOOD_TABLE).where({venue_num});
+        const results = await query;
+        return results;
+    }
     const fetchVenuesByName = async(venue_name) => {
         const query = knex(VENUE_TABLE).where(venue_name);
         const results = await query;
@@ -80,6 +85,7 @@ const VENUE_TABLE = 'venue_details';
  
  module.exports = {
     fetchAllVenues,
+    fetchVenuesByServID,
     fetchVenuesByName,
     fetchVenuesByUsername,
     fetchVenuesByZipCode,
