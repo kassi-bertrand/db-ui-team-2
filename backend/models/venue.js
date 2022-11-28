@@ -13,7 +13,7 @@ const VENUE_TABLE = 'venue_details';
         return results;
     }
     const fetchVenuesByServID = async(venue_num)=> {
-        const query = knex(FOOD_TABLE).where({venue_num});
+        const query = knex(VENUE_TABLE).where({venue_num});
         const results = await query;
         return results;
     }

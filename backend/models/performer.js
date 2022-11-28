@@ -7,6 +7,11 @@ const PERFORMER_TABLE = 'performer_details';
         const results = await query;
         return results;
     }
+    const fetchPerformerByServID = async(performer_num)=> {
+        const query = knex(PERFORMER_TABLE).where({performer_num});
+        const results = await query;
+        return results;
+    }
     const fetchPerformersByName = async(p_user) => {
         const query = knex(PERFORMER_TABLE).where({p_user});
         const results = await query;
@@ -56,6 +61,7 @@ const PERFORMER_TABLE = 'performer_details';
  module.exports  = {
     updateDateBooked,
     fetchAllPerformers,
+    fetchPerformerByServID,
     fetchPerformersByName,
     fetchPerformersByAvailable,
     updatePerformerName,

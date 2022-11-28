@@ -9,7 +9,7 @@ const fetchVenuesByName = async(venue_name) =>{
     return result;
 }
 const fetchVenuesByServID = async(venue_num)  => {
-    const result = await Food.fetchVenuesByServID(venue_num);
+    const result = await Venue.fetchVenuesByServID(venue_num);
     return result;
 }
 const fetchVenuesByVenueNum = async(venue_num) =>{

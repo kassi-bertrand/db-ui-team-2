@@ -26,9 +26,10 @@ router.get('/', async (req, res, next) => {
        next();
    }
 });
-router.post('/', async (req, res, next) => {
+router.post('/new', async (req, res, next) => {
     const createPerformer = await Performer.createPerformer(req.body.user_id, req.body.name, req.body.phone_num, req.body.zip_code, req.body.details);
-    res.status(201).json(createPerformer);
+    const PerformerID = await Performer.fetchPerformerByServID(createPerformer);
+    res.status(201).json(PerformerID[0]);
     next();
  });
  

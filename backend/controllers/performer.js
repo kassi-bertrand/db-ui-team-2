@@ -8,6 +8,10 @@ const fetchPerformersByName = async(p_user) => {
     const result = await Performer.fetchPerformersByName(p_user);
     return result;
 }
+const fetchPerformerByServID = async(performer_num)  => {
+    const result = await Performer.fetchPerformerByServID(performer_num);
+    return result;
+}
 const fetchPerformersByAvailable = async(available) => {
     const result = await Performer.fetchPerformersByAvailable(available);
     return result;
@@ -40,6 +44,7 @@ const deletePerformer = async(p_user) =>{
 module.exports = {
     fetchAllPerformers,
     fetchPerformersByName,
+    fetchPerformerByServID,
     fetchPerformersByAvailable,
     updatePerformerName,
     updatePerformerDetails,
