@@ -28,7 +28,13 @@ import { apiConfig, apiEndpoint } from './apiConfig';
  *                             to the '/venue/userId' route
  */
 export async function getVenueServicesById(UserId){
-    //Implement this function. Remember the try/Catch function
+    try{
+        const response = await axios.get(`${apiEndpoint}/venue/${UserId}`);
+        return response.data;
+    }
+    catch(error){
+        alert("Could not receive venue service to backend");
+    }
 }
 
 /**
@@ -40,7 +46,13 @@ export async function getVenueServicesById(UserId){
  *                             sent to the '/performance/userId' route 
  */
 export async function getPerformanceServicesById(UserId){
-    //Implement this function. Remember the try/Catch function
+    try{
+        const response = await axios.get(`${apiEndpoint}/performance/${UserId}`);
+        return response.data;
+    }
+    catch(error){
+        alert("Could not receive performance service to backend");
+    }
 }
 
 /**
@@ -72,7 +84,14 @@ export async function addCateringService(CateringServiceJSON){
  *                                  Intented to be sent to the '/venue/new'
  */
 export async function addVenueService(VenueServiceJSON){
-    //Implement this function. Remember the try/Catch.
+    try {
+        const response = await axios.post(`${apiEndpoint}/venue/new`, VenueServiceJSON);
+        return response.data;
+    }
+    catch(error){
+        alert("Could not send venue service to backend");
+    }
+
 }
 
 /**
@@ -86,5 +105,11 @@ export async function addVenueService(VenueServiceJSON){
  *                                     route.
  */
 export async function addPerformanceService(PerformanceServiceJSON){
-    //Implement this function. Remember the try/Catch
+    try{
+        const response = await axios.post(`${apiEndpoint}/performance/new`, PerformanceServiceJSON);
+        return response.data;
+    }
+    catch(error){
+        alert("Could not send performance service to backend");
+    }
 }
