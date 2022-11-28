@@ -60,6 +60,10 @@ const createVenue = async(user_id, name, phone_num, street, city, state_initial,
     const result = await Venue.createVenue(user_id, name, phone_num, street, city, state_initial, availability, zip_code, cost, guest_capacity, details);
     return result;
 }
+const rateVenue = async(venue_num, rate) =>{
+    const result = await Venue.rateVenue(venue_num, rate);
+    return result;
+}
 const deleteVenue = async(venue_user) =>{
     const result = await Venue.deleteVenue(venue_user);
     return result;
@@ -81,5 +85,6 @@ module.exports = {
     updateVenueAvailability,
     updateVenueAddress,
     createVenue,
+    rateVenue,
     deleteVenue
 };

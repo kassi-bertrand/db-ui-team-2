@@ -36,6 +36,10 @@ const createPerformer = async(user_id, name, phone_num, zip_code, availability, 
     const result = await Performer.createPerformer(user_id, name, phone_num, zip_code, availability, details);
     return result;
 }
+const ratePerformer = async(performer_num, rate) =>{
+    const result = await Performer.ratePerformer(performer_num, rate);
+    return result;
+}
 const deletePerformer = async(p_user) =>{
     const result = await Performer.deletePerformer(p_user);
     return result;
@@ -43,6 +47,7 @@ const deletePerformer = async(p_user) =>{
 
 module.exports = {
     fetchAllPerformers,
+    ratePerformer,
     fetchPerformersByName,
     fetchPerformerByServID,
     fetchPerformersByAvailable,

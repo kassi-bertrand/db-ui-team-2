@@ -32,7 +32,12 @@ router.post('/new', async (req, res, next) => {
     res.status(201).json(PerformerID[0]);
     next();
  });
- 
+ router.put('/rating', async (req, res, next) => {
+    const rating = await Performer.ratePerformer(req.body.performer_num, req.body.rate);
+    const foodByUsername = await Performer.fetchPerformerByServID(req.body.performer_num);
+    res.status(201).json(foodByUsername[0]);
+    next();
+ });
  router.put('/', async (req, res, next) => {
     if (req.body.performer_name) {
         const updatePerformerName = await Performer.updatePerformerName(req.body.performer_name, req.body.p_user);

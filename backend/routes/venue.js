@@ -66,6 +66,12 @@ router.post('/new', async (req, res, next) => {
     res.status(201).json(VenueID[0]);
     next();
  });
+ router.put('/rating', async (req, res, next) => {
+   const rating = await Venue.rateVenue(req.body.venue_num, req.body.rate);
+   const VenueID = await Performer.fetchVenuesByServID(req.body.venue_num);
+   res.status(201).json(VenueID[0]);
+   next();
+});
  router.put('/', async (req, res, next) => {
    if (req.body.venue_name) {
       const updateVenueName = await Venue.updateVenueName(req.body.venue_name, req.body.venue_user);

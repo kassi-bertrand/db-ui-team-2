@@ -108,6 +108,7 @@ const PERFORMER_TABLE = 'performer_details';
     updateDateBooked,
     fetchAllPerformers,
     fetchPerformerByServID,
+    ratePerformer,
     fetchPerformersByName,
     fetchPerformersByAvailable,
     updatePerformerName,
