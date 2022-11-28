@@ -10,6 +10,7 @@
 
 import { useContext, useEffect } from "react";
 import { useState } from "react";
+import { getPerformanceServicesById } from "../api/servicesApi";
 import { MyContext } from "../pages/HomePage";
 import NewPerformanceServiceForm from "./NewPerformanceServiceForm";
 import PlusButton from "./PlusButton";
@@ -21,10 +22,9 @@ function PerformanceServices(){
     const {user, setUser} = useContext(MyContext);
 
     //Get all performance services created by the user and set "services" state
-    //TODO: Complete This useEffect function
     useEffect(()=>{
         const fetchPeformance = async() => {
-            //getPerformanceServicesById(user.id).then(response => ...);
+            getPerformanceServicesById(user.id).then(response => setServices( response ));
         }
 
         fetchPeformance()

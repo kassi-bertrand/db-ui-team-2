@@ -10,6 +10,7 @@
 
 import { useContext, useEffect } from "react";
 import { useState } from "react";
+import { getVenueServicesById } from "../api/servicesApi";
 import { MyContext } from "../pages/HomePage";
 import NewVenueServiceForm from "./NewVenueServiceForm";
 import PlusButton from "./PlusButton";
@@ -20,10 +21,10 @@ function VenueServices(){
     const {user, setUser} = useContext(MyContext);
     
     //Get all venue services created by the user and set "services" state
-    //TODO: Complete This useEffect function
     useEffect(()=>{
         const fetchVenue = async() => {
-            //getVenueServicesById(user.id).then(response => ...);
+            getVenueServicesById(user.id).then(response => setServices( response ));
+
         }
 
         fetchVenue()
