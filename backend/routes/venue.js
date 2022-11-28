@@ -61,7 +61,7 @@ router.get('/', async (req, res, next) => {
    
 });*/
 router.post('/new', async (req, res, next) => {
-    const createVenue = await Venue.createVenue(req.body.user_id, req.body.name, req.body.phone_num, req.body.street, req.body.city, req.body.state_initial, req.body.zip_code, req.body.cost, req.body.guest_capacity, req.body.details);
+    const createVenue = await Venue.createVenue(req.body.user_id, req.body.name, req.body.phone_num, req.body.street, req.body.city, req.body.state_initial, req.body.availability, req.body.zip_code, req.body.cost, req.body.guest_capacity, req.body.details);
     const VenueID = await Venue.fetchVenuesByServID(createVenue);
     res.status(201).json(VenueID[0]);
     next();

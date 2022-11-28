@@ -85,8 +85,7 @@ const FOOD_TABLE = 'food_details';
         return results;
     }
     const rateCaterer = async(food_num, rate) =>{
-        if (rate < 6 && rate > -1)
-        {
+        if (rate < 6 && rate > -1){
         const ratingCount = knex(FOOD_TABLE).where({ food_num }).select("rating_count");
         var rating_count = await ratingCount;
         const ratingSum = knex(FOOD_TABLE).where({ food_num }).select("rating_sum");
@@ -130,7 +129,7 @@ const FOOD_TABLE = 'food_details';
         const results = await query;
         return results;
     }
-    }
+}
     const deleteFood= async(food_user) =>{
         const query = knex(FOOD_TABLE).delete().where({food_user});
         const results = await query;

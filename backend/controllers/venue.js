@@ -56,8 +56,8 @@ const updateVenueAddress = async(street, city, state_initial, zip_code, venue_us
     const result = await Venue.updateVenueAddress(street, city, state_initial, zip_code, venue_user);
     return result;
 }
-const createVenue = async(user_id, name, phone_num, street, city, state_initial, zip_code, cost, guest_capacity, details) => {
-    const result = await Venue.createVenue(user_id, name, phone_num, street, city, state_initial, zip_code, cost, guest_capacity, details);
+const createVenue = async(user_id, name, phone_num, street, city, state_initial, availability, zip_code, cost, guest_capacity, details) => {
+    const result = await Venue.createVenue(user_id, name, phone_num, street, city, state_initial, availability, zip_code, cost, guest_capacity, details);
     return result;
 }
 const deleteVenue = async(venue_user) =>{
