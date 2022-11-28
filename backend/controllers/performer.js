@@ -8,6 +8,10 @@ const fetchPerformersByName = async(p_user) => {
     const result = await Performer.fetchPerformersByName(p_user);
     return result;
 }
+const fetchPerformerByServID = async(performer_num)  => {
+    const result = await Performer.fetchPerformerByServID(performer_num);
+    return result;
+}
 const fetchPerformersByAvailable = async(available) => {
     const result = await Performer.fetchPerformersByAvailable(available);
     return result;
@@ -28,8 +32,12 @@ const updatePerformerAvailability = async(available, p_user) => {
     const result = await Performer.updatePerformerAvailability(available, p_user);
     return result;
 }
-const createPerformer = async(user_id, name, phone_num, zip_code, details) => {
-    const result = await Performer.createPerformer(user_id, name, phone_num, zip_code, details);
+const createPerformer = async(user_id, name, phone_num, zip_code, availability, details) => {
+    const result = await Performer.createPerformer(user_id, name, phone_num, zip_code, availability, details);
+    return result;
+}
+const ratePerformer = async(performer_num, rate) =>{
+    const result = await Performer.ratePerformer(performer_num, rate);
     return result;
 }
 const deletePerformer = async(p_user) =>{
@@ -39,7 +47,9 @@ const deletePerformer = async(p_user) =>{
 
 module.exports = {
     fetchAllPerformers,
+    ratePerformer,
     fetchPerformersByName,
+    fetchPerformerByServID,
     fetchPerformersByAvailable,
     updatePerformerName,
     updatePerformerDetails,

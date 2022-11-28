@@ -61,10 +61,17 @@ router.get('/', async (req, res, next) => {
    
 });*/
 router.post('/new', async (req, res, next) => {
-    const createVenue = await Venue.createVenue(req.body.user_id, req.body.name, req.body.phone_num, req.body.street, req.body.city, req.body.state_initial, req.body.zip_code, req.body.cost, req.body.guest_capacity, req.body.details);
-    res.status(201).json(createVenue);
+    const createVenue = await Venue.createVenue(req.body.user_id, req.body.name, req.body.phone_num, req.body.street, req.body.city, req.body.state_initial, req.body.availability, req.body.zip_code, req.body.cost, req.body.guest_capacity, req.body.details);
+    const VenueID = await Venue.fetchVenuesByServID(createVenue);
+    res.status(201).json(VenueID[0]);
     next();
  });
+ router.put('/rating', async (req, res, next) => {
+   const rating = await Venue.rateVenue(req.body.venue_num, req.body.rate);
+   const VenueID = await Performer.fetchVenuesByServID(req.body.venue_num);
+   res.status(201).json(VenueID[0]);
+   next();
+});
  router.put('/', async (req, res, next) => {
    if (req.body.venue_name) {
       const updateVenueName = await Venue.updateVenueName(req.body.venue_name, req.body.venue_user);

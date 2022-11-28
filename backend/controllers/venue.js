@@ -8,6 +8,10 @@ const fetchVenuesByName = async(venue_name) =>{
     const result = await Venue.fetchVenuesByName(venue_name);
     return result;
 }
+const fetchVenuesByServID = async(venue_num)  => {
+    const result = await Venue.fetchVenuesByServID(venue_num);
+    return result;
+}
 const fetchVenuesByVenueNum = async(venue_num) =>{
     const result = await Venue.fetchVenuesByUsername(venue_num);
     return result;
@@ -52,8 +56,12 @@ const updateVenueAddress = async(street, city, state_initial, zip_code, venue_us
     const result = await Venue.updateVenueAddress(street, city, state_initial, zip_code, venue_user);
     return result;
 }
-const createVenue = async(user_id, name, phone_num, street, city, state_initial, zip_code, cost, guest_capacity, details) => {
-    const result = await Venue.createVenue(user_id, name, phone_num, street, city, state_initial, zip_code, cost, guest_capacity, details);
+const createVenue = async(user_id, name, phone_num, street, city, state_initial, availability, zip_code, cost, guest_capacity, details) => {
+    const result = await Venue.createVenue(user_id, name, phone_num, street, city, state_initial, availability, zip_code, cost, guest_capacity, details);
+    return result;
+}
+const rateVenue = async(venue_num, rate) =>{
+    const result = await Venue.rateVenue(venue_num, rate);
     return result;
 }
 const deleteVenue = async(venue_user) =>{
@@ -64,6 +72,7 @@ const deleteVenue = async(venue_user) =>{
 module.exports = {
     fetchAllVenues,
     fetchVenuesByName,
+    fetchVenuesByServID,
     fetchVenuesByVenueNum,
     fetchVenuesByZipCode,
     fetchVenuesByOccasion,
@@ -76,5 +85,6 @@ module.exports = {
     updateVenueAvailability,
     updateVenueAddress,
     createVenue,
+    rateVenue,
     deleteVenue
 };

@@ -26,12 +26,18 @@ router.get('/', async (req, res, next) => {
        next();
    }
 });
-router.post('/', async (req, res, next) => {
-    const createPerformer = await Performer.createPerformer(req.body.user_id, req.body.name, req.body.phone_num, req.body.zip_code, req.body.details);
-    res.status(201).json(createPerformer);
+router.post('/new', async (req, res, next) => {
+    const createPerformer = await Performer.createPerformer(req.body.user_id, req.body.name, req.body.phone_num, req.body.zip_code, req.body.availability, req.body.details);
+    const PerformerID = await Performer.fetchPerformerByServID(createPerformer);
+    res.status(201).json(PerformerID[0]);
     next();
  });
- 
+ router.put('/rating', async (req, res, next) => {
+    const rating = await Performer.ratePerformer(req.body.performer_num, req.body.rate);
+    const foodByUsername = await Performer.fetchPerformerByServID(req.body.performer_num);
+    res.status(201).json(foodByUsername[0]);
+    next();
+ });
  router.put('/', async (req, res, next) => {
     if (req.body.performer_name) {
         const updatePerformerName = await Performer.updatePerformerName(req.body.performer_name, req.body.p_user);
