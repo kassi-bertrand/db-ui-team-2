@@ -33,7 +33,7 @@ export async function getVenueServicesById(UserId){
         return response.data;
     }
     catch(error){
-        alert("Could not receive venue service to backend");
+        alert("Could not receive venue service from backend");
     }
 }
 
@@ -51,7 +51,7 @@ export async function getPerformanceServicesById(UserId){
         return response.data;
     }
     catch(error){
-        alert("Could not receive performance service to backend");
+        alert("Could not receive performance service from backend");
     }
 }
 
