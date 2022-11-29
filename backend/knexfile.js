@@ -11,8 +11,8 @@ module.exports = {
         user : process.env.MYSQL_CLOUD_USER,
         password : process.env.MYSQL_CLOUD_PASS,
         //insecureAuth: true,
-        database : process.env.MYSQL_DB
-        
+        database : process.env.MYSQL_DB,
+        dateStrings: true
       }
     }
   };

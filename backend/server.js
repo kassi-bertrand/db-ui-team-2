@@ -21,6 +21,7 @@ const app = express();
 const port = 8000;
 
 var cors = require('cors');
+const { createPerformer } = require('./controllers/performer');
 app.use(cors());
 
 app.use(bodyParser.json());
@@ -30,16 +31,15 @@ app.get('/health', (request, response, next) => {
     response.json(responseBody);
     next();
 });
-
 app.use('/session', sessionRoutes);
 
 app.use('/users', authenticateJWT, usersRoutes);
 app.use('/newUser', registerRoutes);
-app.use('/food', foodRoutes);
-app.use('/performer', performerRoutes);
+app.use('/catering', foodRoutes);
+app.use('/performance', performerRoutes);
 app.use('/venue', venueRoutes);
 app.use('/reviews', reviewRoutes);
-app.use('/form', formRoutes);
+app.use('/events', formRoutes);
 app.listen(port, () => {
     console.log(`This app is listening on port ${port}`);
 });

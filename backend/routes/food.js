@@ -13,7 +13,7 @@ router.use(bodyParser.json());
 
 router.get('/', async (req, res, next) => {
    if (req.query.food_user) {
-       const foodByUsername = await Food.fetchFoodsByUsername(req.query.food_user);
+       const foodByUsername = await Food.fetchFoodsByServID(req.query.food_num);
        res.json(foodByUsername);
        next();
    } if (req.query.restaurant_name) {
@@ -38,10 +38,31 @@ router.get('/', async (req, res, next) => {
        next();
    }
 });
-router.post('/', async (req, res, next) => {
-    const createFood = await Food.createFood(req.body.food_user, req.body.restaurant_name, req.body.food_type, req.body.street, req.body.city, req.body.state_initial, req.body.zip_code, req.body.guest_capacity, req.body.avg_price, req.body.available,
-        req.body.start_date, req.body.end_date);
-    res.status(201).json(createFood);
+router.post('/new', async (req, res, next) => {
+    const createFood = await Food.createFood(req.body.user_id, req.body.name, req.body.phone_num, req.body.street, req.body.city, req.body.state_initial, req.body.availability, req.body.zip_code, req.body.details);
+    const foodByUsername = await Food.fetchFoodsByServID(createFood);
+    res.status(201).json(foodByUsername[0]);
+    next();
+ });
+ router.put('/rating', async (req, res, next) => {
+    const rating = await Food.rateCaterer(req.body.food_num, req.body.rate);
+    const foodByUsername = await Food.fetchFoodsByServID(req.body.food_num);
+    res.status(201).json(foodByUsername[0]);
+    next();
+ });
+ router.get('/:user_id', async (req, res, next) => {
+    try {
+       const form = req.params;
+       const fetchInfo = await Food.fetchInfoByUserId(form.user_id);
+       //console.log(form.user_id);
+       console.log(fetchInfo);
+       res.status(201).json(fetchInfo);
+       next();
+    }
+    catch (err) {
+       //console.error('Failed to load current user:', err);
+       res.status(500).json({ message: err.toString()});
+    }
     next();
  });
  router.put('/booked', async (req, res, next) => {

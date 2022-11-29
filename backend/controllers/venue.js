@@ -4,12 +4,16 @@ const fetchAllVenues = async() => {
     const result = await Venue.fetchAllVenues();
     return result;
 }
-const fetchVenuesByName = async(venue_name) =>{
-    const result = await Venue.fetchVenuesByName(venue_name);
+const fetchVenuesByUserID = async(user_id) =>{
+    const result = await Venue.fetchVenuesByUserID(user_id);
     return result;
 }
-const fetchVenuesByUsername = async(venue_user) =>{
-    const result = await Venue.fetchVenuesByUsername(venue_user);
+const fetchVenuesByServID = async(venue_num)  => {
+    const result = await Venue.fetchVenuesByServID(venue_num);
+    return result;
+}
+const fetchVenuesByVenueNum = async(venue_num) =>{
+    const result = await Venue.fetchVenuesByUsername(venue_num);
     return result;
 }
 const fetchVenuesByZipCode = async(zip_code) => {
@@ -52,12 +56,12 @@ const updateVenueAddress = async(street, city, state_initial, zip_code, venue_us
     const result = await Venue.updateVenueAddress(street, city, state_initial, zip_code, venue_user);
     return result;
 }
-const updateDateBooked = async(Booked, venue_user) => {
-    const result = await Venue.updateDateBooked(Booked, venue_user);
+const createVenue = async(user_id, name, phone_num, street, city, state_initial, availability, zip_code, cost, guest_capacity, details) => {
+    const result = await Venue.createVenue(user_id, name, phone_num, street, city, state_initial, availability, zip_code, cost, guest_capacity, details);
     return result;
 }
-const createVenue = async(venue_user, venue_name, street, city, state_initial, zip_code, cost, details, guest_capacity, occasion, available, start_date, end_date) => {
-    const result = await Venue.createVenue(venue_user, venue_name, street, city, state_initial, zip_code, cost, details, guest_capacity, occasion, available, start_date, end_date);
+const rateVenue = async(venue_num, rate) =>{
+    const result = await Venue.rateVenue(venue_num, rate);
     return result;
 }
 const deleteVenue = async(venue_user) =>{
@@ -67,8 +71,9 @@ const deleteVenue = async(venue_user) =>{
 
 module.exports = {
     fetchAllVenues,
-    fetchVenuesByName,
-    fetchVenuesByUsername,
+    fetchVenuesByUserID,
+    fetchVenuesByServID,
+    fetchVenuesByVenueNum,
     fetchVenuesByZipCode,
     fetchVenuesByOccasion,
     fetchVenuesByAvailable,
@@ -80,6 +85,6 @@ module.exports = {
     updateVenueAvailability,
     updateVenueAddress,
     createVenue,
-    deleteVenue,
-    updateDateBooked
+    rateVenue,
+    deleteVenue
 };

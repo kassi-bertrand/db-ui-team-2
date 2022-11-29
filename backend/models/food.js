@@ -15,10 +15,19 @@ const FOOD_TABLE = 'food_details';
         const results = await query;
         return results;
     }
-    const fetchFoodsByUsername = async(food_user)=> {
-        const query = knex(FOOD_TABLE).where({food_user});
+    const fetchFoodsByServID = async(food_num)=> {
+        const query = knex(FOOD_TABLE).where({food_num});
         const results = await query;
         return results;
+    }
+    const fetchInfoByUserId = async (user_id) => {
+        //console.log("we reached here!")
+           const query = knex(FOOD_TABLE).where({ user_id })
+           console.log("knex? here!")
+          // console.log(query);
+           const results = await query;
+           //console.log("results");
+           return results;
     }
     const fetchFoodsByName= async(restaurant_name)=>  {
         const query = knex(FOOD_TABLE).where({restaurant_name});
@@ -70,16 +79,57 @@ const FOOD_TABLE = 'food_details';
         const results = await query;
         return results;
     }
-    const updateDateBooked = async(Booked, food_user) => {
-        const query = knex(FOOD_TABLE).where({food_user}).update({ Booked: knex.raw('CONCAT(Booked, ?)',[','+Booked]) });
+    const createFood= async(user_id, name, phone_num, street, city, state_initial, availability, zip_code, details) =>{
+        const query = knex(FOOD_TABLE).insert({user_id, name, phone_num, street, city, state_initial, availability, zip_code, details});
         const results = await query;
         return results;
     }
-    const createFood= async(food_user, restaurant_name, food_type, street, city, state_initial, zip_code, guest_capacity, avg_price, available, start_date, end_date) =>{
-        const query = knex(FOOD_TABLE).insert({food_user, restaurant_name, food_type, street, city, state_initial, zip_code, guest_capacity, avg_price, available,start_date, end_date});
+    const rateCaterer = async(food_num, rate) =>{
+        if (rate < 6 && rate > -1){
+        const ratingCount = knex(FOOD_TABLE).where({ food_num }).select("rating_count");
+        var rating_count = await ratingCount;
+        const ratingSum = knex(FOOD_TABLE).where({ food_num }).select("rating_sum");
+        var rating_sum = await ratingSum;
+        const ratingAvg = knex(FOOD_TABLE).where({ food_num }).select("rating");
+        var rating = await ratingAvg;
+        rating_count = JSON.stringify(rating_count);
+        rating_count = rating_count.replace('[{"rating_count":', "");
+        rating_count = rating_count.replace('}]', "");
+        rating_count = Number(rating_count);
+        console.log(rating_count)
+        if(rating_count > -1){
+            console.log("is it here?")
+        rating_count = rating_count+1;
+        }
+        else{
+            rating_count = 1;
+        }
+        console.log(rating_count)
+        rating_sum = JSON.stringify(rating_sum);
+        rating_sum = rating_sum.replace('[{"rating_sum":', "");
+        rating_sum = rating_sum.replace('}]', "");
+        rating_sum = Number(rating_sum);
+        console.log(rating_sum)
+        if(rating_sum > -1){
+            console.log("is it here?")
+        rating_sum = rating_sum + rate;
+        }
+        else{
+            rating_sum = rate;
+        }
+        console.log(rating_sum);
+        rating = JSON.stringify(rating);
+        rating = rating.replace('[{"rating":', "");
+        rating = rating.replace('}]', "");
+        rating = Number(rating);
+        console.log(rating);
+        rating = rating_sum/rating_count;
+        console.log(rating);
+        const query = knex(FOOD_TABLE).update({rating, rating_count, rating_sum}).where({food_num});
         const results = await query;
         return results;
     }
+}
     const deleteFood= async(food_user) =>{
         const query = knex(FOOD_TABLE).delete().where({food_user});
         const results = await query;
@@ -88,7 +138,8 @@ const FOOD_TABLE = 'food_details';
  //}
  module.exports = {
     fetchAllFoods,
-    fetchFoodsByUsername,
+    fetchFoodsByServID,
+    fetchInfoByUserId,
     fetchFoodsByName,
     fetchFoodsByType,
     fetchFoodsByZipCode,
@@ -100,7 +151,7 @@ const FOOD_TABLE = 'food_details';
     updateFoodAvailability,
     updateFoodAddress,
     createFood,
-    deleteFood,
-    updateDateBooked
+    rateCaterer,
+    deleteFood
 };
  //module.exports = Food;

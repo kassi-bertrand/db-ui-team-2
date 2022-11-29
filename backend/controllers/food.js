@@ -5,8 +5,12 @@ const fetchAllFoods = async() => {
     return result;
 }
 
-const fetchFoodsByUsername = async(food_user)  => {
-    const result = await Food.fetchFoodsByUsername(food_user);
+const fetchFoodsByServID = async(food_num)  => {
+    const result = await Food.fetchFoodsByServID(food_num);
+    return result;
+}
+const fetchInfoByUserId = async (user_id) => {
+    const result = await Food.fetchInfoByUserId(user_id);
     return result;
 }
 const fetchFoodsByName = async(restaurant_name) => {
@@ -49,12 +53,12 @@ const updateFoodAddress = async(street, city, state_initial, zip_code, food_user
     const result = await Food.updateFoodAddress(street, city, state_initial, zip_code, food_user);
     return result;
 }
-const updateDateBooked = async(Booked, food_user) => {
-    const result = await Food.updateDateBooked(Booked, food_user);
+const createFood = async(user_id, name, phone_num, street, city, state_initial, availability, zip_code, details) =>{
+    const result = await Food.createFood(user_id, name, phone_num, street, city, state_initial, availability, zip_code, details);
     return result;
 }
-const createFood = async(food_user, restaurant_name, food_type, street, city, state_initial, zip_code, guest_capacity, avg_price, available,start_date, end_date) =>{
-    const result = await Food.createFood(food_user, restaurant_name, food_type, street, city, state_initial, zip_code, guest_capacity, avg_price, available,start_date, end_date);
+const rateCaterer = async(food_num, rate) =>{
+    const result = await Food.rateCaterer(food_num, rate);
     return result;
 }
 const deleteFood = async(food_user) => {
@@ -64,7 +68,8 @@ const deleteFood = async(food_user) => {
 
 module.exports = {
     fetchAllFoods,
-    fetchFoodsByUsername,
+    fetchFoodsByServID,
+    fetchInfoByUserId,
     fetchFoodsByName,
     fetchFoodsByType,
     fetchFoodsByZipCode,
@@ -76,6 +81,6 @@ module.exports = {
     updateFoodAvailability,
     updateFoodAddress,
     createFood,
-    updateDateBooked,
+    rateCaterer,
     deleteFood
 };
