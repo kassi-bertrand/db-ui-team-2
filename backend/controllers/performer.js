@@ -44,8 +44,13 @@ const deletePerformer = async(p_user) =>{
     const result = await Performer.deletePerformer(p_user);
     return result;
 }
+const updateDateBooked = async(Booked, food_user) => {
+    const result = await Performer.updateDateBooked(Booked, p_user);
+    return result;
+}
 
 module.exports = {
+    updateDateBooked,
     fetchAllPerformers,
     ratePerformer,
     fetchPerformersByUserID,

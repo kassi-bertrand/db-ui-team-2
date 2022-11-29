@@ -61,6 +61,11 @@ router.post('/new', async (req, res, next) => {
     }
     next();
  });
+ router.put('/booked', async (req, res, next) => {
+    const updateDateBooked = await Food.updateDateBooked(req.body.Booked, req.body.food_user);
+    res.json(updateDateBooked);
+    next();
+  });
  router.put('/', async (req, res, next) => {
     if (req.body.restaurant_name) {
         const updateRestaurantName = await Food.updateRestaurantName(req.body.restaurant_name, req.body.food_user);

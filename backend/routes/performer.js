@@ -48,6 +48,11 @@ router.post('/new', async (req, res, next) => {
     res.status(201).json(foodByUsername[0]);
     next();
  });
+ router.put('/booked', async (req, res, next) => {
+    const updateDateBooked = await Performer.updateDateBooked(req.body.Booked, req.body.p_user);
+    res.json(updateDateBooked);
+    next();
+  });
  router.put('/', async (req, res, next) => {
     if (req.body.performer_name) {
         const updatePerformerName = await Performer.updatePerformerName(req.body.performer_name, req.body.p_user);

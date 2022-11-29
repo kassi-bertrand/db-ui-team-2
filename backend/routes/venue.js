@@ -37,27 +37,6 @@ router.get('/', async (req, res, next) => {
        next();
    }
 });
-/*router.post('/we', async (req, res, next) => {
-   const service = await req.body.service;
-   
-   const user_id = await req.body.user_id;
-   const name = await req.body.name;
-   const phone_num = await req.body.phone_num;
-   const street = await req.body.street
-   const city = await req.body.city
-   const state =await req.body.state_initial
-   const zip_code = await req.body.zip_code;
-   const cost = await req.body.cost;
-   const guest_capacity = await req.body.guest_capacity
-   const details = await req.body.details;
-   console.log(service);
-   if (service == "performer"){
-      const k = await Performer.createPerformer(user_id, name, phone_num, zip_code, details);
-      res.status(201).json(k);
-      next();
-   }
-   
-});*/
 router.post('/new', async (req, res, next) => {
     const createVenue = await Venue.createVenue(req.body.user_id, req.body.name, req.body.phone_num, req.body.street, req.body.city, req.body.state_initial, req.body.availability, req.body.zip_code, req.body.cost, req.body.guest_capacity, req.body.details);
     const VenueID = await Venue.fetchVenuesByServID(createVenue);
@@ -113,6 +92,11 @@ router.post('/new', async (req, res, next) => {
       res.json(updateVenueAddress);
       next();
    }
+ });
+ router.put('/booked', async (req, res, next) => {
+   const updateDateBooked = await Venue.updateDateBooked(req.body.Booked, req.body.venue_user);
+   res.json(updateDateBooked);
+   next();
  });
  router.delete('/', async (req, res, next) => {
     const deleteVenue = await Venue.deleteVenue(req.body.venue_user);

@@ -17,6 +17,11 @@ const VENUE_TABLE = 'venue_details';
         const results = await query;
         return results;
     }
+    const fetchStartByUsername = async(venue_user) => {
+        const query = knex(VENUE_TABLE).where(venue_user);
+        const results = await query;
+        return results;
+    }
     const fetchVenuesByName = async(venue_name) => {
         const query = knex(VENUE_TABLE).where(venue_name);
         const results = await query;
