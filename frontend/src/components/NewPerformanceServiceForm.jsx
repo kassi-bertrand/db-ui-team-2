@@ -33,6 +33,7 @@ function NewPerformanceServiceForm({user, services, isOpen, setIsOpen, setServic
              "user_id": user.id,
              "name": nameInput.current.value,
              "phone_num": user.phone_num,
+             "availability": dateInput.current.value,
              "details": detailInput.current.value,
          }
  
@@ -129,7 +130,27 @@ function NewPerformanceServiceForm({user, services, isOpen, setIsOpen, setServic
                                                          />
                                                      </div>
                                                  </div>
- 
+
+                                                 <div className="flex flex-wrap -mx-3 mb-4 mt-5">
+                                                     <div className="w-full px-8">
+                                                         <div className="flex justify-between">
+                                                             <label
+                                                                 className="block text-gray-800 text-sm font-semibold mb-1 font-inter"
+                                                                 htmlFor="date"
+                                                             >
+                                                                When are you available?
+                                                             </label>
+                                                         </div>
+                                                         <input
+                                                             id="date"
+                                                             type="date"
+                                                             ref={dateInput}
+                                                             className="w-full text-gray-800 form-input shadow-md text-sm"
+                                                             required
+                                                         />
+                                                     </div>
+                                                 </div>
+
                                                  <div className="flex flex-wrap -mx-3 mb-4">
                                                      <div className="w-full px-8">
                                                          <div className="flex justify-between">
