@@ -20,7 +20,7 @@ function FeedCard({user_id, event_id, name, phone_num, street, city, state, zip_
             <div className="justify-between sm:flex">
                 <div>
                     <h3 className="text-xl font-bold text-gray-900">
-                        {occasion}! 🥳
+                        {occasion}!
                     </h3>
                     <div className="flex text-gray-600 content-center space-x-2">
                         <p className="mt-1 text-xs font-medium inline-block align-middle">By {name} <span className="inline-block align-middle"> <VerificationBadge/></span></p>
