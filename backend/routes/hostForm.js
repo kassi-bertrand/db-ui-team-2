@@ -1,5 +1,6 @@
 const express = require('express');
 const Form = require('../controllers/hostForm');
+const knex = require('../database/knex');
 /**
 * A router is a special Express object that can be used to define how to route and manage
 * requests. We configure a router here to handle a few routes specific to students
@@ -65,35 +66,13 @@ router.get('/search/:Filter/:filtering', async (req, res, next) => {
       }
       next();
 });
-router.get('/venuefilter', async (req, res, next) => {
+router.get('/venue/filter', async (req, res, next) => {
    try {
-      const form = req.body;
-      const fetchDate = await Form.fetchDateByPhoneNum(form.form_num);
-      var hostDate = JSON.stringify(fetchDate);
-      hostDate = hostDate.replace('[{"EventDate":"', "");
-      hostDate = hostDate.replace('"}]', "");
-      hostDate = hostDate.replace('T00:00:00.000Z', "");
-      console.log(hostDate);
-      const fetchLocation = await Form.fetchLocationByPhoneNum(form.form_num);
-      var hostLocation = JSON.stringify(fetchLocation);
-      hostLocation = hostLocation.replace('[{"Location":"', "");
-      hostLocation = hostLocation.replace('"}]', "");
-      console.log(hostLocation);
-      const fetchGuestCount = await Form.fetchGuestCountByPhoneNum(form.form_num);
-      var hostGuestCount = JSON.stringify(fetchGuestCount);
-      hostGuestCount = hostGuestCount.replace('[{"GuestCount":', "");
-      hostGuestCount = hostGuestCount.replace('}]', "");
-      console.log(hostGuestCount);
-      const fetchBudget = await Form.fetchBudgetByPhoneNum(form.form_num);
-      var hostBudget = JSON.stringify(fetchBudget);
-      hostBudget = hostBudget.replace('[{"Budget":', "");
-      hostBudget = hostBudget.replace('}]', "");
-      console.log(hostBudget);
-      const dates = knex('venue_details').where('start_date', '<=', hostDate).andWhere('end_date', '>=', hostDate).andWhereRaw('LOCATE(?, Booked) = 0',
-      [hostDate]).andWhereRaw('LOCATE(?, city) > 0', [hostLocation]).andWhere('guest_capacity', '>=', hostGuestCount).andWhere('cost', '<=', hostBudget);
+      const availability = req.query.availability;
+      const zip_code = req.query.zip_code;
+      const dates = knex('venue_details').where({availability}).andWhere({zip_code});
       const results = await dates;
       res.status(201).json(results);
-      next();
    }
    catch (err) {
       //console.error('Failed to load current user:', err);
@@ -101,35 +80,13 @@ router.get('/venuefilter', async (req, res, next) => {
    }
    next();
 });
-router.get('/foodfilter', async (req, res, next) => {
+router.get('/food/filter', async (req, res, next) => {
    try {
-      const form = req.body;
-      const fetchDate = await Form.fetchDateByPhoneNum(form.form_num);
-      var hostDate = JSON.stringify(fetchDate);
-      hostDate = hostDate.replace('[{"EventDate":"', "");
-      hostDate = hostDate.replace('"}]', "");
-      hostDate = hostDate.replace('T00:00:00.000Z', "");
-      console.log(hostDate);
-      const fetchLocation = await Form.fetchLocationByPhoneNum(form.form_num);
-      var hostLocation = JSON.stringify(fetchLocation);
-      hostLocation = hostLocation.replace('[{"Location":"', "");
-      hostLocation = hostLocation.replace('"}]', "");
-      console.log(hostLocation);
-      const fetchGuestCount = await Form.fetchGuestCountByPhoneNum(form.form_num);
-      var hostGuestCount = JSON.stringify(fetchGuestCount);
-      hostGuestCount = hostGuestCount.replace('[{"GuestCount":', "");
-      hostGuestCount = hostGuestCount.replace('}]', "");
-      console.log(hostGuestCount);
-      const fetchBudget = await Form.fetchBudgetByPhoneNum(form.form_num);
-      var hostBudget = JSON.stringify(fetchBudget);
-      hostBudget = hostBudget.replace('[{"Budget":', "");
-      hostBudget = hostBudget.replace('}]', "");
-      console.log(hostBudget);
-      const dates = knex('food_details').where('start_date', '<=', hostDate).andWhere('end_date', '>=', hostDate).andWhereRaw('LOCATE(?, Booked) = 0',
-      [hostDate]).andWhereRaw('LOCATE(?, city) > 0', [hostLocation]).andWhere('guest_capacity', '>=', hostGuestCount).andWhere('avg_price', '<=', hostBudget);
+      const availability = req.query.availability;
+      const zip_code = req.query.zip_code;
+      const dates = knex('food_details').where({availability}).andWhere({zip_code});
       const results = await dates;
       res.status(201).json(results);
-      next();
    }
    catch (err) {
       //console.error('Failed to load current user:', err);
@@ -137,35 +94,13 @@ router.get('/foodfilter', async (req, res, next) => {
    }
    next();
 });
-router.get('/performerfilter', async (req, res, next) => {
+router.get('/performance/filter', async (req, res, next) => {
    try {
-      const form = req.body;
-      const fetchDate = await Form.fetchDateByPhoneNum(form.form_num);
-      var hostDate = JSON.stringify(fetchDate);
-      hostDate = hostDate.replace('[{"EventDate":"', "");
-      hostDate = hostDate.replace('"}]', "");
-      hostDate = hostDate.replace('T00:00:00.000Z', "");
-      console.log(hostDate);
-      const fetchLocation = await Form.fetchLocationByPhoneNum(form.form_num);
-      var hostLocation = JSON.stringify(fetchLocation);
-      hostLocation = hostLocation.replace('[{"Location":"', "");
-      hostLocation = hostLocation.replace('"}]', "");
-      console.log(hostLocation);
-      const fetchGuestCount = await Form.fetchGuestCountByPhoneNum(form.form_num);
-      var hostGuestCount = JSON.stringify(fetchGuestCount);
-      hostGuestCount = hostGuestCount.replace('[{"GuestCount":', "");
-      hostGuestCount = hostGuestCount.replace('}]', "");
-      console.log(hostGuestCount);
-      const fetchBudget = await Form.fetchBudgetByPhoneNum(form.form_num);
-      var hostBudget = JSON.stringify(fetchBudget);
-      hostBudget = hostBudget.replace('[{"Budget":', "");
-      hostBudget = hostBudget.replace('}]', "");
-      console.log(hostBudget);
-      const dates = knex('performer_details').where('start_date', '<=', hostDate).andWhere('end_date', '>=', hostDate).andWhereRaw('LOCATE(?, Booked) = 0',
-      [hostDate])/*.andWhereRaw('LOCATE(?, city) > 0', [hostLocation]).andWhere('guest_capacity', '>=', hostGuestCount).andWhere('avg_price', '<=', hostBudget);*/
+      const availability = req.query.availability;
+      const zip_code = req.query.zip_code;
+      const dates = knex('performer_details').where({availability}).andWhere({zip_code});
       const results = await dates;
       res.status(201).json(results);
-      next();
    }
    catch (err) {
       //console.error('Failed to load current user:', err);
