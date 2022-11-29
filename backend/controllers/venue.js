@@ -4,8 +4,8 @@ const fetchAllVenues = async() => {
     const result = await Venue.fetchAllVenues();
     return result;
 }
-const fetchVenuesByName = async(venue_name) =>{
-    const result = await Venue.fetchVenuesByName(venue_name);
+const fetchVenuesByUserID = async(user_id) =>{
+    const result = await Venue.fetchVenuesByUserID(user_id);
     return result;
 }
 const fetchVenuesByServID = async(venue_num)  => {
@@ -71,7 +71,7 @@ const deleteVenue = async(venue_user) =>{
 
 module.exports = {
     fetchAllVenues,
-    fetchVenuesByName,
+    fetchVenuesByUserID,
     fetchVenuesByServID,
     fetchVenuesByVenueNum,
     fetchVenuesByZipCode,

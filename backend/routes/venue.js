@@ -66,6 +66,21 @@ router.post('/new', async (req, res, next) => {
     res.status(201).json(VenueID[0]);
     next();
  });
+ router.get('/:user_id', async (req, res, next) => {
+   try {
+      const form = req.params;
+      const fetchInfo = await Venue.fetchVenuesByUserID(form.user_id);
+      //console.log(form.user_id);
+      console.log(fetchInfo);
+      res.status(201).json(fetchInfo);
+      next();
+   }
+   catch (err) {
+      //console.error('Failed to load current user:', err);
+      res.status(500).json({ message: err.toString()});
+   }
+   next();
+});
  router.put('/rating', async (req, res, next) => {
    const rating = await Venue.rateVenue(req.body.venue_num, req.body.rate);
    const VenueID = await Performer.fetchVenuesByServID(req.body.venue_num);
