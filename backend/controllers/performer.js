@@ -4,8 +4,8 @@ const fetchAllPerformers = async() =>{
     const result = await Performer.fetchAllPerformers();
     return result;
 }
-const fetchPerformersByName = async(p_user) => {
-    const result = await Performer.fetchPerformersByName(p_user);
+const fetchPerformersByUserID = async(user_id) => {
+    const result = await Performer.fetchPerformersByUserID(user_id);
     return result;
 }
 const fetchPerformerByServID = async(performer_num)  => {
@@ -48,7 +48,7 @@ const deletePerformer = async(p_user) =>{
 module.exports = {
     fetchAllPerformers,
     ratePerformer,
-    fetchPerformersByName,
+    fetchPerformersByUserID,
     fetchPerformerByServID,
     fetchPerformersByAvailable,
     updatePerformerName,
