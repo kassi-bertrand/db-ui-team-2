@@ -39,7 +39,8 @@ function UserFeed(){
                 {
                     feed.map((anEvent, index) =>{
                         return(
-                                <FeedCard 
+                                <FeedCard
+                                    key={index}
                                     user_id={anEvent.user_id}
                                     event_id={anEvent.form_num}
                                     name={anEvent.name}

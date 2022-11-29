@@ -13,6 +13,7 @@ import { useState } from "react";
 import { getPerformanceServicesById } from "../api/servicesApi";
 import { MyContext } from "../pages/HomePage";
 import NewPerformanceServiceForm from "./NewPerformanceServiceForm";
+import PerformanceServiceCard from "./PerformanceServiceCard";
 import PlusButton from "./PlusButton";
 
 function PerformanceServices(){
@@ -43,7 +44,24 @@ function PerformanceServices(){
                 <PlusButton title="New Performace" setIsOpen={setIsOpen}/>
                 {/**TODO: Then, Render all "PerformanceServiceCard" components here */}
                 {
-
+                    services.map((aPerformanceService, index) =>{
+                        return(
+                            <PerformanceServiceCard
+                                key={index}
+                                user_id={aPerformanceService.user_id}
+                                performance_id={aPerformanceService.food_num}
+                                name={aPerformanceService.name}
+                                phone_num={aPerformanceService.phone_num}
+                                street={aPerformanceService.street}
+                                city={aPerformanceService.city}
+                                state_initial={aPerformanceService.state_initial}
+                                availability={aPerformanceService.availability}
+                                rating={aPerformanceService.rating}
+                                zip_code={aPerformanceService.zip_code}
+                                details={aPerformanceService.details}
+                            />
+                        );
+                    })
                 }
                 <NewPerformanceServiceForm user={user} services={services} isOpen={isOpen} setIsOpen={setIsOpen} setServices={setServices}/>
             </div>

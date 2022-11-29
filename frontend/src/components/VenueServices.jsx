@@ -14,6 +14,7 @@ import { getVenueServicesById } from "../api/servicesApi";
 import { MyContext } from "../pages/HomePage";
 import NewVenueServiceForm from "./NewVenueServiceForm";
 import PlusButton from "./PlusButton";
+import VenueServiceCard from "./VenueServiceCard";
 
 function VenueServices(){
     const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +44,24 @@ function VenueServices(){
                 <PlusButton title="New Venue" setIsOpen={setIsOpen}/>
                 {/**TODO: Then, Render all "VenueServiceCard" here */}
                 {
-
+                    services.map((aVenueService, index) =>{
+                        return(
+                            <VenueServiceCard
+                                key={index}
+                                user_id={aVenueService.user_id}
+                                venue_id={aVenueService.food_num}
+                                name={aVenueService.name}
+                                phone_num={aVenueService.phone_num}
+                                street={aVenueService.street}
+                                city={aVenueService.city}
+                                state_initial={aVenueService.state_initial}
+                                availability={aVenueService.availability}
+                                rating={aVenueService.rating}
+                                zip_code={aVenueService.zip_code}
+                                details={aVenueService.details}
+                            />
+                        );
+                    })
                 }
                 <NewVenueServiceForm user={user} services={services} isOpen={isOpen} setIsOpen={setIsOpen} setServices={setServices}/>
             </div>
