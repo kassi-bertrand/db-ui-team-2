@@ -8,7 +8,7 @@ const VENUE_TABLE = 'venue_details';
         return results;
     }
     const fetchVenuesByUserID = async(user_id) => {
-        const query = knex(VENUE_TABLE).where(user_id);
+        const query = knex(VENUE_TABLE).where({user_id});
         const results = await query;
         return results;
     }
