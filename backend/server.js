@@ -36,7 +36,7 @@ app.use('/session', sessionRoutes);
 app.use('/users', authenticateJWT, usersRoutes);
 app.use('/newUser', registerRoutes);
 app.use('/catering', foodRoutes);
-app.use('/performer', performerRoutes);
+app.use('/performance', performerRoutes);
 app.use('/venue', venueRoutes);
 app.use('/reviews', reviewRoutes);
 app.use('/events', formRoutes);
