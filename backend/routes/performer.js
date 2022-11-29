@@ -26,6 +26,21 @@ router.get('/', async (req, res, next) => {
        next();
    }
 });
+router.get('/:user_id', async (req, res, next) => {
+    try {
+       const form = req.params;
+       const fetchInfo = await Performer.fetchPerformersByUserID(form.user_id);
+       //console.log(form.user_id);
+       console.log(fetchInfo);
+       res.status(201).json(fetchInfo);
+       next();
+    }
+    catch (err) {
+       //console.error('Failed to load current user:', err);
+       res.status(500).json({ message: err.toString()});
+    }
+    next();
+ });
 router.post('/new', async (req, res, next) => {
     const createPerformer = await Performer.createPerformer(req.body.user_id, req.body.name, req.body.phone_num, req.body.zip_code, req.body.availability, req.body.details);
     const PerformerID = await Performer.fetchPerformerByServID(createPerformer);

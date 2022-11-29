@@ -58,8 +58,8 @@ const PERFORMER_TABLE = 'performer_details';
         const results = await query;
         return results;
     }
-    const fetchPerformersByName = async(p_user) => {
-        const query = knex(PERFORMER_TABLE).where({p_user});
+    const fetchPerformersByUserID = async(user_id) => {
+        const query = knex(PERFORMER_TABLE).where({user_id});
         const results = await query;
         return results;
     }
@@ -109,7 +109,7 @@ const PERFORMER_TABLE = 'performer_details';
     fetchAllPerformers,
     fetchPerformerByServID,
     ratePerformer,
-    fetchPerformersByName,
+    fetchPerformersByUserID,
     fetchPerformersByAvailable,
     updatePerformerName,
     updatePerformerDetails,
