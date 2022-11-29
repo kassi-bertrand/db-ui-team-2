@@ -51,30 +51,12 @@ const solutions = [
     description: 'Filter your feed by host',
     href: '##',
     icon: IconOne,
-  },
-  {
-    name: 'Catering',
-    description: 'Want to see events with food & drinks? 🍲🍹',
-    href: '##',
-    icon: IconTwo,
-  },
+  },,
   {
     name: 'date',
     description: 'Filter by date and see events that fit your schedule',
     href: '##',
     icon: IconThree,
-  },
-  {
-    name: 'Artist',
-    description: 'Use this option to see who will be performing 🕺💃',
-    href: '##',
-    icon: IconThree,
-  },
-  {
-    name: 'Venue',
-    description: 'Find events happening at one location 🗺️',
-    href: '##',
-    icon: IconOne,
   },
   {
     name: 'city',
