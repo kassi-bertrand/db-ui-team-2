@@ -32,6 +32,7 @@ function NewVenueServiceForm({user, services, isOpen, setIsOpen, setServices}){
      const streetInput = useRef(null);
      const cityInput = useRef(null);
      const stateInput = useRef(null);
+     const dateInput = useRef(null);
      const zipCodeInput = useRef(null);
      const costInput = useRef(null);
      const capacityInput = useRef(null);
@@ -47,6 +48,7 @@ function NewVenueServiceForm({user, services, isOpen, setIsOpen, setServices}){
              "street": streetInput.current.value,
              "city": cityInput.current.value,
              "state_initial": stateInput.current.value,
+             "availability": dateInput.current.value,
              "zip_code": Number(zipCodeInput.current.value),
              "cost": costInput.current.value,
              "capacity": capacityInput.current.value,
@@ -258,6 +260,26 @@ function NewVenueServiceForm({user, services, isOpen, setIsOpen, setServices}){
                                                              </select>
                                                          </div>
                                                      </div>
+
+                                                    <div className="flex flex-wrap -mx-3 mb-4 mt-5">
+                                                        <div className="w-full px-8">
+                                                            <div className="flex justify-between">
+                                                                <label
+                                                                    className="block text-gray-800 text-sm font-semibold mb-1 font-inter"
+                                                                    htmlFor="date"
+                                                                >
+                                                                    When are you available?
+                                                                </label>
+                                                            </div>
+                                                            <input
+                                                                id="date"
+                                                                type="date"
+                                                                ref={dateInput}
+                                                                className="w-full text-gray-800 form-input shadow-md text-sm"
+                                                                required
+                                                            />
+                                                        </div>
+                                                    </div>
  
                                                      <div className="flex flex-wrap -mx-3 mb-4">
                                                          <div className="w-full px-8">

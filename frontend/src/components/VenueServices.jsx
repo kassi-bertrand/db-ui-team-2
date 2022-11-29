@@ -29,7 +29,11 @@ function VenueServices(){
         }
 
         fetchVenue()
-    }, [user]);
+    }, []);
+
+    if(!services){
+        return <>Loading</>;
+    }
 
     return(
         <div>

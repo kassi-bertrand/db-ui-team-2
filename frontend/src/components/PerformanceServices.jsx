@@ -29,7 +29,11 @@ function PerformanceServices(){
         }
 
         fetchPeformance()
-    }, [user]);
+    }, []);
+
+    if(!services){
+        return <>Loading</>;
+    }
 
     return(
         <div>

@@ -28,7 +28,11 @@ function CateringServices(){
         }
 
         fetchCatering()
-    }, [user]);
+    }, []);
+
+    if(!services){
+        return <>Loading</>
+    }
     
     return(
         <div>
@@ -46,6 +50,7 @@ function CateringServices(){
                     services.map((aCateringService, index) =>{
                         return(
                             <CateringServiceCard
+                                key={index}
                                 user_id={aCateringService.user_id}
                                 catering_id={aCateringService.food_num}
                                 name={aCateringService.name}
