@@ -80,13 +80,20 @@ router.get('/venue/filter', async (req, res, next) => {
    }
    next();
 });
-router.get('/food/filter', async (req, res, next) => {
+router.get('/all/filter', async (req, res, next) => {
    try {
       const availability = req.query.availability;
       const zip_code = req.query.zip_code;
-      const dates = knex('food_details').where({availability}).andWhere({zip_code});
-      const results = await dates;
-      res.status(201).json(results);
+      const dates1 = knex('food_details').where({availability}).andWhere({zip_code});
+      const dates2 = knex('performer_details').where({availability}).andWhere({zip_code});
+      const dates3 = knex('venue_details').where({availability}).andWhere({zip_code});
+      const results1 = await dates1;
+      const results2 = await dates2;
+      const results3 = await dates3;
+      arr = {"Catering" : results1, "Performance": results2, "Venue" : results3}
+      res.status(201).json(arr);
+     //res.status(201).json(results2);
+     // res.status(201).json(results3);
    }
    catch (err) {
       //console.error('Failed to load current user:', err);
