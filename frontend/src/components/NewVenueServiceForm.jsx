@@ -40,7 +40,7 @@ function NewVenueServiceForm({user, services, isOpen, setIsOpen, setServices}){
      function handleSubmit(e){
          e.preventDefault();
  
-         const newCateringServiceJSON = {
+         const newVenueServiceJSON = {
              "user_id": user.id,
              "name": nameInput.current.value,
              "phone_num": user.phone_num,
@@ -58,7 +58,7 @@ function NewVenueServiceForm({user, services, isOpen, setIsOpen, setServices}){
  
          //  send newServiceJSON to the backend with addVenueService
          //      then - update the user service list
-         addVenueService(newCateringServiceJSON)
+         addVenueService(newVenueServiceJSON)
              .then(response => setServices([...services, response]));
      }
  
