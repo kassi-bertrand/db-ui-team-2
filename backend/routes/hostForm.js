@@ -66,20 +66,6 @@ router.get('/search/:Filter/:filtering', async (req, res, next) => {
       }
       next();
 });
-router.get('/venue/filter', async (req, res, next) => {
-   try {
-      const availability = req.query.availability;
-      const zip_code = req.query.zip_code;
-      const dates = knex('venue_details').where({availability}).andWhere({zip_code});
-      const results = await dates;
-      res.status(201).json(results);
-   }
-   catch (err) {
-      //console.error('Failed to load current user:', err);
-      res.status(500).json({ message: err.toString()});
-   }
-   next();
-});
 router.get('/all/filter', async (req, res, next) => {
    try {
       const availability = req.query.availability;
@@ -94,20 +80,6 @@ router.get('/all/filter', async (req, res, next) => {
       res.status(201).json(arr);
      //res.status(201).json(results2);
      // res.status(201).json(results3);
-   }
-   catch (err) {
-      //console.error('Failed to load current user:', err);
-      res.status(500).json({ message: err.toString()});
-   }
-   next();
-});
-router.get('/performance/filter', async (req, res, next) => {
-   try {
-      const availability = req.query.availability;
-      const zip_code = req.query.zip_code;
-      const dates = knex('performer_details').where({availability}).andWhere({zip_code});
-      const results = await dates;
-      res.status(201).json(results);
    }
    catch (err) {
       //console.error('Failed to load current user:', err);
