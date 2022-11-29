@@ -7,8 +7,6 @@ const express = require('express');
 const Review = require('../controllers/reviews');
 
 const router = express.Router();
-// Note: we don't specify `/foods`, just `/`. The association to `/foods` happens
-// in the root index.js file
 const bodyParser = require('body-parser');
 router.use(bodyParser.json());
 
