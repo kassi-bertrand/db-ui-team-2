@@ -6,8 +6,6 @@ const express = require('express');
 const Food = require('../controllers/food');
 
 const router = express.Router();
-// Note: we don't specify `/foods`, just `/`. The association to `/foods` happens
-// in the root index.js file
 const bodyParser = require('body-parser');
 router.use(bodyParser.json());
 
@@ -54,13 +52,11 @@ router.post('/new', async (req, res, next) => {
     try {
        const form = req.params;
        const fetchInfo = await Food.fetchInfoByUserId(form.user_id);
-       //console.log(form.user_id);
        console.log(fetchInfo);
        res.status(201).json(fetchInfo);
        next();
     }
     catch (err) {
-       //console.error('Failed to load current user:', err);
        res.status(500).json({ message: err.toString()});
     }
     next();

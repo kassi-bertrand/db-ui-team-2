@@ -6,7 +6,7 @@ const Performer = require('../models/performer');
 const User = require('../models/users');
 
 const createModelsMiddleware = async (req, res, next) => {
-   console.log('Connecting to the database');
+   console.log('Connecting to the database...');
    req.models = {
       user: User,
       venue: Venue,
@@ -17,7 +17,7 @@ const createModelsMiddleware = async (req, res, next) => {
 }
 
 const disconnectFromDatababaseMiddleware = (req, res, next) => {
-  console.log('Disconnecting from the database');
+  console.log('Disconnecting from the database...');
   req.disconnect();
   next();
 }

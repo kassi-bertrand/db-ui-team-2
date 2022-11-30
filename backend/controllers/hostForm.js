@@ -1,10 +1,5 @@
 const Form = require('../models/hostForm');
 
-/*const fetchFoodsByUsername = async(food_user)  => {
-    const result = await Food.fetchFoodsByUsername(food_user);
-    return result;
-}*/
-
 const fetchInfoWoCurrUser = async (user_id) => {
     const result = await Form.fetchInfoWoCurrUser(user_id);
     return result;
@@ -25,33 +20,27 @@ const fetchInfoByName = async (name) => {
     const result = await Form.fetchInfoByName(name);
     return result;
 }
-const fetchInfoByPhoneNum = async (form_num) => {
-//console.log("we reached here!")
-    const result = await Form.fetchInfoByPhoneNum(form_num);
+const fetchInfoByFormNum = async (form_num) => {
+    const result = await Form.fetchInfoByFormNum(form_num);
     return result;
 }
-const fetchDateByPhoneNum = async (form_num) => {
-    //console.log("we reached here!")
-        const result = await Form.fetchDateByPhoneNum(form_num);
+const fetchDateByFormNum = async (form_num) => {
+        const result = await Form.fetchDateByFormNum(form_num);
         return result;
 }
-const fetchLocationByPhoneNum = async (form_num) => {
-    //console.log("we reached here!")
-        const result = await Form.fetchLocationByPhoneNum(form_num);
+const fetchLocationByFormNum = async (form_num) => {
+        const result = await Form.fetchLocationByFormNum(form_num);
         return result;
 }
-const fetchGuestCountByPhoneNum = async (form_num) => {
-    //console.log("we reached here!")
-        const result = await Form.fetchGuestCountByPhoneNum(form_num);
+const fetchGuestCountByFormNum = async (form_num) => {
+        const result = await Form.fetchGuestCountByFormNum(form_num);
         return result;
 }
-const fetchBudgetByPhoneNum = async (form_num) => {
-    //console.log("we reached here!")
-        const result = await Form.fetchBudgetByPhoneNum(form_num);
+const fetchBudgetByFormNum = async (form_num) => {
+        const result = await Form.fetchBudgetByFormNum(form_num);
         return result;
 }
 const createForm = async (user_id, name, phone_num, street, city, state, zip_code, event_date, budget, guest_count,occasion, details) => {
-    //console.log(Location, Budget, Details, Name, PhoneNum, EventDate, GuestCount,Occasion);
     const result = await Form.createForm(user_id, name, phone_num, street, city, state, zip_code, event_date, budget, guest_count,occasion, details);
     return result;
 }
@@ -65,14 +54,11 @@ module.exports = {
     fetchInfoByCity,
     fetchInfoByDate,
     fetchInfoByName,
-    fetchBudgetByPhoneNum,
-    fetchLocationByPhoneNum,
-    fetchGuestCountByPhoneNum,
-    fetchInfoByPhoneNum,
-    fetchDateByPhoneNum,
+    fetchInfoByFormNum,
+    fetchDateByFormNum,
     createForm,
     deleteForm,
-    fetchLocationByPhoneNum,
-    fetchGuestCountByPhoneNum,
-    fetchBudgetByPhoneNum
+    fetchLocationByFormNum,
+    fetchGuestCountByFormNum,
+    fetchBudgetByFormNum
 }
