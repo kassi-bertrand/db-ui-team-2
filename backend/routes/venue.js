@@ -1,3 +1,4 @@
+//routes created by Karina Shin and Safwan Majeed
 const express = require('express');
 const Venue = require('../controllers/venue');
 const Performer = require('../controllers/performer');
@@ -47,7 +48,6 @@ router.post('/new', async (req, res, next) => {
    try {
       const form = req.params;
       const fetchInfo = await Venue.fetchVenuesByUserID(form.user_id);
-      console.log(fetchInfo);
       res.status(201).json(fetchInfo);
       next();
    }

@@ -1,5 +1,5 @@
+//models made by Karina Shin and Safwan Majeed
 const knex = require('../database/knex');
-
 const VENUE_TABLE = 'venue_details';
 
     const fetchAllVenues = async() => {
@@ -84,50 +84,42 @@ const VENUE_TABLE = 'venue_details';
     }
     const rateVenue = async(venue_num, rate) =>{
         if (rate < 6 && rate > -1){
-        const ratingCount = knex(VENUE_TABLE).where({ venue_num }).select("rating_count");
-        var rating_count = await ratingCount;
-        const ratingSum = knex(VENUE_TABLE).where({ venue_num }).select("rating_sum");
-        var rating_sum = await ratingSum;
-        const ratingAvg = knex(VENUE_TABLE).where({ venue_num }).select("rating");
-        var rating = await ratingAvg;
-        rating_count = JSON.stringify(rating_count);
-        rating_count = rating_count.replace('[{"rating_count":', "");
-        rating_count = rating_count.replace('}]', "");
-        rating_count = Number(rating_count);
-        console.log(rating_count)
-        if(rating_count > -1){
-            console.log("is it here?")
-        rating_count = rating_count+1;
+            const ratingCount = knex(VENUE_TABLE).where({ venue_num }).select("rating_count");
+            var rating_count = await ratingCount;
+            const ratingSum = knex(VENUE_TABLE).where({ venue_num }).select("rating_sum");
+            var rating_sum = await ratingSum;
+            const ratingAvg = knex(VENUE_TABLE).where({ venue_num }).select("rating");
+            var rating = await ratingAvg;
+            rating_count = JSON.stringify(rating_count);
+            rating_count = rating_count.replace('[{"rating_count":', "");
+            rating_count = rating_count.replace('}]', "");
+            rating_count = Number(rating_count);
+            if(rating_count > -1){
+            rating_count = rating_count+1;
+            }
+            else{
+                rating_count = 1;
+            }
+            rating_sum = JSON.stringify(rating_sum);
+            rating_sum = rating_sum.replace('[{"rating_sum":', "");
+            rating_sum = rating_sum.replace('}]', "");
+            rating_sum = Number(rating_sum);
+            if(rating_sum > -1){
+            rating_sum = rating_sum + rate;
+            }
+            else{
+                rating_sum = rate;
+            }
+            rating = JSON.stringify(rating);
+            rating = rating.replace('[{"rating":', "");
+            rating = rating.replace('}]', "");
+            rating = Number(rating);
+            rating = rating_sum/rating_count;
+            const query = knex(VENUE_TABLE).update({rating, rating_count, rating_sum}).where({venue_num});
+            const results = await query;
+            return results;
         }
-        else{
-            rating_count = 1;
-        }
-        console.log(rating_count)
-        rating_sum = JSON.stringify(rating_sum);
-        rating_sum = rating_sum.replace('[{"rating_sum":', "");
-        rating_sum = rating_sum.replace('}]', "");
-        rating_sum = Number(rating_sum);
-        console.log(rating_sum)
-        if(rating_sum > -1){
-            console.log("is it here?")
-        rating_sum = rating_sum + rate;
-        }
-        else{
-            rating_sum = rate;
-        }
-        console.log(rating_sum);
-        rating = JSON.stringify(rating);
-        rating = rating.replace('[{"rating":', "");
-        rating = rating.replace('}]', "");
-        rating = Number(rating);
-        console.log(rating);
-        rating = rating_sum/rating_count;
-        console.log(rating);
-        const query = knex(VENUE_TABLE).update({rating, rating_count, rating_sum}).where({venue_num});
-        const results = await query;
-        return results;
     }
-}
     const deleteVenue = async(venue_user) => {
         const query = knex(VENUE_TABLE).delete().where({venue_user});
         const results = await query;

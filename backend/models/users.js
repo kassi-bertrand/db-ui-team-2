@@ -1,3 +1,4 @@
+//models created by Kate Bouis
 const knex = require('../database/knex');
 const bcrypt = require ('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -11,14 +12,9 @@ const USER_TABLE = 'user';
     }
 
     const createNewUser = async(name, phone_num, email, password) => {
-        console.log('Raw password:', password);
         const salt = await bcrypt.genSalt(10);
-        console.log('Password salt', salt);
         const hashedPassword = await bcrypt.hash(password, salt);
-        console.log('Hashed password', hashedPassword);
-
         const query = knex (USER_TABLE).insert({name, phone_num, email, password: hashedPassword});
-        console.log('Raw query for createNewUser:', query.toString());
         const result = await query;
 
         return result;
@@ -37,7 +33,6 @@ const USER_TABLE = 'user';
     
     const authenticateUser = async(email, password) => {
         const users = await findUserByEmail(email);
-        console.log('Results of users query', users);
         if (users.length === 0) {
             console.error(`No users matched the email: ${email}`);
             knex.closeknex();

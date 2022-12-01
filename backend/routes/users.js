@@ -1,3 +1,4 @@
+//routes created by Kate Bouis
 const express = require('express');
 const User = require('../controllers/users');
 
@@ -30,7 +31,6 @@ router.get('/session', async (req, res, next) => {
         const user = req.user;
         const result = await User.findUserByEmail(user.email);
         res.status(200).json(result);
-        console.log(result);
     } catch (err) {
         console.error('No matching user: ', err);
         res.sendStatus(401).json({ message: err.toString() });
@@ -40,8 +40,6 @@ router.get('/session', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     try {
         const body = req.body;
-        console.log(body);
-        console.log(req.models);
         const result = await req.models.user.createNewUser(body.name, body.phone_num, body.email, body.password);
         res.status(201).json(result);
     } catch (err) {

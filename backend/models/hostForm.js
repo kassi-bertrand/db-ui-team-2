@@ -1,3 +1,4 @@
+//models made by Safwan Majeed
 const knex = require('../database/knex');
 
 const FORM_TABLE = 'Form';
@@ -14,22 +15,22 @@ const FORM_TABLE = 'Form';
        return results;
    }
    const fetchInfoByUserId = async (user_id) => {
-       const query = knex(FORM_TABLE).where({ user_id }).orderBy('event_date', 'DESC');//.select("EventDate");
+       const query = knex(FORM_TABLE).where({ user_id }).orderBy('event_date', 'DESC');
        const results = await query;
        return results;
    }
    const fetchInfoByCity = async (city) => {
-       const query = knex(FORM_TABLE).where({ city }).orderBy('event_date', 'DESC');//.select("EventDate");
+       const query = knex(FORM_TABLE).where({ city }).orderBy('event_date', 'DESC');
        const results = await query;
        return results;
    }
    const fetchInfoByDate = async (event_date) => {
-       const query = knex(FORM_TABLE).where({ event_date }).orderBy('event_date', 'DESC');//.select("EventDate");
+       const query = knex(FORM_TABLE).where({ event_date }).orderBy('event_date', 'DESC');
        const results = await query;
        return results;
    }
    const fetchInfoByName = async (name) => {
-       const query = knex(FORM_TABLE).where({ name }).orderBy('event_date', 'DESC');//.select("EventDate");
+       const query = knex(FORM_TABLE).where({ name }).orderBy('event_date', 'DESC');
        const results = await query;
        return results;
    }

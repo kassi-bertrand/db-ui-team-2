@@ -1,15 +1,8 @@
+//models made by Karina Shin and Safwan Majeed
 const knex = require('../database/knex');
 
 const FOOD_TABLE = 'food_details';
 
-//class Food {
-    /*constructor(_DBQuery, _disconnect) {
-        this.DBQuery = _DBQuery;
-        this.disconnect = _disconnect;
-    }
-    close () {
-        this.disconnect();
-    }*/
     const fetchAllFoods = async() =>{
         const query = knex(FOOD_TABLE);
         const results = await query;
@@ -21,13 +14,9 @@ const FOOD_TABLE = 'food_details';
         return results;
     }
     const fetchInfoByUserId = async (user_id) => {
-        //console.log("we reached here!")
-           const query = knex(FOOD_TABLE).where({ user_id })
-           console.log("knex? here!")
-          // console.log(query);
-           const results = await query;
-           //console.log("results");
-           return results;
+        const query = knex(FOOD_TABLE).where({ user_id })
+        const results = await query;
+        return results;
     }
     const fetchFoodsByName= async(restaurant_name)=>  {
         const query = knex(FOOD_TABLE).where({restaurant_name});
@@ -84,58 +73,59 @@ const FOOD_TABLE = 'food_details';
         const results = await query;
         return results;
     }
+     //This function allows a user to rate a service.
     const rateCaterer = async(food_num, rate) =>{
+        //between 0 - 5 rating
         if (rate < 6 && rate > -1){
-        const ratingCount = knex(FOOD_TABLE).where({ food_num }).select("rating_count");
-        var rating_count = await ratingCount;
-        const ratingSum = knex(FOOD_TABLE).where({ food_num }).select("rating_sum");
-        var rating_sum = await ratingSum;
-        const ratingAvg = knex(FOOD_TABLE).where({ food_num }).select("rating");
-        var rating = await ratingAvg;
-        rating_count = JSON.stringify(rating_count);
-        rating_count = rating_count.replace('[{"rating_count":', "");
-        rating_count = rating_count.replace('}]', "");
-        rating_count = Number(rating_count);
-        console.log(rating_count)
-        if(rating_count > -1){
-            console.log("is it here?")
-        rating_count = rating_count+1;
+            //selecting rating info
+            const ratingCount = knex(FOOD_TABLE).where({ food_num }).select("rating_count");
+            var rating_count = await ratingCount;
+            const ratingSum = knex(FOOD_TABLE).where({ food_num }).select("rating_sum");
+            var rating_sum = await ratingSum;
+            const ratingAvg = knex(FOOD_TABLE).where({ food_num }).select("rating");
+            var rating = await ratingAvg;
+            //stringify returns and remove extra text
+            rating_count = JSON.stringify(rating_count);
+            rating_count = rating_count.replace('[{"rating_count":', "");
+            rating_count = rating_count.replace('}]', "");
+            rating_count = Number(rating_count);
+            //rating count
+            if(rating_count > -1){
+                rating_count = rating_count+1;
+            }
+            else{
+                rating_count = 1;
+            }
+            //stringify returns and remove extra text
+            rating_sum = JSON.stringify(rating_sum);
+            rating_sum = rating_sum.replace('[{"rating_sum":', "");
+            rating_sum = rating_sum.replace('}]', "");
+            rating_sum = Number(rating_sum);
+            //summing if not null
+            if(rating_sum > -1){
+            rating_sum = rating_sum + rate;
+            }
+            else{
+                rating_sum = rate;
+            }
+            ///stringify returns and remove extra text
+            rating = JSON.stringify(rating);
+            rating = rating.replace('[{"rating":', "");
+            rating = rating.replace('}]', "");
+            rating = Number(rating);
+            //getting final rating
+            rating = rating_sum/rating_count;
+            //put to table
+            const query = knex(FOOD_TABLE).update({rating, rating_count, rating_sum}).where({food_num});
+            const results = await query;
+            return results;
         }
-        else{
-            rating_count = 1;
-        }
-        console.log(rating_count)
-        rating_sum = JSON.stringify(rating_sum);
-        rating_sum = rating_sum.replace('[{"rating_sum":', "");
-        rating_sum = rating_sum.replace('}]', "");
-        rating_sum = Number(rating_sum);
-        console.log(rating_sum)
-        if(rating_sum > -1){
-            console.log("is it here?")
-        rating_sum = rating_sum + rate;
-        }
-        else{
-            rating_sum = rate;
-        }
-        console.log(rating_sum);
-        rating = JSON.stringify(rating);
-        rating = rating.replace('[{"rating":', "");
-        rating = rating.replace('}]', "");
-        rating = Number(rating);
-        console.log(rating);
-        rating = rating_sum/rating_count;
-        console.log(rating);
-        const query = knex(FOOD_TABLE).update({rating, rating_count, rating_sum}).where({food_num});
-        const results = await query;
-        return results;
     }
-}
     const deleteFood= async(food_user) =>{
         const query = knex(FOOD_TABLE).delete().where({food_user});
         const results = await query;
         return results;
     }
- //}
  module.exports = {
     fetchAllFoods,
     fetchFoodsByServID,
@@ -154,4 +144,3 @@ const FOOD_TABLE = 'food_details';
     rateCaterer,
     deleteFood
 };
- //module.exports = Food;

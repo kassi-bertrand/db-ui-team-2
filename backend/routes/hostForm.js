@@ -1,3 +1,4 @@
+//routes created by Safwan Majeed
 const express = require('express');
 const Form = require('../controllers/hostForm');
 const knex = require('../database/knex');
@@ -13,8 +14,6 @@ router.get('/form_num', async (req, res, next) => {
    try {
       const form = req.query;
       const fetchInfo = await Form.fetchInfoByFormNum(form.form_num);
-      
-      console.log(fetchInfo[0]);
       res.status(201).json(fetchInfo[0]);
       next();
    }
@@ -27,8 +26,6 @@ router.get('/:user_id', async (req, res, next) => {
    try {
       const form = req.params;
       const fetchInfo = await Form.fetchInfoByUserId(form.user_id);
-      console.log(form.user_id);
-      console.log(fetchInfo);
       res.status(201).json(fetchInfo);
       next();
    }
@@ -41,7 +38,6 @@ router.get('/search/:Filter/:filtering', async (req, res, next) => {
       try {
          const filterType = req.params.Filter;
          const filter = req.params.filtering;
-         console.log(filter);
          var fetchInfo;
          if(filterType == "city"){
             fetchInfo = await Form.fetchInfoByCity(filter);
@@ -52,7 +48,6 @@ router.get('/search/:Filter/:filtering', async (req, res, next) => {
          else if(filterType == "name"){ 
              fetchInfo = await Form.fetchInfoByName(filter);
          }
-         console.log(fetchInfo);
          res.status(201).json(fetchInfo);
          next();
       }
@@ -83,8 +78,6 @@ router.get('/feed/:user_id', async (req, res, next) => {
    try {
       const form = req.params;
       const fetchInfo = await Form.fetchInfoWoCurrUser(form.user_id);
-      console.log(form.user_id);
-      console.log(fetchInfo);
       res.status(201).json(fetchInfo);
       next();
    }

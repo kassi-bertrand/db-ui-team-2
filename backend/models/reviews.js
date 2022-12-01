@@ -1,3 +1,4 @@
+//models made by Karina Shin
 const knex = require('../database/knex');
 const REVIEWS_TABLE = 'reviews';
 

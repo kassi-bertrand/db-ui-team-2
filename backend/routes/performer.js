@@ -1,3 +1,4 @@
+//routes created by Karina Shin and Safwan Majeed
 const express = require('express');
 /**
 * A router is a special Express object that can be used to define how to route and manage
@@ -27,7 +28,6 @@ router.get('/:user_id', async (req, res, next) => {
     try {
        const form = req.params;
        const fetchInfo = await Performer.fetchPerformersByUserID(form.user_id);
-       console.log(fetchInfo);
        res.status(201).json(fetchInfo);
        next();
     }
