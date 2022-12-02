@@ -4,6 +4,7 @@ const User = require('../controllers/users');
 
 const router = express.Router();
 
+/* This is a route that is used to get all users. */
 router.get('/', async (req, res, next) => {
     try {
         const user = req.user;
@@ -15,6 +16,7 @@ router.get('/', async (req, res, next) => {
     }
  });
 
+/* This is a route that is used to get the current user. */
 router.get('/current', async(req, res, next) => {
     try {
         const user = req.user;
@@ -26,6 +28,7 @@ router.get('/current', async(req, res, next) => {
     }
 });
 
+/* This is a route that is used to get the current user. */
 router.get('/session', async (req, res, next) => {
     try {
         const user = req.user;
@@ -37,6 +40,7 @@ router.get('/session', async (req, res, next) => {
     }
 }); 
 
+/* This is a route that is used to create a new user. */
 router.post('/', async (req, res, next) => {
     try {
         const body = req.body;

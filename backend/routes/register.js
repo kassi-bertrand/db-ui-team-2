@@ -1,8 +1,10 @@
 //routes created by Kate Bouis
+/* This is importing the express module and the user controller module. */
 const express = require ('express');
 const UserController = require('../controllers/users');
 const router = express.Router();
 
+/* This is a post request that is being sent to the server. It is sending the information from the form to the server. */
 router.post('/', async (req, res, next) => {
     try {
         const body = req.body;

@@ -10,6 +10,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 router.use(bodyParser.json());
 
+/* This is a get request that will return all reviews, or reviews by author, reviewee, review id, or rating. */
 router.get('/', async (req, res, next) => {
    if (req.query.author) {
        const reviewByAuthor = await Review.fetchReviewsByAuthor(req.query.author);
@@ -33,11 +34,13 @@ router.get('/', async (req, res, next) => {
        next();
    }
 });
+/* This is a post request that will create a new review. */
 router.post('/', async (req, res, next) => {
     const createReview = await Review.createReview(req.body.author, req.body.comments, req.body.rating, req.body.reviewee_id);
     res.status(201).json(createReview);
     next();
  });
+ /* This is a put request that will update the comments or rating of a review. */
  router.put('/', async (req, res, next) => {
     if (req.body.comments) {
         const updateComments = await Review.updateComments(req.body.comments, req.body.review_id);
@@ -49,6 +52,7 @@ router.post('/', async (req, res, next) => {
         next();
     }
  }); 
+ /* This is a delete request that will delete a review. */
  router.delete('/', async (req, res, next) => {
     const deleteReview = await Review.deleteReview(req.body.review_id);
     res.status(204).end();

@@ -11,6 +11,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 router.use(bodyParser.json());
 
+/* This is a get request that is getting all the venues from the database. */
 router.get('/', async (req, res, next) => {
    if (req.query.venue_name) {
        const venueByName = await Venue.fetchVenuesByName(req.query.venue_name);
@@ -38,12 +39,14 @@ router.get('/', async (req, res, next) => {
        next();
    }
 });
+/* This is a post request that is creating a new venue in the database. */
 router.post('/new', async (req, res, next) => {
     const createVenue = await Venue.createVenue(req.body.user_id, req.body.name, req.body.phone_num, req.body.street, req.body.city, req.body.state_initial, req.body.availability, req.body.zip_code, req.body.cost, req.body.guest_capacity, req.body.details);
     const VenueID = await Venue.fetchVenuesByServID(createVenue);
     res.status(201).json(VenueID[0]);
     next();
  });
+ /* This is a get request that is getting all the venues from the database. */
  router.get('/:user_id', async (req, res, next) => {
    try {
       const form = req.params;
@@ -56,12 +59,14 @@ router.post('/new', async (req, res, next) => {
    }
    next();
 });
+ /* This is a put request that is updating the rating of a venue in the database. */
  router.put('/rating', async (req, res, next) => {
    const rating = await Venue.rateVenue(req.body.venue_num, req.body.rate);
    const VenueID = await Performer.fetchVenuesByServID(req.body.venue_num);
    res.status(201).json(VenueID[0]);
    next();
 });
+ /* This is a put request that is updating the venue in the database. */
  router.put('/', async (req, res, next) => {
    if (req.body.venue_name) {
       const updateVenueName = await Venue.updateVenueName(req.body.venue_name, req.body.venue_user);
@@ -93,11 +98,13 @@ router.post('/new', async (req, res, next) => {
       next();
    }
  });
+ /* This is a put request that is updating the date booked of a venue in the database. */
  router.put('/booked', async (req, res, next) => {
    const updateDateBooked = await Venue.updateDateBooked(req.body.Booked, req.body.venue_user);
    res.json(updateDateBooked);
    next();
  });
+ /* This is a delete request that is deleting a venue from the database. */
  router.delete('/', async (req, res, next) => {
     const deleteVenue = await Venue.deleteVenue(req.body.venue_user);
     res.status(204).end();

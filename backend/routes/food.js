@@ -4,12 +4,14 @@ const express = require('express');
 * A router is a special Express object that can be used to define how to route and manage
 * requests. We configure a router here to handle a few routes specific to foods
 */
+/* This is importing the food controller and the express router. */
 const Food = require('../controllers/food');
 
 const router = express.Router();
 const bodyParser = require('body-parser');
 router.use(bodyParser.json());
 
+/* This is a get request that is getting all the food information from the database. */
 router.get('/', async (req, res, next) => {
    if (req.query.food_user) {
        const foodByUsername = await Food.fetchFoodsByServID(req.query.food_num);
@@ -37,18 +39,21 @@ router.get('/', async (req, res, next) => {
        next();
    }
 });
+/* This is a post request that is creating a new food item in the database. */
 router.post('/new', async (req, res, next) => {
     const createFood = await Food.createFood(req.body.user_id, req.body.name, req.body.phone_num, req.body.street, req.body.city, req.body.state_initial, req.body.availability, req.body.zip_code, req.body.details);
     const foodByUsername = await Food.fetchFoodsByServID(createFood);
     res.status(201).json(foodByUsername[0]);
     next();
  });
+ /* This is a put request that is updating the rating of a food item in the database. */
  router.put('/rating', async (req, res, next) => {
     const rating = await Food.rateCaterer(req.body.food_num, req.body.rate);
     const foodByUsername = await Food.fetchFoodsByServID(req.body.food_num);
     res.status(201).json(foodByUsername[0]);
     next();
  });
+ /* This is a get request that is getting all the food information from the database. */
  router.get('/:user_id', async (req, res, next) => {
     try {
        const form = req.params;
@@ -61,11 +66,13 @@ router.post('/new', async (req, res, next) => {
     }
     next();
  });
+ /* This is a put request that is updating the date booked of a food item in the database. */
  router.put('/booked', async (req, res, next) => {
     const updateDateBooked = await Food.updateDateBooked(req.body.Booked, req.body.food_user);
     res.json(updateDateBooked);
     next();
   });
+ /* This is a put request that is updating the food information in the database. */
  router.put('/', async (req, res, next) => {
     if (req.body.restaurant_name) {
         const updateRestaurantName = await Food.updateRestaurantName(req.body.restaurant_name, req.body.food_user);
@@ -93,6 +100,7 @@ router.post('/new', async (req, res, next) => {
         next();
     }
  }); 
+ /* This is a delete request that is deleting a food item in the database. */
  router.delete('/', async (req, res, next) => {
     const deleteFood = await Food.deleteFood(req.body.food_user);
     res.status(204).end();

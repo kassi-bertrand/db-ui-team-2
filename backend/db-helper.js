@@ -1,6 +1,11 @@
 const mysql = require('mysql');
 const util = require('util');
 
+/**
+ * It connects to the database, and returns a function that lets us run queries, and another to disconnect from the DB at
+ * the end of a route
+ * @returns A function that lets us run queries, and another to disconnect from the DB at the end of a route
+ */
 const connectToDatabase = async () => {
     try {
         const DBConnection = mysql.createConnection({
@@ -23,4 +28,5 @@ const connectToDatabase = async () => {
         throw err;
     }
  };
+ /* Exporting the function `connectToDatabase` so that it can be used in other files. */
  module.exports = connectToDatabase;
