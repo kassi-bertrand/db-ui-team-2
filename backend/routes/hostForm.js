@@ -1,3 +1,5 @@
+//routes created by Safwan Majeed
+/* This is importing the express, hostForm, and knex modules. */
 const express = require('express');
 const Form = require('../controllers/hostForm');
 const knex = require('../database/knex');
@@ -5,16 +7,16 @@ const knex = require('../database/knex');
 * A router is a special Express object that can be used to define how to route and manage
 * requests. We configure a router here to handle a few routes specific to students
 */
+/* This is setting up the router to use the body parser. */
 const router = express.Router();
 const bodyParser = require('body-parser');
 router.use(bodyParser.json());
 
+/* This is a route that is used to get the form information by the form number. */
 router.get('/form_num', async (req, res, next) => {
    try {
       const form = req.query;
       const fetchInfo = await Form.fetchInfoByFormNum(form.form_num);
-      
-      console.log(fetchInfo[0]);
       res.status(201).json(fetchInfo[0]);
       next();
    }
@@ -23,12 +25,11 @@ router.get('/form_num', async (req, res, next) => {
    }
    next();
 });
+/* This is a route that is used to get the form information by the user id. */
 router.get('/:user_id', async (req, res, next) => {
    try {
       const form = req.params;
       const fetchInfo = await Form.fetchInfoByUserId(form.user_id);
-      console.log(form.user_id);
-      console.log(fetchInfo);
       res.status(201).json(fetchInfo);
       next();
    }
@@ -37,11 +38,11 @@ router.get('/:user_id', async (req, res, next) => {
    }
    next();
 });
+/* This is a route that is used to get the form information by the filter type and the filter. */
 router.get('/search/:Filter/:filtering', async (req, res, next) => {
       try {
          const filterType = req.params.Filter;
          const filter = req.params.filtering;
-         console.log(filter);
          var fetchInfo;
          if(filterType == "city"){
             fetchInfo = await Form.fetchInfoByCity(filter);
@@ -52,7 +53,6 @@ router.get('/search/:Filter/:filtering', async (req, res, next) => {
          else if(filterType == "name"){ 
              fetchInfo = await Form.fetchInfoByName(filter);
          }
-         console.log(fetchInfo);
          res.status(201).json(fetchInfo);
          next();
       }
@@ -61,6 +61,7 @@ router.get('/search/:Filter/:filtering', async (req, res, next) => {
       }
       next();
 });
+/* This is a route that is used to get the form information by the filter type and the filter. */
 router.get('/all/filter', async (req, res, next) => {
    try {
       const availability = req.query.availability;
@@ -79,12 +80,11 @@ router.get('/all/filter', async (req, res, next) => {
    }
    next();
 });
+/* This is a route that is used to get the form information by the user id. */
 router.get('/feed/:user_id', async (req, res, next) => {
    try {
       const form = req.params;
       const fetchInfo = await Form.fetchInfoWoCurrUser(form.user_id);
-      console.log(form.user_id);
-      console.log(fetchInfo);
       res.status(201).json(fetchInfo);
       next();
    }
@@ -92,6 +92,7 @@ router.get('/feed/:user_id', async (req, res, next) => {
    }
    next();
 });
+/* This is a route that is used to create a new form. */
 router.post('/new', async (req, res, next) => {
    try {
       const form = req.body;
@@ -105,6 +106,7 @@ router.post('/new', async (req, res, next) => {
    next();
 }
 });
+/* This is a route that is used to delete a form. */
 router.delete('/delete', async (req, res, next) => {
    try {
       const form = req.body;
@@ -116,7 +118,6 @@ router.delete('/delete', async (req, res, next) => {
       res.status(400).json({ message: err.toString() });
       next();
    }
-   
  });
  
  module.exports = router;

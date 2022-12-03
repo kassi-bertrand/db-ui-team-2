@@ -1,6 +1,7 @@
-// Update with your config settings.
+/* This is importing the mysql module and the dotenv module. */
 const mysql = require('mysql');
 require("dotenv").config();
+/* This is the configuration for the database. */
 module.exports = {
     development: {
       client: 'mysql',
